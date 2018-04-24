@@ -1,5 +1,5 @@
 
-function(){
+function inti(){
 	var maxBubbles = 40;
 
 	form(action="")
