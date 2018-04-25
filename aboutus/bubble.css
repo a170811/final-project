@@ -47,26 +47,6 @@ $scoreW: 70px;
   @return ceil((random() * $max) - $min) + $min;
 }
 
-body {
-  background: $bg linear-gradient($bg * 1.5, $bg, $bg / 2);
-  counter-reset: popped;
-  margin: 0;
-  overflow: hidden;
-}
-
-body,
-button {
-  font-family: Lato, sans-serif;
-  font-size: calc(#{$minFontSize} + #{$addedFontSize});
-  font-weight: 300;
-  line-height: calc(#{$minFontSize} + #{$addedFontSize});
-}
-
-h1 {
-  font-size: calc(#{$minFontSize * 1.5} + #{$addedFontSize * 1.5});
-  margin-top: 40vh;
-}
-
 button,
 path {
   transition: all 0.2s;
