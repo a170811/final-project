@@ -1,0 +1,1 @@
+var hr = dt.getSeconds();
