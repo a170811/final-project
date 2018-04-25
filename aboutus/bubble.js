@@ -1,7 +1,24 @@
-var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.BUBBLE = {})));
+}(this, (function (exports) { 'use strict';
+
+
+
+
+
+
+
+
+
+
+
+  var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
 
 
 //----initial function for the bubble, not sure if it's needed or not
+/*
 function inti(){
 	var maxBubbles = 40;
 
@@ -13,54 +30,57 @@ function inti(){
 			span;
 		}
 }
-
+*/
 
 
 //---try to create a class name Bubble, but failed
-function Bubble() {
-  this.Radius = 10;
-  this.Position = {x:20, y:20} ;
-  this.Destination = {x:20, y:20} ;
-  this.Color = bubble_color[0] ;        // initial color = black
-  this.Id = -1;         // the owner of the bubble, from 0~6, initial = -1
-  //this.style.left = this.position.x+'px';     //bug
-  //this.style.top = this.position.y+'px';      //bug
-}
-
-
-Object.assign( Bubble.prototype, {
-  
-  setPosition: function(x, y) {
-      
-  },
-  
-  setRadius: function(R) {
-      
-  },
-
-  setDestination: function(x, y) {
-    
-  },
-
-  setColor: function(num) {
-      
-  },
-
-  setID: function(id) {
-      
-  },
-
-  setBG: function(pic) {
-      
+  function Bubble() {
+    this.Radius = 10;
+    this.Position = {x:20, y:20} ;
+    this.Destination = {x:20, y:20} ;
+    this.Color = bubble_color[0] ;        // initial color = black
+    this.Id = -1;         // the owner of the bubble, from 0~6, initial = -1
+    //this.style.left = this.position.x+'px';     //bug
+    //this.style.top = this.position.y+'px';      //bug
   }
+
+
+  Object.assign( Bubble.prototype, {
+    init: function() {
+
+    },
+  
+    setPosition: function(x, y) {
+      
+    },
+  
+    setRadius: function(R) {
+      
+    },
+
+    setDestination: function(x, y) {
+    
+    },
+
+    setColor: function(num) {
+      
+    },
+
+    setID: function(id) {
+      
+    },
+
+    setBG: function(pic) {
+      
+    }
   
  
 
 
-})
+  });
 
 
-
+})));
 
 //----sample to create the function for the class Bubble
 
