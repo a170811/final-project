@@ -1,13 +1,14 @@
 body {
-  background: url("bg.svg");
-  position: relative;
-  position: middle;
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  overflow: hidden;
+    background: url("bg.svg");
+    background-size: 100vw ;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 #whale{
-  width:325.8px;
-  height:197.4px;
+    width: 40vw ;
+    position : relative ;
+    top : 7vw ;
+    left : 45vw ;
 }
+
 
