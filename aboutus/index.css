@@ -1,6 +1,6 @@
 body {
     background: url("bg.svg");
-    background-size: 100% ;
+    background-size: cover ;
     background-repeat: no-repeat;
     overflow: hidden;
 }
