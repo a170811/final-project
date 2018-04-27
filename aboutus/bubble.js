@@ -8,9 +8,12 @@ var container=[bubble_num], bubble_ly, picture_ly, shadow_ly;
 var Radius, Position, Destination;
 var move = [bubble_num];
 var count = 0;
-var Short_Unit = 'vw';
-if (window.width > window.height) 
-  Short_Unit = 'vh';
+var Long_Unit = 'vw';
+var Short_Unit = 'vh';
+if (window.width < window.height) {
+  Long_Unit = 'vh';
+  Short_Unit = 'vw';
+}
 
 
 function Bubble() {
@@ -106,14 +109,14 @@ Object.assign( Bubble.prototype, {
   setRadius: function( R = Radius ) {            //set the radius of the bubble
     Radius = R;
 
-    container[this.Id].style.width = Radius+2+'vw';
-    container[this.Id].style.height = Radius+2+'vw';
-    bubble_ly.style.width = Radius+'vw';
-    bubble_ly.style.height = Radius+'vw';
-    picture_ly.style.width = Radius-0.05+'vw';
-    picture_ly.style.height = Radius-0.05+'vw';
-    shadow_ly.style.width = Radius+0.3+'vw';
-    shadow_ly.style.height = Radius+0.3+'vw';
+    container[this.Id].style.width = Radius+2+Long_Unit;
+    container[this.Id].style.height = Radius+2+Long_Unit;
+    bubble_ly.style.width = Radius+Long_Unit;
+    bubble_ly.style.height = Radius+Long_Unit;
+    picture_ly.style.width = Radius-0.05+Long_Unit;
+    picture_ly.style.height = Radius-0.05+Long_Unit;
+    shadow_ly.style.width = Radius+0.3+Long_Unit;
+    shadow_ly.style.height = Radius+0.3+Long_Unit;
   },
 
   setShadow: function( c = '#333333' ) {        // set up the shadow, initial color = #333333
