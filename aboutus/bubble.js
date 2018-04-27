@@ -155,7 +155,7 @@ Object.assign( Bubble.prototype, {
       }   
       else {
         tmp_pos -= 0.18;
-        container[me.Id].style.top= tmp_pos + Short_Unit;  
+        container[me.Id].style.top= tmp_pos + Long_Unit;  
       }
     }
   },
