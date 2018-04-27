@@ -142,7 +142,7 @@ Object.assign( Bubble.prototype, {
     var me = this;
     Destination.x = x;
     Destination.y = y;
-    var K = Short/5000;
+    var K = Short/7000;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
