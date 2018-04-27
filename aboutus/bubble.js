@@ -10,7 +10,7 @@ var move = [bubble_num];
 var count = 0;
 var Long_Unit = 'vw';
 var Short_Unit = 'vh';
-if (window.width < window.height) {
+if (window.innerWidth < window.innerHeight) {
   Long_Unit = 'vh';
   Short_Unit = 'vw';
 }
