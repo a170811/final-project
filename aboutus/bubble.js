@@ -138,6 +138,7 @@ Object.assign( Bubble.prototype, {
     var me = this;
     Destination.x = x;
     Destination.y = y;
+    var K = Short_Unit/Long_Unit;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
@@ -154,8 +155,8 @@ Object.assign( Bubble.prototype, {
         }, delay);
       }   
       else {
-        tmp_pos -= 0.18;
-        container[me.Id].style.top= tmp_pos + Short_Unit;  
+        tmp_pos -= K;
+        container[me.Id].style.top= tmp_pos + 'vh';  
       }
     }
   },
