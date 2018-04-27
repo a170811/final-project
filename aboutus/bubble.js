@@ -11,12 +11,12 @@ var count = 0;
 var Long_Unit = 'vw';
 var Short_Unit = 'vh';
 //var Long = window.innerWidth;
-//var Short = window.innerHeight;
+var Short = window.innerHeight;
 if (window.innerWidth < window.innerHeight) {
   Long_Unit = 'vh';
   Short_Unit = 'vw';
   //Long = window.innerHeight;
-  //Short = window.innerWidth;
+  Short = window.innerWidth;
 }
 
 
@@ -142,7 +142,7 @@ Object.assign( Bubble.prototype, {
     var me = this;
     Destination.x = x;
     Destination.y = y;
-    //var K = Short/Long/2;
+    var K = Short/4000;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
@@ -160,7 +160,7 @@ Object.assign( Bubble.prototype, {
         }, delay);
       }   
       else {
-        tmp_pos -= 0.1;
+        tmp_pos -= K;
         container[me.Id].style.top= tmp_pos + 'vh';  
       }
     }
