@@ -146,7 +146,7 @@ Object.assign( Bubble.prototype, {
         //clearInterval(move);
         setTimeout( function() {
           Position.x = Math.random() * 80 + 1;
-          me.restart( Position.x, 105 );
+          me.setPosition( Position.x, 105 );
           tmp_pos = Position.y;
         }, delay);
       }   
