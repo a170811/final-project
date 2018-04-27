@@ -4,6 +4,7 @@ body {
     background: url("bg.svg");
     background-size: cover ;
     background-repeat: no-repeat;
+    background-position: center;
     overflow: hidden;
 }
 #whale{
