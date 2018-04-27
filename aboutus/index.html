@@ -25,9 +25,20 @@
           //ttt = document.getElementById("test");
           //ttt.style.color = "red";
           //var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-          var a = new Bubble();     //test to create a bubble object
+          //var a = new Bubble();     //test to create a bubble object
           //a.constructor();
-          a.init();
+          //a.init();
+          var bubble = [];
+          for (var i = 0 ; i <14; i++) {
+            bubble[i] = new Bubble();
+            bubble[i].startMoving();
+            bubble[i].setID(i);
+               
+          }          
+          //a.startMoving();
+          
+          //var b= new Bubble();
+          //b.startMoving();
           /*---------for debug------
           text = document.createElement( 'div' );
           document.body.appendChild( text );
