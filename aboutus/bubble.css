@@ -1,0 +1,11 @@
+.pic {
+    position :absolute ;
+    top : 1vh ;
+    left : 3vh ;
+    z-index:2 ;
+}
+
+.shadow {
+    z-index:0 ;
+}
+

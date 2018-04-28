@@ -13,7 +13,6 @@
 
         <img id="whale" src= "whale.gif">
 
-
         <!--p id="test">JIJIJIJJJII</p--> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script src="bubble.js"></script>
@@ -33,6 +32,13 @@
             bubble[i].setID(i);
                
           }          
+          var img = {p1:"001.png",p2:"002.png",p3:"003.png",p4:"004.png",p5:"005.png",p6:"006.png",p7:"007.png"} ;
+          i=0;
+          for (x in img) {
+            bubble[i].setBG(img[x]) ;  
+            bubble[i+7].setBG(img[x]) ;  
+            i=i+1 ;
+          }
           //a.startMoving();
           
           //var b= new Bubble();

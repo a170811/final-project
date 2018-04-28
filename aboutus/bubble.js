@@ -1,10 +1,9 @@
 
 
-
 //var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
 var bubble_num = 14;
 var bubble_img = "bubble3.svg";
-var container=[bubble_num], bubble_ly, picture_ly, shadow_ly;
+var container=[bubble_num], bubble_ly, shadow_ly;
 var Radius, Position, Destination;
 var move = [bubble_num];
 var count = 0;
@@ -21,9 +20,8 @@ if (screen.width < screen.height) {
 
 
 function Bubble() {
-
   //--------basic variables----------
-  Radius = 30;
+  Radius = 60;
   Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20 + 100 };
   Destination = { x: Position.x, y: -10-2*Radius } ;
   this.Id = count;         // the owner of the bubble, from 0~6, initial = 0
@@ -32,14 +30,14 @@ function Bubble() {
   container[count] = document.createElement( 'div' );        //where all the stuff goes       
 
   bubble_ly = document.createElement( 'div' );     //to create an element for bubble in body   //important!!
-  picture_ly = document.createElement( 'div' );     //same as the one above, except this one is for picture
+  this.picture_ly = document.createElement( 'div' );     //same as the one above, except this one is for picture
   shadow_ly = document.createElement( 'div' );     //same as the one above, except this one create the shadow_ly
   
   //----------include all the stuff into container, and include container into body
   document.body.appendChild( container[count] );
   
   container[count].appendChild( shadow_ly );          // place the element into the document // important!!!
-  container[count].appendChild( picture_ly );          // place the element into the document // important!!!
+  container[count].appendChild( this.picture_ly );          // place the element into the document // important!!!
   container[count].appendChild( bubble_ly );          // place the element into the document // important!!!
   
   //------set container-----
@@ -62,15 +60,14 @@ function Bubble() {
   //me.style.background.size = '100%';
   
   //--------set picture-----
-  picture_ly.style.position = 'absolute';
-  picture_ly.style.top= '0vw';
-  picture_ly.style.right= '0vw';
+  this.picture_ly.style.position = 'absolute';
+  this.picture_ly.style.top= '0vw';
+  this.picture_ly.style.right= '0vw';
 
   //picture_ly.style.width = Radius-0.05+'vw';
   //picture_ly.style.height = Radius-0.05+'vw';
-  picture_ly.style.borderRadius = '50%';
+  this.picture_ly.style.borderRadius = '50%';
 
-  //picture_ly.style.background = '#fff';
   //me.style.display= "block";
 
   //--------set shadow-----
@@ -117,8 +114,8 @@ Object.assign( Bubble.prototype, {
     container[this.Id].style.height = Radius+2+Short_Unit;
     bubble_ly.style.width = Radius+Short_Unit;
     bubble_ly.style.height = Radius+Short_Unit;
-    picture_ly.style.width = Radius-0.05+Short_Unit;
-    picture_ly.style.height = Radius-0.05+Short_Unit;
+    this.picture_ly.style.width = Radius-2+Short_Unit;
+    this.picture_ly.style.height = Radius-2+Short_Unit;
     shadow_ly.style.width = Radius+0.3+Short_Unit;
     shadow_ly.style.height = Radius+0.3+Short_Unit;
   },
@@ -126,6 +123,7 @@ Object.assign( Bubble.prototype, {
   setShadow: function( c = '#333333' ) {        // set up the shadow, initial color = #333333
     shadow_ly.style.background = c;
     shadow_ly.style.opacity = 0.5;
+    shadow_ly.classList.add("shadow") ;
   },
 
   setID: function( id = 0 ) {         //set ID, initial = 0
@@ -134,8 +132,18 @@ Object.assign( Bubble.prototype, {
   },
 
   setBG: function( pic = '' ) {        // setup background, initial = NULL (haven't test yet)
-    picture_ly.style.background = 'url(' + pic + ')';
-    shadow_ly.style.opacity = 0.7;
+    this.picture_ly.style.background = 'url(' + pic + ')';
+    /*
+    function add_pic() {
+      var p = document.createElement("IMG") ;
+      p.setAttribute("src","001.png") ;
+      p.setAttribute("width","160") ;
+      p.setAttribute("height","200") ;
+      this.picture_ly.appendChild(p) ;
+    }
+    add_pic() ;
+    */
+    this.picture_ly.classList.add("pic") ;
   },
 
   startMoving: function( speed = 0.1, y = Destination.y, x = Destination.x ) {    //the destination of the bubble
@@ -169,7 +177,7 @@ Object.assign( Bubble.prototype, {
   restart: function(delay = 0) {
     this.setPosition();
   }
-  
+
 });
 
 
