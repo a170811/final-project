@@ -12,18 +12,18 @@ var Long_Unit = 'vw';
 var Short_Unit = 'vh';
 var Screen_Longer_length = screen.width;
 var Screen_Shorter_length = screen.height;
-if (window.innerWidth < window.innerHeight) {
+if (screen.width < screen.height) {
   Long_Unit = 'vh';
   Short_Unit = 'vw';
-  Screen_Longer_length = window.innerHeight;
-  Screen_Shorter_length = window.innerWidth;
+  Screen_Longer_length = screen.height;
+  Screen_Shorter_length = screen.width;
 }
 
 
 function Bubble() {
 
   //--------basic variables----------
-  Radius = Screen_Longer_length/Screen_Shorter_length * Screen_Longer_length/Screen_Shorter_length * 7;
+  Radius = 100 / 4;
   Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20 + 100 };
   Destination = { x: Position.x, y: -10-2*Radius } ;
   this.Id = count;         // the owner of the bubble, from 0~6, initial = 0
@@ -113,14 +113,14 @@ Object.assign( Bubble.prototype, {
   setRadius: function( R = Radius ) {            //set the radius of the bubble
     Radius = R;
 
-    container[this.Id].style.width = Radius+2+Long_Unit;
-    container[this.Id].style.height = Radius+2+Long_Unit;
-    bubble_ly.style.width = Radius+Long_Unit;
-    bubble_ly.style.height = Radius+Long_Unit;
-    picture_ly.style.width = Radius-0.05+Long_Unit;
-    picture_ly.style.height = Radius-0.05+Long_Unit;
-    shadow_ly.style.width = Radius+0.3+Long_Unit;
-    shadow_ly.style.height = Radius+0.3+Long_Unit;
+    container[this.Id].style.width = Radius+2+Short_Unit;
+    container[this.Id].style.height = Radius+2+Short_Unit;
+    bubble_ly.style.width = Radius+Short_Unit;
+    bubble_ly.style.height = Radius+Short_Unit;
+    picture_ly.style.width = Radius-0.05+Short_Unit;
+    picture_ly.style.height = Radius-0.05+Short_Unit;
+    shadow_ly.style.width = Radius+0.3+Short_Unit;
+    shadow_ly.style.height = Radius+0.3+Short_Unit;
   },
 
   setShadow: function( c = '#333333' ) {        // set up the shadow, initial color = #333333
