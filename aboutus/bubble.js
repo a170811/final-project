@@ -157,18 +157,18 @@ Object.assign( Bubble.prototype, {
     var me = this;
     Destination.x = x;
     Destination.y = y;
-    var K = Screen_Shorter_length/800;
+    var K = Screen_Shorter_length/1600;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
-    move[count] = setInterval(frame, 200);
+    move[count] = setInterval(frame, 100);
     count ++;
 
     function frame() {
       //var K = Short_Unit/Long_Unit;
       if (tmp_pos <= y) {
         //clearInterval(move);
-        Position.x = Math.random() * 80 + 1;
+        Position.x = Math.random() * 65 + 6;
         me.setPosition( Position.x, 105 );
         tmp_pos = Position.y;
         setTimeout( function(){}, delay);
