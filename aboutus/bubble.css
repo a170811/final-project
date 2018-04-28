@@ -1,11 +1,19 @@
-.pic {
-    position :absolute ;
-    top : 1vh ;
-    left : 3vh ;
-    z-index:2 ;
+.contain {
+    position : absolute ;
+    top : 0px ;
+    width : 100vw ;
+    height : 100vh ; 
+
 }
 
-.shadow {
-    z-index:0 ;
+.board {
+    position : relative ;
+    border : 2px solid red ;
+    border-radius : 3vw ;
+    top : 50% ;
+    transform : translateY(-50%) ;
+    width : 50vw ;
+    height : 50vh ; 
+    margin : 0 auto ;
+    background : rgba(0,0,0,0.7) ;
 }
-

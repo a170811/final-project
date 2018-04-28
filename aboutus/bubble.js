@@ -23,7 +23,7 @@ if (screen.width < screen.height) {
 
 function Bubble() {
   //--------basic variables----------
-  Radius = 60;
+  Radius = 20;
   Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20 + 100 };
   Destination = { x: Position.x, y: -10-2*Radius } ;
   this.Id = count;         // the owner of the bubble, from 0~6, initial = 0
@@ -50,6 +50,7 @@ function Bubble() {
   //container.style.height = Radius+2+'vw';
 
   //----------set bubble-----
+  bubble_ly.classList.add("bubble") ;
   bubble_ly.style.position= 'absolute';
   bubble_ly.style.top= '0vw';
   bubble_ly.style.right= '0vw';
@@ -140,17 +141,6 @@ Object.assign( Bubble.prototype, {
     picture_ly.style.backgroundPosition = 'center top';
     picture_ly.style.overflow = 'hidden';
     picture_ly.style.backgroundSize = 'cover';
-    /*
-    function add_pic() {
-      var p = document.createElement("IMG") ;
-      p.setAttribute("src","001.png") ;
-      p.setAttribute("width","160") ;
-      p.setAttribute("height","200") ;
-      picture_ly.appendChild(p) ;
-    }
-    add_pic() ;
-    */
-    //picture_ly.classList.add("pic") ;
   },
 
   startMoving: function( speed = 0.1, y = Destination.y, x = Destination.x ) {    //the destination of the bubble
@@ -183,12 +173,24 @@ Object.assign( Bubble.prototype, {
   restart: function(delay = 0) {
     this.setPosition();
   }
-
 });
 
+function show() {
+    
+    var board = document.createElement("div") ;
+    var contain = document.createElement("div") ;
+    document.body.appendChild(contain) ;
+    contain.appendChild(board) ;
+    board.classList.add("board") ;
+    contain.classList.add("contain") ;
 
+}
 
-
+/*
+document.getElementsByClassName("bubble").onclick = function() {
+    alert("good") ;
+    //show() ;
+}*/
 
 
 
