@@ -139,6 +139,7 @@ Object.assign( Bubble.prototype, {
     picture_ly.style.background = 'url(' + pic + ')';
     picture_ly.style.backgroundPosition = 'center top';
     picture_ly.style.overflow = 'hidden';
+    picture_ly.style.backgroundSize = 'cover';
     /*
     function add_pic() {
       var p = document.createElement("IMG") ;
@@ -156,7 +157,7 @@ Object.assign( Bubble.prototype, {
     var me = this;
     Destination.x = x;
     Destination.y = y;
-    var K = Screen_Shorter_length/8000;
+    var K = Screen_Shorter_length/800;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
