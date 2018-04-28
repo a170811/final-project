@@ -10,20 +10,20 @@ var move = [bubble_num];
 var count = 0;
 var Long_Unit = 'vw';
 var Short_Unit = 'vh';
-var Long = window.innerWidth;
-var Short = window.innerHeight;
+var Screen_Longer_length = screen.width;
+var Screen_Shorter_length = screen.height;
 if (window.innerWidth < window.innerHeight) {
   Long_Unit = 'vh';
   Short_Unit = 'vw';
-  Long = window.innerHeight;
-  Short = window.innerWidth;
+  Screen_Longer_length = window.innerHeight;
+  Screen_Shorter_length = window.innerWidth;
 }
 
 
 function Bubble() {
 
   //--------basic variables----------
-  Radius = Long/Short * 8;
+  Radius = Screen_Longer_length/Screen_Shorter_length * 10;
   Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20 + 100 };
   Destination = { x: Position.x, y: -10-2*Radius } ;
   this.Id = count;         // the owner of the bubble, from 0~6, initial = 0
@@ -142,7 +142,7 @@ Object.assign( Bubble.prototype, {
     var me = this;
     Destination.x = x;
     Destination.y = y;
-    var K = Short/7000;
+    var K = Screen_Shorter_length/9000;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
