@@ -10,12 +10,12 @@ var move = [bubble_num];
 var count = 0;
 var Long_Unit = 'vw';
 var Short_Unit = 'vh';
-//var Long = window.innerWidth;
+var Long = window.innerWidth;
 var Short = window.innerHeight;
 if (window.innerWidth < window.innerHeight) {
   Long_Unit = 'vh';
   Short_Unit = 'vw';
-  //Long = window.innerHeight;
+  Long = window.innerHeight;
   Short = window.innerWidth;
 }
 
@@ -23,7 +23,7 @@ if (window.innerWidth < window.innerHeight) {
 function Bubble() {
 
   //--------basic variables----------
-  Radius = 10;
+  Radius = Long/Short * 8;
   Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20 + 100 };
   Destination = { x: Position.x, y: -10-2*Radius } ;
   this.Id = count;         // the owner of the bubble, from 0~6, initial = 0
