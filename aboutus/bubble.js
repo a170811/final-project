@@ -23,7 +23,7 @@ if (screen.width < screen.height) {
 
 function Bubble() {
   //--------basic variables----------
-  Radius = 60;
+  Radius = 30;
   Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20 + 100 };
   Destination = { x: Position.x, y: -10-2*Radius } ;
   this.Id = count;         // the owner of the bubble, from 0~6, initial = 0
