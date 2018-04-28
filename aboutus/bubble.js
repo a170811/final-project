@@ -1,9 +1,11 @@
 
 
 //var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
+var img = ['001.png', '002.png', '003.png', '004.png', '005.png', '006.png', '007.png'] ;
 var bubble_num = 14;
 var bubble_img = "bubble3.svg";
 var container=[bubble_num], bubble_ly, shadow_ly;
+var picture_ly;
 var Radius, Position, Destination;
 var move = [bubble_num];
 var count = 0;
@@ -30,14 +32,14 @@ function Bubble() {
   container[count] = document.createElement( 'div' );        //where all the stuff goes       
 
   bubble_ly = document.createElement( 'div' );     //to create an element for bubble in body   //important!!
-  this.picture_ly = document.createElement( 'div' );     //same as the one above, except this one is for picture
+  picture_ly = document.createElement( 'div' );     //same as the one above, except this one is for picture
   shadow_ly = document.createElement( 'div' );     //same as the one above, except this one create the shadow_ly
   
   //----------include all the stuff into container, and include container into body
   document.body.appendChild( container[count] );
   
   container[count].appendChild( shadow_ly );          // place the element into the document // important!!!
-  container[count].appendChild( this.picture_ly );          // place the element into the document // important!!!
+  container[count].appendChild( picture_ly );          // place the element into the document // important!!!
   container[count].appendChild( bubble_ly );          // place the element into the document // important!!!
   
   //------set container-----
@@ -60,14 +62,16 @@ function Bubble() {
   //me.style.background.size = '100%';
   
   //--------set picture-----
-  this.picture_ly.style.position = 'absolute';
-  this.picture_ly.style.top= '0vw';
-  this.picture_ly.style.right= '0vw';
+  picture_ly.style.position = 'absolute';
+  picture_ly.style.top= '0.2vw';
+  picture_ly.style.right= '0.2vw';
+  picture_ly.style.position = 'center';
 
   //picture_ly.style.width = Radius-0.05+'vw';
   //picture_ly.style.height = Radius-0.05+'vw';
-  this.picture_ly.style.borderRadius = '50%';
+  picture_ly.style.borderRadius = '50%';
 
+  //picture_ly.style.background = '#ffffff';
   //me.style.display= "block";
 
   //--------set shadow-----
@@ -96,7 +100,7 @@ Object.assign( Bubble.prototype, {
     this.setPosition();
     this.setShadow();
     this.setID();
-    this.setBG();
+    this.setBG( img[count % 7] );
   },
 
 
@@ -114,8 +118,8 @@ Object.assign( Bubble.prototype, {
     container[this.Id].style.height = Radius+2+Short_Unit;
     bubble_ly.style.width = Radius+Short_Unit;
     bubble_ly.style.height = Radius+Short_Unit;
-    this.picture_ly.style.width = Radius-2+Short_Unit;
-    this.picture_ly.style.height = Radius-2+Short_Unit;
+    picture_ly.style.width = Radius-0.5+Short_Unit;
+    picture_ly.style.height = Radius-0.5+Short_Unit;
     shadow_ly.style.width = Radius+0.3+Short_Unit;
     shadow_ly.style.height = Radius+0.3+Short_Unit;
   },
@@ -132,40 +136,41 @@ Object.assign( Bubble.prototype, {
   },
 
   setBG: function( pic = '' ) {        // setup background, initial = NULL (haven't test yet)
-    this.picture_ly.style.background = 'url(' + pic + ')';
+    picture_ly.style.background = 'url(' + pic + ')';
+    picture_ly.style.backgroundPosition = 'center top';
+    picture_ly.style.overflow = 'hidden';
     /*
     function add_pic() {
       var p = document.createElement("IMG") ;
       p.setAttribute("src","001.png") ;
       p.setAttribute("width","160") ;
       p.setAttribute("height","200") ;
-      this.picture_ly.appendChild(p) ;
+      picture_ly.appendChild(p) ;
     }
     add_pic() ;
     */
-    this.picture_ly.classList.add("pic") ;
+    //picture_ly.classList.add("pic") ;
   },
 
   startMoving: function( speed = 0.1, y = Destination.y, x = Destination.x ) {    //the destination of the bubble
     var me = this;
     Destination.x = x;
     Destination.y = y;
-    var K = Screen_Shorter_length/9000;
+    var K = Screen_Shorter_length/8000;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
-    move[count] = setInterval(frame, 1);
+    move[count] = setInterval(frame, 200);
     count ++;
 
     function frame() {
       //var K = Short_Unit/Long_Unit;
       if (tmp_pos <= y) {
         //clearInterval(move);
-        setTimeout( function() {
-          Position.x = Math.random() * 80 + 1;
-          me.setPosition( Position.x, 105 );
-          tmp_pos = Position.y;
-        }, delay);
+        Position.x = Math.random() * 80 + 1;
+        me.setPosition( Position.x, 105 );
+        tmp_pos = Position.y;
+        setTimeout( function(){}, delay);
       }   
       else {
         tmp_pos -= K;
