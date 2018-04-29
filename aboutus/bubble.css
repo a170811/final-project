@@ -10,7 +10,7 @@
     position : relative ;
     box-sizing : border-box ;
     padding : 3vw ;
-    border : 2px solid red ;
+    border : 2px  ;
     border-radius : 3vw ;
     top : 50% ;
     transform : translateY(-50%) ;

@@ -157,6 +157,7 @@ Object.assign( Bubble.prototype, {
     picture_ly.style.backgroundPosition = 'center top';
     picture_ly.style.overflow = 'hidden';
     picture_ly.style.backgroundSize = 'cover';
+    picture_ly.style.opacity = 0.5;
   },
 
   startMoving: function( speed = 0.1, y = Destination.y, x = Destination.x ) {    //the destination of the bubble
