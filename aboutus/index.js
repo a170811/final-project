@@ -220,7 +220,7 @@ $(document).ready(function(){
     }) ;
 
     $(document).ready(function(){
-      $(".contain,#intro,#arrow").click(function(){
+      $(".contain").click(function(){
           $(".contain").remove() ;
       }) ;
     });
