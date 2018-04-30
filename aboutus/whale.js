@@ -7,7 +7,7 @@ setInterval(function(){
   x=30*Math.cos(t);
   y=30*Math.sin(t);
   angle=-(t-(Math.PI/2))
-  $("#whale").css("right",((x-45)*(($(window).width())/100)));
-  $("#whale").css("top",(y*(($(window).width())/100)));
+  $("#whale").css("right",((x-70)*(($(window).width())/100)));
+  $("#whale").css("top",((y-10)*(($(window).width())/100)));
   $("#whale").css("transform","rotate("+angle+"rad)");
 },30);
