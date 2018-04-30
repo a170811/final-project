@@ -15,6 +15,8 @@ var intro = {
     b13:"魏名駿<br><br>為快樂而活,NCKUEE 109,土生土長沙漠桃園人,熱愛美食-\>#G哥美食地圖系列,曾經興趣是跑活動,現在是耍廢邊緣人"
 }
 
+var group_intro = "別讓鯨魚擱淺了！<br>我們這組所要製作的東西，是一款能記錄喝水的app。<br> 作為台南在地大學生，都知曉台南曾在兩百多年前於現今赤崁樓到安平區域有一片內海，於是，我們以台江內海作為主軸，利用累積每天喝水量的方式去使台江內海再現，以達到記錄每天喝水之目標。<br>又因台南沿岸有許多鯤鯓，而鯤鯓遠看就像是隻鯨魚於海上浮出身背，台江內海儼然成了一個棲息許多「鯨魚」的巢穴，遂因而有了「海翁窟」的別稱。<br>於是，我們以這概念下去發想，輔以鯨魚作為app的特色，使得app能在乏味的日常紀錄中，增添了趣意及挑戰。"
+
 //var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
 var img = ['001.png', '002.png', '003.png', '004.png', '005.png', '006.png', '007.png'] ;
 var bubble_num = 14;
@@ -59,10 +61,6 @@ function Bubble() {
   
   //------set container-----
   container[count].style.position= 'absolute';
-  //container.style.top= '60vh';
-  //container.style.right= '80vw';
-  //container.style.width = Radius+2+'vw';
-  //container.style.height = Radius+2+'vw';
 
   //----------set bubble-----
   bubble_ly.classList.add("bubble") ;
@@ -70,12 +68,9 @@ function Bubble() {
   bubble_ly.style.top= '0vw';
   bubble_ly.style.right= '0vw';
 
-  //bubble_ly.style.width = Radius+'vw';
-  //bubble_ly.style.height = Radius+'vw';
   bubble_ly.style.borderRadius = '50%';
 
   bubble_ly.style.background = 'url(' + bubble_img + ')';
-  //me.style.background.size = '100%';
   
   //--------set picture-----
   picture_ly.style.position = 'absolute';
@@ -83,25 +78,14 @@ function Bubble() {
   picture_ly.style.right= '0.2vw';
   picture_ly.style.position = 'center';
 
-  //picture_ly.style.width = Radius-0.05+'vw';
-  //picture_ly.style.height = Radius-0.05+'vw';
   picture_ly.style.borderRadius = '50%';
-
-  //picture_ly.style.background = '#ffffff';
-  //me.style.display= "block";
 
   //--------set shadow-----
   shadow_ly.style.position= 'absolute';
   shadow_ly.style.top= '0.1vw';
   shadow_ly.style.right= '0.1vw';
 
-  //shadow_ly.style.width = Radius+0.5+'vw';
-  //shadow_ly.style.height = Radius+0.5+'vw';
   shadow_ly.style.borderRadius = '50%';
-
-  //shadow_ly.style.background = '#222222';
-  //shadow_ly.style.opacity = 0.5;
-
 
   this.init();
 
@@ -216,52 +200,4 @@ $(document).ready(function(){
     }) ;
 }) ;
 
-/*------------works the same as the functions above, save as backup
-var Bubble = function() {
-    bubble_ly = document.createElement( 'div' );
-    this.Radius = '10';
-    var radius = 10;
-    this.Position = {x:20, y:20} ;
-    this.Destination = {x:20, y:20} ;
-    this.Color = 0 ;        // initial color = black
-    this.Id = -1;         // the owner of the bubble, from 0~6, initial = -1
-    //this.style.left = this.position.x+'px';     //bug
-    //this.style.top = this.position.y+'px';      //bug
-    document.body.appendChild( bubble_ly );
-  };
-//bject.defineProperty( Bubble, 'id', 1 );
-  Bubble.prototype.init = function() {
-    //var me = this;
-    var rad = this.Radius;
-    //var me = this;
-    this.style.width = rad;
-    //this.style.width = this.Radius;
-    this.style.height = this.Radius;
-    this.style.background = "black";
-  };
-*/
-//-------------setup function name by yourself
-/*
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.BUBBLE = {})));
-}(this, (function (exports) { 'use strict';
-  function Bubble() {
-    Object.defineProperty( this, 'id', 1 );
-    this.Radius = 10;
-    this.Position = {x:20, y:20} ;
-    this.Destination = {x:20, y:20} ;
-    this.Color = 0 ;        // initial color = black
-    this.Id = -1;         // the owner of the bubble, from 0~6, initial = -1
-    //this.style.left = this.position.x+'px';     //bug
-    //this.style.top = this.position.y+'px';      //bug
-  };
-//Object.defineProperty( Bubble, 'id', 1 );
-  Bubble.prototype.init = function() {
-    this.style.width = this.Radius;
-    this.style.height = this.Radius;
-    this.style.background = "black";
-  };
-})));
-*/
+

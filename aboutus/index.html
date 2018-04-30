@@ -10,50 +10,49 @@
 	</head>
 
 	<body>
+    <img id="whale" src= "whale.gif">
+    <div id=""></div>
 
-        <img id="whale" src= "whale.gif">
+    <!--p id="test">JIJIJIJJJII</p--> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="bubble.js"></script>
+    <script src="whale.js"></script>
+    <script>
+      //ttt = document.getElementById("test");
+      //ttt.style.color = "red";
+      //var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+      //var a = new Bubble();     //test to create a bubble object
+      //a.constructor();
+      //a.init();
 
-        <!--p id="test">JIJIJIJJJII</p--> 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-        <script src="bubble.js"></script>
-        <script src="whale.js"></script>
+      var bubble = [];
 
-        <script>
-          //ttt = document.getElementById("test");
-          //ttt.style.color = "red";
-          //var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-          //var a = new Bubble();     //test to create a bubble object
-          //a.constructor();
-          //a.init();
-
-          var bubble = [];
-
-          for (var i = 0 ; i <14; i++) {
-            bubble[i] = new Bubble();
-            bubble[i].startMoving();
-            bubble[i].setID(i);
+      for (var i = 0 ; i <14; i++) {
+        bubble[i] = new Bubble();
+        bubble[i].startMoving();
+        bubble[i].setID(i);
                
-          }
-          //a.startMoving();
+      }
+      //a.startMoving();
           
-          //var b= new Bubble();
-          //b.startMoving();
-          //---------for debug------
-          text = document.createElement( 'div' );
-          document.body.appendChild( text );
-          text.style.color = "White";
-          text.style.position = 'absolute';
-          text.style.top = '1vh';
-          text.style.width = '100%';
-          text.style.textAlign = 'center';
-          text.innerHTML = window.innerHeight + ' X ' + window.innerWidth;
+      //var b= new Bubble();
+      //b.startMoving();
+      //---------for debug------
+      text = document.createElement( 'div' );
+      document.body.appendChild( text );
+      text.style.color = "White";        
+      text.style.position = 'absolute';
+      text.style.top = '1vh';
+      text.style.width = '100%';
+      text.style.textAlign = 'center';
+      text.innerHTML = window.innerHeight + ' X ' + window.innerWidth;
           
-          //$(a).css("background-color");
+      //$(a).css("background-color");
 
 
-          //bubble.style.width = 10;
+      //bubble.style.width = 10;
 
-        </script>
+    </script>
 
     </body>
 </html>		  
