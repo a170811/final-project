@@ -38,6 +38,11 @@ if (screen.width < screen.height) {
 }
 
 
+
+
+
+
+
 function Bubble() {
   //--------basic variables----------
   Radius = 20;
