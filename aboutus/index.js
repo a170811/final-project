@@ -209,21 +209,25 @@ $(document).ready(function(){
     $(".bubble").click(function(){ 
         //alert(this.getAttribute("id")) ;
         show(this.getAttribute("id")); 
+        
     }) ;
 
     $("#intro").click(function(){ 
         show(this.getAttribute("id"),1); 
+
     }) ;
 
     $("#arrow").click(function(){ 
         show(this.getAttribute("id"),2); 
+
     }) ;
 
     $(document).ready(function(){
       $(".contain").click(function(){
-          $(".contain").remove() ;
+          this.remove() ;
       }) ;
     });
+
 
 }) ;
 
