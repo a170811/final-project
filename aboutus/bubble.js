@@ -141,8 +141,8 @@ Object.assign( Bubble.prototype, {
   },
 
   setShadow: function( c = '#333333' ) {        // set up the shadow, initial color = #333333
-    shadow_ly.style.background = c;
-    shadow_ly.style.opacity = 0.5;
+    //shadow_ly.style.background = c;
+    //shadow_ly.style.opacity = 0.5;
     shadow_ly.classList.add("shadow") ;
   },
 
@@ -215,8 +215,6 @@ $(document).ready(function(){
         show(this.getAttribute("id")); 
     }) ;
 }) ;
-
-
 
 /*------------works the same as the functions above, save as backup
 var Bubble = function() {

@@ -21,3 +21,8 @@
     font-size : 2rem ;
     color : rgb(255,255,255) ;
 }
+
+.shadow {
+    background : #333333 ;
+    opacity : 0.5 ;
+}
