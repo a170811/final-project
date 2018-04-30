@@ -13,7 +13,8 @@ var intro = {
     b11:"<h3>伍怡歡</h3>人生彷彿只剩下吃,也因為吃,愛上了歷史,雖然除了吃沒有別的特長,不過會盡全力完成被交代的事情,耶伊ヽ(●´∀`●)ﾉ",
     b12:"<h3>張奇心 JACKIE</h3>我叫奇心,來自澳門,是環工系的學生。我喜歡享受食物、旅行、運動和閱讀,也很喜歡跟人聊天交流生活趣事。",
     b13:"<h3>魏名駿</h3>為快樂而活,NCKUEE 109,土生土長沙漠桃園人,熱愛美食-\>#G哥美食地圖系列,曾經興趣是跑活動,現在是耍廢邊緣人",
-    b14:"<h2>別讓鯨魚擱淺了！</h2><em>我們這組所要製作的東西，是一款能記錄喝水的app。</em><p>作為台南在地大學都知曉台南曾在兩百多年前於現今赤崁樓到安平區域有一片內海。</p><p>於是，我們以台江作為主軸，利用累積每天喝水量的方式去使台江內海再現，以達到記錄每天喝水之目標。</p><p>又因台南沿岸有許多鯤鯓，而鯤鯓遠看就像是隻鯨魚於海上浮出身背，台江內海儼然成了一個棲息「鯨魚」的巢穴，遂因而有了<b>「海翁窟」</b>的別稱。</p><p>於是，我們以這概去發想，輔以鯨魚作為app的特色，使得app能在乏味的日常紀錄中，增添了趣意及挑戰。</p>"
+    b14:"<h2>別讓鯨魚擱淺了！</h2><em>我們這組所要製作的東西，是一款能記錄喝水的app。</em><p>作為台南在地大學都知曉台南曾在兩百多年前於現今赤崁樓到安平區域有一片內海。</p><p>於是，我們以台江作為主軸，利用累積每天喝水量的方式去使台江內海再現，以達到記錄每天喝水之目標。</p><p>又因台南沿岸有許多鯤鯓，而鯤鯓遠看就像是隻鯨魚於海上浮出身背，台江內海儼然成了一個棲息「鯨魚」的巢穴，遂因而有了<b>「海翁窟」</b>的別稱。</p><p>於是，我們以這概去發想，輔以鯨魚作為app的特色，使得app能在乏味的日常紀錄中，增添了趣意及挑戰。</p>" ,
+    b15:"Hello<br>there's a suprise for you<br>click me one time<br>and you'll find out<br><br><br><br><br><br><br>I'm just kidding~~~^^" 
 }
 
 //var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
@@ -188,11 +189,13 @@ function show( id = "" , sel = "0" ) {
     contain.appendChild(board) ;
     board.classList.add("board") ;
     contain.classList.add("contain") ;
-    if (sel==0) {
+    if (sel==1) { //show info
         id = "b14" ;
-        alert("change") ;
     }
-    board.innerHTML = intro[id] ;  //if no "sel" will show intro of this app
+    else if(sel==2) { //show arrow
+        id = "b15" ;
+    }
+    board.innerHTML = intro[id] ;  //if no "sel" will show intro of everyone
     
 
     $(document).ready(function(){
@@ -205,9 +208,27 @@ function show( id = "" , sel = "0" ) {
 $(document).ready(function(){
     $(".bubble").click(function(){ 
         //alert(this.getAttribute("id")) ;
+        show(this.getAttribute("id")); 
+    }) ;
+
+    $("#intro").click(function(){ 
         show(this.getAttribute("id"),1); 
     }) ;
 
+    $("#arrow").click(function(){ 
+        show(this.getAttribute("id"),2); 
+    }) ;
+
+    $(document).ready(function(){
+      $(".contain,#intro,#arrow").click(function(){
+          $(".contain").remove() ;
+      }) ;
+    });
+
+}) ;
+
+/*
+$(document).ready(function(){
     var arrow = document.getElementById("arrow");
     $(arrow).click(function(){ 
       var board = document.createElement("p") ;
@@ -218,14 +239,12 @@ $(document).ready(function(){
       contain.classList.add("contain") ;
       board.innerHTML = "Hello<br>there's a suprise for you<br>click me one time<br>and you'll find out<br><br><br><br><br><br><br>I'm just kidding~~~^^" ;
 
-      $(document).ready(function(){
-        $(".contain").click(function(){
-            this.remove() ;
-        }) ;
-      });
     }) ;
 
+    $(document).ready(function(){
+      $(".contain").click(function(){
+          this.remove() ;
+      }) ;
+    });
 }) ;
-
-
-
+*/
