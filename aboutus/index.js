@@ -203,6 +203,25 @@ $(document).ready(function(){
         //alert(this.getAttribute("id")) ;
         show(this.getAttribute("id")); 
     }) ;
+
+    var arrow = document.getElementById("arrow");
+    $(arrow).click(function(){ 
+      var board = document.createElement("p") ;
+      var contain = document.createElement("div") ;
+      document.body.appendChild(contain) ;
+      contain.appendChild(board) ;
+      board.classList.add("board") ;
+      contain.classList.add("contain") ;
+      board.innerHTML = "Hello<br>there's a suprise for you<br>click me one time<br>and you'll find out<br><br><br><br><br><br><br>I'm just kidding~~~^^" ;
+
+      $(document).ready(function(){
+        $(".contain").click(function(){
+            this.remove() ;
+        }) ;
+      });
+    }) ;
+
 }) ;
+
 
 
