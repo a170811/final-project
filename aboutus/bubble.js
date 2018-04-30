@@ -186,11 +186,12 @@ function show() {
 
 }
 
+
 /*
-document.getElementsByClassName("bubble").onclick = function() {
-    alert("good") ;
-    //show() ;
-}*/
+  document.getElementsByClassName("bubble").onclick = function() {
+      alert("good") ;
+          //show() ;
+          }*/
 
 
 
