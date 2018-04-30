@@ -37,7 +37,14 @@ if (screen.width < screen.height) {
   Screen_Shorter_length = screen.width;
 }
 
+var BODY2 = document.createElement( 'div' );
+BODY2.style.width = 100+'vw';
+BODY2.style.height = 100+'vh';
+BODY2.overflow = "hidden";
 
+
+
+document.body.appendChild( BODY2 );
 
 
 
@@ -58,7 +65,7 @@ function Bubble() {
   shadow_ly = document.createElement( 'div' );     //same as the one above, except this one create the shadow_ly
   
   //----------include all the stuff into container, and include container into body
-  document.body.appendChild( container[count] );
+  BODY2.appendChild( container[count] );
   
   container[count].appendChild( shadow_ly );          // place the element into the document // important!!!
   container[count].appendChild( picture_ly );          // place the element into the document // important!!!
