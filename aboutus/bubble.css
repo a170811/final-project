@@ -8,12 +8,21 @@
 
 .board {
     position : relative ;
-    border : 2px solid red ;
+    box-sizing : border-box ;
+    padding : 3vw ;
+    border : 2px  ;
     border-radius : 3vw ;
     top : 50% ;
     transform : translateY(-50%) ;
     width : 50vw ;
-    height : 50vh ; 
     margin : 0 auto ;
-    background : rgba(0,0,0,0.7) ;
+    background : rgba(0,0,0,0.8) ;
+    text-align : center ;
+    font-size : 2rem ;
+    color : rgb(255,255,255) ;
+}
+
+.shadow {
+    background : #333333 ;
+    opacity : 0.5 ;
 }

@@ -1,4 +1,19 @@
-
+var intro = {
+    b0:"蘇品潔<br><br>在地台南人,競技啦啦隊員,成大歷史三年級,愛練習的狂熱份子,呼吸都會<b>胖</b>的偽三層!" , 
+    b1:"鄭翔升<br><br>工設系研究所,喜歡打排球唱歌畫畫,一個生在台南但不了解台南的人..." ,  
+    b2:"HiHi, 我是王昶文<br><br>電機系<b>臭魯蛇</b>但我不宅！！！<br>語言專長：垃圾話",
+    b3:"林泓鈞<br><br>喜歡打羽球,也蠻喜歡寫code的,因為我希望以後可以讓電腦幫我工作,我就可以偷懶,所以讓我們一起變強吧！",
+    b4:"伍怡歡<br><br>人生彷彿只剩下吃,也因為吃,愛上了歷史,雖然除了吃沒有別的特長,不過會盡全力完成被交代的事情,耶伊ヽ(●´∀`●)ﾉ",
+    b5:"張奇心 JACKIE<br><br>我叫奇心,來自澳門,是環工系的學生。我喜歡享受食物、旅行、運動和閱讀,很喜歡跟人聊天交流生活趣事。",
+    b6:"魏名駿<br><br>為快樂而活,NCKUEE 109,土生土長沙漠桃園人,熱愛美食-\>#G哥美食地圖系列,曾經興趣是跑活動,現在是耍廢邊緣人",
+    b7:"蘇品潔<br><br>在地台南人,競技啦啦隊員,成大歷史三年級,愛練習的狂熱份子,呼吸都會<b>胖</b>的偽三層!",
+    b8:"鄭翔升<br><br>工設系研究所,喜歡打排球唱歌畫畫,一個生在台南但不了解台南的人...",
+    b9:"HiHi, 我是王昶文<br><br>電機系<b>臭魯蛇</b>但我不宅！！！<br>語言專長：垃圾話",
+    b10:"林泓鈞<br><br>喜歡打羽球，也蠻喜歡寫code的，因為我希望以後可以讓電腦幫我工作，我就可以偷懶，所以讓我們一起變強吧！",
+    b11:"伍怡歡<br><br>人生彷彿只剩下吃,也因為吃,愛上了歷史,雖然除了吃沒有別的特長,不過會盡全力完成被交代的事情,耶伊ヽ(●´∀`●)ﾉ",
+    b12:"張奇心 JACKIE<br><br>我叫奇心,來自澳門,是環工系的學生。我喜歡享受食物、旅行、運動和閱讀,也很喜歡跟人聊天交流生活趣事。",
+    b13:"魏名駿<br><br>為快樂而活,NCKUEE 109,土生土長沙漠桃園人,熱愛美食-\>#G哥美食地圖系列,曾經興趣是跑活動,現在是耍廢邊緣人"
+}
 
 //var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
 var img = ['001.png', '002.png', '003.png', '004.png', '005.png', '006.png', '007.png'] ;
@@ -100,7 +115,7 @@ Object.assign( Bubble.prototype, {
     this.setRadius();
     this.setPosition();
     this.setShadow();
-    this.setID();
+    this.setID(count);
     this.setBG( img[count % 7] );
   },
 
@@ -126,13 +141,14 @@ Object.assign( Bubble.prototype, {
   },
 
   setShadow: function( c = '#333333' ) {        // set up the shadow, initial color = #333333
-    shadow_ly.style.background = c;
-    shadow_ly.style.opacity = 0.5;
+    //shadow_ly.style.background = c;
+    //shadow_ly.style.opacity = 0.5;
     shadow_ly.classList.add("shadow") ;
   },
 
   setID: function( id = 0 ) {         //set ID, initial = 0
-    this.Id = id;
+    bubble_ly.setAttribute("id","b"+id ) ;
+    //this.Id = id ;
     //container.name = id;
   },
 
@@ -141,6 +157,7 @@ Object.assign( Bubble.prototype, {
     picture_ly.style.backgroundPosition = 'center top';
     picture_ly.style.overflow = 'hidden';
     picture_ly.style.backgroundSize = 'cover';
+    picture_ly.style.opacity = 0.5;
   },
 
   startMoving: function( speed = 0.1, y = Destination.y, x = Destination.x ) {    //the destination of the bubble
@@ -175,25 +192,29 @@ Object.assign( Bubble.prototype, {
   }
 });
 
-function show() {
+function show( id = "" ) {
     
-    var board = document.createElement("div") ;
+    var board = document.createElement("p") ;
     var contain = document.createElement("div") ;
     document.body.appendChild(contain) ;
     contain.appendChild(board) ;
     board.classList.add("board") ;
     contain.classList.add("contain") ;
+    board.innerHTML = intro[id] ;
 
+    $(document).ready(function(){
+        $(".contain").click(function(){
+            this.remove() ;
+        }) ;
+    });
 }
 
-
-/*
-  document.getElementsByClassName("bubble").onclick = function() {
-      alert("good") ;
-          //show() ;
-          }*/
-
-
+$(document).ready(function(){
+    $(".bubble").click(function(){ 
+        //alert(this.getAttribute("id")) ;
+        show(this.getAttribute("id")); 
+    }) ;
+}) ;
 
 /*------------works the same as the functions above, save as backup
 var Bubble = function() {

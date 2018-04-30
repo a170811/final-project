@@ -14,4 +14,6 @@ body {
     right : -90vw ;
 }
 
-
+html {
+    font-size: 65% ;
+}
