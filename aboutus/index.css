@@ -51,3 +51,16 @@ html {
   /*height: 7vh;*/
 
 }
+@media screen and (min-width: 481px) {
+  #page_name {
+    font: 5vw arial;
+  }
+  #arrow {
+    left: -3vw;
+    width: 7vh;
+  }
+  #intro {
+    right: -3vw;
+    width: 10vh;
+  }
+}

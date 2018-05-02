@@ -46,7 +46,7 @@ if (screen.width < screen.height) {
 function Bubble() {
   //--------basic variables----------
   Radius = 20;
-  Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20 + 100 };
+  Position = { x: Math.random() * 80 + 1, y: Math.floor(Math.random() * 8)*20  };
   Destination = { x: Position.x, y: -10-2*Radius } ;
   this.Id = count;         // the owner of the bubble, from 0~6, initial = 0
   //count ++;
@@ -153,11 +153,11 @@ Object.assign( Bubble.prototype, {
     var me = this;
     Destination.x = x;
     Destination.y = y;
-    var K = Screen_Shorter_length/1600;
+    var K = ( 115 + 2*Radius )/2000;
     var tmp_pos = Position.y;
     var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
-    move[count] = setInterval(frame, 100);
+    move[count] = setInterval(frame, 15);
     count ++;
 
     function frame() {
