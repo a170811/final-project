@@ -7,13 +7,18 @@ body {
   background-position: center;
   overflow: hidden;
 }
-#whale{
+#whale1{
   width: 40vw ;
   position : relative ;
   top : 7vw ;
   right : -90vw ;
 }
-
+#whale2{
+  width: 40vw ;
+  position : relative ;
+  top : 7vw ;
+  right : -90vw ;
+}
 html {
   font-size: 65% ;
 }
