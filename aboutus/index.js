@@ -149,13 +149,13 @@ Object.assign( Bubble.prototype, {
     picture_ly.style.opacity = 0.5;
   },
 
-  startMoving: function( speed = 0.1, y = Destination.y, x = Destination.x ) {    //the destination of the bubble
+  startMoving: function( y = Destination.y, x = Destination.x ) {    //the destination of the bubble
     var me = this;
     Destination.x = x;
     Destination.y = y;
     var K = ( 115 + 2*Radius )/2000;
     var tmp_pos = Position.y;
-    var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
+    //var delay = Math.floor( ( Math.random() * 2000) + 500 );    //random a delay time
     var tmp = me.Id;
     move[count] = setInterval(frame, 15);
     count ++;
@@ -165,11 +165,11 @@ Object.assign( Bubble.prototype, {
       if (tmp_pos <= y) {
         //clearInterval(move);
         Position.x = Math.random() * 65 + 6;
+        container[me.Id].style.opacity = 0;
+        //setTimeout( function(){}, delay);
         me.setPosition( Position.x, 105 );
+        container[me.Id].style.opacity = 1;
         tmp_pos = Position.y;
-        setTimeout( function(){
-          me.style.opacity = 0;
-        }, delay);
       }   
       else {
         tmp_pos -= K;
@@ -187,10 +187,13 @@ function show( id = "" , sel = "0" ) {
     
     var board = document.createElement("p") ;
     var contain = document.createElement("div") ;
+    var cover = document.createElement("div") ;
     document.body.appendChild(contain) ;
     contain.appendChild(board) ;
+    contain.appendChild(cover) ;
     board.classList.add("board") ;
     contain.classList.add("contain") ;
+    cover.classList.add("cover") ;
     if (sel==1) { //show info
         id = "b14" ;
     }
