@@ -167,7 +167,9 @@ Object.assign( Bubble.prototype, {
         Position.x = Math.random() * 65 + 6;
         me.setPosition( Position.x, 105 );
         tmp_pos = Position.y;
-        setTimeout( function(){}, delay);
+        setTimeout( function(){
+          me.style.opacity = 0;
+        }, delay);
       }   
       else {
         tmp_pos -= K;
