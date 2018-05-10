@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  $('button[type=submit]').click(function() {
+  $('#ajex_form button[type=submit]').click(function() {
+    event.preventDefault();
     $.ajax({
       method: "POST",
       data: {
