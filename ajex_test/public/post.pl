@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -w 
 use CGI;
 my $cgi = new CGI;
 my $name = $cgi->param('name');
