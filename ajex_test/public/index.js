@@ -1,13 +1,29 @@
 $(document).ready(function () {
-  $('#ajex_form button[type=submit]').click(function() {
+  
+  $('#ajax_form button[type=submit]').click(function() {
     event.preventDefault();
     $.ajax({
       method: "POST",
       data: {
-        name: $('#ajex_form input[name=name]').val(),
-        student_id: $('#ajex_form input[name=student_id]').val()
+        name: $('#ajax_form input[name=name]').val(),
+        student_id: $('#ajax_form input[name=student_id]').val()
       },
-      url: 'ajax.php',
+      url: '/ajax_data',
+      success: function(data) {
+        $('#ajax_output').html(data);
+      }
+    });
+    $('#ajax_output').html('loading...');
+  });
+
+  $('#ajax_search button[type=submit]').click(function() {
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      data: {
+        student_id: $('#ajax_search input[name=student_id]').val()
+      },
+      url: '/ajax_data_search',
       success: function(data) {
         $('#ajax_output').html(data);
       }
