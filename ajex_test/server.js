@@ -8,7 +8,7 @@ const port = 10055
 
 
 
-
+app.use(express.static(__dirname + '/public'))
 
 
 
