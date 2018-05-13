@@ -55,6 +55,7 @@ app.post("/ajax_data", function(req, res) {
 
     //----add new data into .json----//
     data[req.body.student_id] = req.body.name ;
+    fs.writeFile('./id_data.json', JSON.stringify(data, null, 2));
   }
 
 });
