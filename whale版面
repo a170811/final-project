@@ -1,0 +1,26 @@
+<!DOCTYPE.html>
+<html lang="zh">
+<head>
+    <title>I DON'T KNOW</title>
+    <link rel="stylesheet" type="text/css" href="whale.css">
+    
+    </head>
+    
+    <body>
+    <h1 id="page_name">經驗值 2000c.c.</h1>
+    
+    <div class="whale">
+        <img src="#" alt="whale" id="whale">
+    </div>
+    
+    <div class="circles">
+        <img src="https://i.imgur.com/c3TilbV.png" alt="circle" id="bluebutton" class="button">
+    
+        <img src="https://i.imgur.com/ZwQQ92W.png" alt="circle" id="redbutton" class="button">
+   
+        <img src="https://i.imgur.com/Hi8HUTo.png" alt="circle" id="blackbutton" class="button">
+    </div>
+    
+    </body>
+
+</html>
