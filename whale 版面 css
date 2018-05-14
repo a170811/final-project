@@ -1,0 +1,35 @@
+h1{
+    color: blue;
+    text-align: center;
+    background-color: transparent;
+}
+
+#whale{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%
+    
+}
+
+.circles{
+    margin-left: auto;
+    margin-right: auto;
+    width: 230;
+}
+
+#bluebutton{
+    float: left;
+    width: 75px;
+    height: 75px;
+}
+
+#redbutton{
+    width: 80px;
+    height: 80px;
+}
+
+#blackbutton{
+    width: 70px;
+    height: 70px;
+}
