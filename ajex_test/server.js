@@ -76,5 +76,3 @@ app.post("/ajax_data_search", function(req, res) {
 app.listen(port, () => {
   console.log( `listening on port: ${port}` )
 });
-
-
