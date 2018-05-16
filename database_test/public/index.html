@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Group_F_ajax_test</title>
+  </head>
+
+  <body>
+    
+    <h1>Use get technic</h1>
+    <form action="/get_data" method="get">
+      Name: <input type="text" name="name" placeholder="La J"><br>
+      Student ID: <input type="text" name="student_id" placeholder="E20009487"><br>
+      <button type="submit">Submit</button>
+    </form>
+    
+    <h1>Use post technic</h1>
+    <form action="/post_data" method="post">
+      Name: <input type="text" name="name" placeholder="La J"><br>
+      Student ID: <input type="text" name="student_id" placeholder="E20009487"><br>
+      <button type="submit">Submit</button>
+    </form>
+
+    <h1>Use Ajax</h1>
+    <form id="ajax_form">
+      Name: <input type="text" name="name" placeholder="La J"><br>
+      Student ID: <input type="text" name="student_id" placeholder="E20009487"><br>
+      <button type="submit">Submit</button>
+    </form>
+    <!--h1 id="ajax_output"></h1-->
+
+    <h1>Search Name</h1>
+    <form id="ajax_search">
+      Search Student ID: <input type="text" name="student_id" placeholder="E20009487"><br>
+      <button type="submit">Submit</button>
+    </form>
+    <h1 id="ajax_output"></h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="index.js"></script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
