@@ -21,7 +21,7 @@ var test2 =  'data.'+test;
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: "uidd2018_groupF",
+  host: "localhost",
   user: "uidd2018_groupF",
   password: "group_f@uidd2018"
 });
