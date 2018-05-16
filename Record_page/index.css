@@ -9,7 +9,7 @@ body{
 }
 .calendar{
 	width:90vw;
-	height:70vw;
+	height:90vw;
 	background:#fff;
 	box-shadow:0px 1px 1px rgba(0,0,0,0.1);
 }
@@ -39,6 +39,7 @@ body{
 	width:12vw;
 	height:14vw;
 	background:url(prev.png) no-repeat 50% 50%;
+	background-size: 2vw;
 }
 #next{
 	text-indent:-9999px;
@@ -48,20 +49,21 @@ body{
 	width:12vw;
 	height:14vw;
 	background:url(next.png) no-repeat 50% 50%;
+	background-size: 2vw;
 }
 .body{
-	padding:10px 20px;
+	padding:1vw 2vw;
 }
 .body-list ul{
 	width:100%;
 	font-family:arial;
 	font-weight:bold;
-	font-size:2vw;
+	font-size:vw;
 }
 .body-list ul li{
 	width:14.28%;
-	height:7.2vw;
-	line-height:7.2vw;
+	height:11vw;
+	line-height:5vw;
 	list-style-type:none;
 	display:block;
 	box-sizing:border-box;
@@ -75,9 +77,9 @@ body{
 	color:#565656;
 }
 .green{
-	color:#6ac13c;
+	color:#3c77c1;
 }
 .greenbox{
-	border:1px solid #6ac13c;
-	background:#e9f8df;
+	border:0.05vw solid #3c6dc1;
+	background:#dfe8f8;
 }
