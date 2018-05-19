@@ -1,7 +1,7 @@
 
 var month_olympic = [31,29,31,30,31,30,31,31,30,31,30,31];//閏年
 var month_normal = [31,28,31,30,31,30,31,31,30,31,30,31];//非閏年
-var month_name = ["January","Febrary","March","April","May","June","July","Auguest","September","October","November","December"];
+var month_name = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
 var holder = document.getElementById("days");//把要存進days的資料用holder
 var prev = document.getElementById("prev");//前月按鈕
 var next = document.getElementById("next");//下月按鈕
