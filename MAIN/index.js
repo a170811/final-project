@@ -11,7 +11,7 @@ $(document).ready(function () {
   $("#Login_block :input").prop("disabled",true);
   checkOnLine(); 
       
-  $('#ajax_form button[type=submit]').click(function() {
+  $('#Login button[type=submit]').click(function() {
     event.preventDefault();
     $.ajax({
       method: "POST",
@@ -24,7 +24,8 @@ $(document).ready(function () {
         $('#ajax_output').html(data);
       }
     });
-    $('#ajax_output').html('loading...');
+    $("#refresh").append($("<div></div>")).addClass("cover");
+    $("#PS").text('Loading...');
   });
 
   $('#ajax_search button[type=submit]').click(function() {
@@ -64,14 +65,6 @@ function checkHandler(){
         opacity: '1'
       }, 1000);
       $("#Login_block :input").prop("disabled",false);
-      /*
-      $("#Icon_word").animate({
-        top: '17vh',
-        left: '50%',
-        width: '0',
-        opacity: '0'
-      });
-      */
       $("#Icon").animate({
         top: '-5.5vh',
         opacity: '1'
@@ -82,7 +75,7 @@ function checkHandler(){
       }, 1000);
     }else{   
       //$("#refresh").text("offline");
-      $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "32vh", "left": "15vw", "width": "70vw","height":"30vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
+      $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "39vh", "left": "15vw", "width": "70vw","height":"16vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
       $("#refresh").append($("<p></p>").text("Please connect to Internet").css({"position": "fixed", "top": "40vh", "left": "15vw", "width": "70vw","font-size": "4vh", "font-weight": "bold", "color": "white", "textAlign": "center", "opacity": "0"}).animate({opacity: '1'}, 1000));
         
     }   
