@@ -14,7 +14,7 @@ var data = require(data_file);
 //var test2 =  'data.'+test; 
 
 //----read data.json file----//
-console.log('Test: \n' + data[test] + '\n' + data.B123456789 )
+//console.log('Test: \n' + data[test] + '\n' + data.B123456789 )
 
 
 
@@ -30,7 +30,7 @@ app.use (express.urlencoded() );
 //----let server.js know where the index.html is----//
 app.use(express.static(__dirname + '/MAIN'));
 
-
+/*
 //----Ajax_post function----//
 app.post("/ajax_data", function(req, res) {
   if ( data.hasOwnProperty(req.body.student_id) ) { 
@@ -57,7 +57,7 @@ app.post("/ajax_data_search", function(req, res) {
   }
 });
 
-
+*/
 //----let user know which port is using----//
 app.listen(port, () => {
   console.log( `listening on port: ${port}` )
