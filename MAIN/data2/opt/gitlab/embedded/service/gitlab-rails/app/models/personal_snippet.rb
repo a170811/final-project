@@ -1,2 +1,0 @@
-class PersonalSnippet < Snippet
-end

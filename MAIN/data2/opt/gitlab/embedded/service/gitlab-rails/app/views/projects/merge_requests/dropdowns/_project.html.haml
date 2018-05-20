@@ -1,5 +1,0 @@
-%ul
-  - projects.each do |project|
-    %li
-      %a{ href: "#", class: "#{('is-active' if selected == project.id)}", data: { id: project.id } }
-        = project.full_path
