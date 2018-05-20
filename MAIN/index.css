@@ -1,11 +1,10 @@
-/*
 #BACKGROUND {
-  margin-left:auto;
-  /*background: black;  /*for debug
-  width: 60vw;
+  /*background: black;  /*for debug*/
   position: fixed;
+  top: 21.5vh;
+  left: 30vw;
+  width: 40vw;
 }
-*/
 
 body {
   overflow: hidden;
@@ -19,20 +18,35 @@ body {
   height: 100vh;
 
 }
-
+/*
 #Icon_word {
-  /*background: black;  /*for debug*/
+  /*background: black;  /*for debug
   
   position: fixed;
-  top: 28vh;
+  top: 25vh;
   left: 30vw;
 
   height: 44vh;
   width: 40vw;
 }
+*/
+#Icon {
+  /*background: black;  /*for debug*/
+  opacity: 1; 
+  position: relative;
+  top: 0vh;
+  left: 0vw;
 
-fieldset {
-  border: 0;
+  height: 44vh;
+  width: 40vw;
+}
+#Word {
+  /*background: black;  /*for debug*/
+  opacity: 1; 
+  position: relative;
+  top: -5vh;
+  left: 7vw;
+  width: 26vw;
 }
 
 #Login_block {
@@ -40,7 +54,7 @@ fieldset {
   position: fixed;
   width: 60vw;
   height: 11vh;
-  top: 50vh;
+  top: 59.5vh;
   left: 20vw;
 }
 
@@ -72,6 +86,38 @@ fieldset {
   
 }
 
+.cover {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.7;
+  z-index: 99;
+  
+}
+
+#PS {
+  font-size: 10vh;
+  color: white;
+  width: 100vw;
+  position: relative;
+  top: 30%;
+  text-align: center;
+  z-index: 100;
+
+}
+
+/*
+#refresh {
+  position: fixed;
+  top:10px;
+  left: 25%;
+  height: 10vh;
+  width: 50vw;
+}
+*/
 /*
 #test1 {
   width: 100vw;
@@ -105,6 +151,14 @@ fieldset {
   #Login_block {
     width: 20vw;
     left: 40vw;
+  }
+  #Word {
+    width: 20vw;
+    left: 10vw;
+    top: 3vh;
+  }
+  #BACKGROUND {
+    top: 20vh;
   }
 }
 
