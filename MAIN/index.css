@@ -52,10 +52,10 @@ body {
 #Login_block {
   opacity: 0;
   position: fixed;
-  width: 60vw;
+  width: 40vw;
   height: 11vh;
   top: 59.5vh;
-  left: 20vw;
+  left: 30vw;
 }
 
 #user {
@@ -74,10 +74,10 @@ body {
 }
 
 #submit {
-  width: 24%;
+  width: 36%;
   height: 28%;
   position: relative;
-  left: 38%;
+  left: 32%;
   top: 5px;
   border-radius: 8px;
 }
