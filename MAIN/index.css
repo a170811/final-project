@@ -7,6 +7,7 @@
 }
 */
 
+
 body {
   overflow: hidden;
 }
@@ -19,16 +20,37 @@ body {
   height: 100vh;
 
 }
-
+/*
 #Icon_word {
-  /*background: black;  /*for debug*/
+  /*background: black;  /*for debug
   
   position: fixed;
-  top: 28vh;
+  top: 25vh;
   left: 30vw;
 
   height: 44vh;
   width: 40vw;
+}
+*/
+#Icon {
+  /*background: black;  /*for debug*/
+  opacity: 1; 
+  position: fixed;
+  top: 21.5vh;
+  left: 30vw;
+
+  height: 44vh;
+  width: 40vw;
+}
+#Word {
+  /*background: black;  /*for debug*/
+  opacity: 1; 
+  position: fixed;
+  top: 40.5vh;
+  left: 37vw;
+
+  height: 44vh;
+  width: 26vw;
 }
 
 fieldset {
@@ -40,7 +62,7 @@ fieldset {
   position: fixed;
   width: 60vw;
   height: 11vh;
-  top: 50vh;
+  top: 59.5vh;
   left: 20vw;
 }
 
@@ -71,7 +93,15 @@ fieldset {
 .Login_block_after {
   
 }
-
+/*
+#refresh {
+  position: fixed;
+  top:10px;
+  left: 25%;
+  height: 10vh;
+  width: 50vw;
+}
+*/
 /*
 #test1 {
   width: 100vw;
