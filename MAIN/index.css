@@ -1,11 +1,13 @@
-/*
+
 #BACKGROUND {
-  margin-left:auto;
-  /*background: black;  /*for debug
-  width: 60vw;
+  /*background: black;  /*for debug*/
   position: fixed;
+  top: 21.5vh;
+  left: 30vw;
+  width: 40vw;
 }
-*/
+
+
 
 
 body {
@@ -35,9 +37,9 @@ body {
 #Icon {
   /*background: black;  /*for debug*/
   opacity: 1; 
-  position: fixed;
-  top: 21.5vh;
-  left: 30vw;
+  position: relative;
+  top: 0vh;
+  left: 0vw;
 
   height: 44vh;
   width: 40vw;
@@ -45,11 +47,9 @@ body {
 #Word {
   /*background: black;  /*for debug*/
   opacity: 1; 
-  position: fixed;
-  top: 40.5vh;
-  left: 37vw;
-
-  height: 44vh;
+  position: relative;
+  top: -5vh;
+  left: 7vw;
   width: 26vw;
 }
 

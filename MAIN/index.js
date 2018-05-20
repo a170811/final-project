@@ -73,11 +73,11 @@ function checkHandler(){
       });
       */
       $("#Icon").animate({
-        top: '16vh',
+        top: '-5.5vh',
         opacity: '1'
       }, 1000);
       $("#Word").animate({
-        top: '36vh',
+        top: '-10.5vh',
         opacity: '0'
       }, 1000);
     }else{   
