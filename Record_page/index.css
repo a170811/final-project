@@ -41,6 +41,9 @@ body{
 	background:url(prev.png) no-repeat 50% 50%;
 	background-size: 2vw;
 }
+.drip{
+	width:4vw;
+}
 #next{
 	text-indent:-9999px;
 	position:absolute;
@@ -58,17 +61,22 @@ body{
 	width:100%;
 	font-family:arial;
 	font-weight:bold;
-	font-size:vw;
+	font-size:2vw;
 }
 .body-list ul li{
 	width:14.28%;
-	height:11vw;
 	line-height:5vw;
 	list-style-type:none;
 	display:block;
 	box-sizing:border-box;
 	float:left;
 	text-align:center;
+}
+#days li{
+	height:11vw;
+}
+#day li{
+	height:5vw;
 }
 .lightgrey{
 	color:#a8a8a8;
@@ -82,4 +90,12 @@ body{
 .greenbox{
 	border:0.05vw solid #3c6dc1;
 	background:#dfe8f8;
+}
+#showwater{
+	position:absolute;
+	display:block;
+	box-sizing:border-box;
+	text-align:center;
+	left:45vw;
+	top:85vw;
 }
