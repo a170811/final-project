@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 #!/usr/bin/env node
 
 const express = require('express');
@@ -63,7 +61,7 @@ app.post("/ajax_data_search", function(req, res) {
 //----let user know which port is using----//
 app.listen(port, () => {
   console.log( `listening on port: ${port}` )
-}
+});
 
 
 /*
@@ -86,8 +84,3 @@ app.post('/post_data', function(req, res) {
 
 */
 
-);
-=======
->>>>>>> parent of 7ee8357... add notation, create a new port for project
-=======
->>>>>>> parent of 7ee8357... add notation, create a new port for project
