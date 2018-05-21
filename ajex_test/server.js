@@ -28,7 +28,7 @@ app.use (express.urlencoded() );
 
 
 //----let server.js know where the index.html is----//
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/main'));
 
 
 //----GET method function----//

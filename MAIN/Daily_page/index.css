@@ -1,0 +1,101 @@
+h1{
+    color: blue;
+    text-align: center;
+    background-color: transparent;
+    margin-top : 5vh ;
+}
+
+body {
+    position : relative ;
+}
+
+#whale {
+    margin-top : 10vh ;
+    margin-bottom : 10vh ;
+}
+
+#whale img{
+    display: block;
+    position : relative ;
+    margin : 0 auto ;
+    width: 60vh;
+}
+
+#whale img:hover{
+    display: block;
+    position : relative ;
+    margin : 0 auto ;
+    width: 60vh;
+    animation: shake 0.5s linear ;
+}
+
+.circles{
+    display : flex ;
+    flex-direction : row ;
+    justify-content : center ;
+    position : relative ;
+}
+
+.button {
+    width: 8vh;
+    height: 8vh;
+    border-radius : 50% ;
+    margin : 2vh ;
+
+    outline : none ;
+    /*box-shadow: 2px 4px 0px 0px #999; width height blur size*/
+    cursor : pointer ;
+    border: none ;
+}
+
+.button:hover {
+    width: 8vh;
+    height: 8vh;
+    border-radius : 50% ;
+    margin : 2vh ;
+
+    outline : none ;
+    cursor : pointer ;
+    border: none ;
+    animation : shake 0.2s linear ;
+}
+
+#blue{
+    background-color: blue ;
+}
+
+#red{
+    background-color: red ;
+}
+
+#black{
+    background-color: black ;
+}
+
+@keyframes shake {
+    0%  {transform : scale(1 , 1) ; }
+    33% {transform : scale(1 , 1.2) ; }
+    66% {transform : scale(1.2 , 1) ; } 
+    to {transform : scale(1 , 1) ; } 
+}
+
+/*
+@keyframes swim {
+    0% {
+        transform : translate(0,0) ;
+    } 
+    25% {
+        transform : translate(100px , -100px) rotate(-90deg);
+    }
+    50% {
+        transform : translate(0,-200px) rotate(-180deg);
+    }
+    75% {
+        transform : translate(-100px,-100px) rotate(-270deg);
+    }
+    to {
+        transform : translate(0,0) ;
+    }
+
+}
+*/
