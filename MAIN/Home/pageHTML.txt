@@ -1,0 +1,29 @@
+<div id="main">
+  <img id="BACKGROUND" src="">
+
+  <div id="Daily" class="icon">
+      
+  </div>
+      
+  <div id="Flooding" class="icon">
+      
+  </div>
+      
+  <div id="Record" class="icon">
+      
+  </div>
+      
+  <div id="AboutUS" class="icon">
+      
+  </div>
+      
+  <div id="Setup" class="icon">
+      
+  </div>
+
+
+
+
+
+
+</div>

@@ -16,12 +16,12 @@ $(document).ready(function () {
     $.ajax({
       method: "POST",
       data: {
-        user: $('#ajax_form input[name=user]').val(),
-        password: $('#ajax_form input[name=password]').val()
+        user: $('#Login input[name=user]').val(),
+        password: $('#Login input[name=password]').val()
       },
       url: '/login',
       success: function(data) {
-        $("#refresh").html(data);
+        $("body").html(data);
       }
     });
     $("#refresh").append($("<div></div>")).addClass("cover");

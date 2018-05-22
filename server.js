@@ -12,28 +12,74 @@ var data_file = './data.json';
 var data = require(data_file);
 
 var encode = "utf8";
-var page_num = 6;
-var page_files[page_num] = {
-  '../Home/index.html' 
 
-};
-var PageTxt[page_num] = {};
 
-for ( int i=0, i<page_num, i++ ) {
-  fs.readFile( page_files[i], encode, (err, PageTxt[i]){
-    console.log( PageTxt[i] );
+//---- Page --> Number ----//
+//    Home      = 0
+//    Daily     = 1
+//    Record    = 2
+//    Flooding  = 3
+//    Setup     = 4
+//    About us  = 5
+//
+
+var page_num = 1;
+
+
+//---- html files ----//
+var txt_files = [
+  './MAIN/Home/pageHTML.txt' 
+
+];
+var PageTxt = [page_num];
+
+
+//---- css files ----//
+var css_files = [
+  './MAIN/Home/index.css' 
+
+];
+var PageCss = [page_num];
+
+
+
+//---- js files ----//
+var js_files = [
+  './MAIN/Home/index.js' 
+
+];
+var PageJs = [page_num];
+
+
+
+for ( var  i=0; i < page_num; i++ ) {
+
+  //---- read html ----//
+  fs.readFile( txt_files[i], encode, (err, data) => {
+    PageTxt[i] = data;
+    //console.log( PageTxt[i] );
+    //console.log( PageTxt[i] );
   });
+
+  //---- read css ----//
+  fs.readFile( css_files[i], encode, (err, data) => {
+    PageCss[i] = data;
+    //console.log( PageCss[i] );
+    //console.log( data );
+  });
+
+  //---- read js ----//
+  fs.readFile( js_files[i], encode, (err, data) => {
+    PageJs[i] = data;
+    //console.log( PageJs[i] );
+    //console.log( data );
+  });
+
 };
 
-
-
-//var test = 'E123456789';
-//var test2 =  'data.'+test; 
 
 //----read data.json file----//
-//console.log('Test: \n' + data[test] + '\n' + data.B123456789 )
-
-
+//console.log('Test: \n' + data['admin'] )
 
 //----setup body-parser for POST method, otherwise POST won't work----//
 app.use( bodyParser.json() );
@@ -50,10 +96,14 @@ app.use(express.static(__dirname + '/MAIN'));
 
 //---- login function ----//
 app.post("/login", function(req, res) {
-  if ( data.hasOwnProperty(req.body.uesr) ) { 
+  //console.log ( data.hasOwnProperty('admin') );
+  if ( data.hasOwnProperty(req.body.user) ) { 
+    //console.log ( req.body.password);
     if ( data[req.body.user] == req.body.password ) {
       //---- send Home page to MAIN_Page #refresh ----//
       console.log( `correct password` );
+      res.send( packUp( 1 ) );
+      //console.log ( packUp( 1 ) );
     }
   }
   else {
@@ -74,29 +124,18 @@ app.post("/ajax_data_search", function(req, res) {
 });
 
 
+//---- package the content ----//
+function packUp( chosen ) {
+  var tmp;
+  tmp = '<style>\n' + PageCss[chosen] + '</style>\n' + '<script>\n' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
+  //tmp = '<style>\n #Login {opacity: 0;}  #refresh { opacity: 0.5; background-color: black;}\n' + PageCss[chosen] + '</style>\n' + '<script>\n $("#Login_block :input").prop("disabled",true);\n ' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
+  
+  return tmp;
+}
+
+
 //----let user know which port is using----//
 app.listen(port, () => {
   console.log( `listening on port: ${port}` )
 });
-
-
-/*
-
-
-//----GET method function----//
-
-app.get('/get_data', function(req, res) {
-  //console.log(req.query.Name)
-  res.send(`<h1>Hello ${req.query.name}, your student ID is ${req.query.student_id}</h1>`);
-});
-
-
-//----POST method function----//
-app.post('/post_data', function(req, res) {
-  //console.log(req.query.Name)
-  res.send(`<h1>Hello ${req.body.name}, your student ID is ${req.body.student_id}</h1>`);
-});
-
-
-*/
 
