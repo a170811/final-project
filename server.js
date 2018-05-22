@@ -10,6 +10,23 @@ const port = 10059;
 
 var data_file = './data.json';
 var data = require(data_file);
+
+var encode = "utf8";
+var page_num = 6;
+var page_files[page_num] = {
+  '../Home/index.html' 
+
+};
+var PageTxt[page_num] = {};
+
+for ( int i=0, i<page_num, i++ ) {
+  fs.readFile( page_files[i], encode, (err, PageTxt[i]){
+    console.log( PageTxt[i] );
+  });
+};
+
+
+
 //var test = 'E123456789';
 //var test2 =  'data.'+test; 
 
@@ -30,18 +47,17 @@ app.use (express.urlencoded() );
 //----let server.js know where the index.html is----//
 app.use(express.static(__dirname + '/MAIN'));
 
-/*
-//----Ajax_post function----//
-app.post("/ajax_data", function(req, res) {
-  if ( data.hasOwnProperty(req.body.student_id) ) { 
-    res.send('Student ID ' + req.body.student_id + ' is owned by ' + data[req.body.student_id]);
+
+//---- login function ----//
+app.post("/login", function(req, res) {
+  if ( data.hasOwnProperty(req.body.uesr) ) { 
+    if ( data[req.body.user] == req.body.password ) {
+      //---- send Home page to MAIN_Page #refresh ----//
+      console.log( `correct password` );
+    }
   }
   else {
-    res.send(`Hello ${req.body.name}, your student ID is ${req.body.student_id}, Let me regist for you`);
-
-    //----add new data into .json----//
-    data[req.body.student_id] = req.body.name ;
-    fs.writeFile('./id_data.json', JSON.stringify(data, null, 2));
+    res.send( `${req.body.user} is not registed, please regist first` );
   }
 
 });
@@ -57,7 +73,7 @@ app.post("/ajax_data_search", function(req, res) {
   }
 });
 
-*/
+
 //----let user know which port is using----//
 app.listen(port, () => {
   console.log( `listening on port: ${port}` )
