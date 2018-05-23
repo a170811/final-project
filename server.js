@@ -113,14 +113,21 @@ app.post("/login", function(req, res) {
 });
 
 
-//----Ajax_post_search_data function----//
-app.post("/ajax_data_search", function(req, res) {
+//----jump_to function: use to jump between the pages----//
+app.post("/jump_to", function(req, res) {
+  
+
+
+
+
+  /*
   if ( data.hasOwnProperty(req.body.student_id) ) {
     res.send('Student ID ' + req.body.student_id + ' is owned by ' + data[req.body.student_id]);
   }
   else {
     res.send('Student ID '+req.body.student_id+" is not found.");
   }
+  */
 });
 
 

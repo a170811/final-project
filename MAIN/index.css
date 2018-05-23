@@ -80,6 +80,7 @@ body {
   left: 32%;
   top: 5px;
   border-radius: 8px;
+  text-align: center;
 }
 
 .Login_block_after {
