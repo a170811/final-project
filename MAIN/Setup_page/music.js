@@ -1,8 +1,7 @@
 var vol;
-document.getElementsByClassName("slidecontainer").touchmove=function(){
+function moveFunction(){
 	vol=document.getElementById("volrange").value/100;
 	document.getElementById("music").volume=vol; 
-	alert("change");
 }
 
 document.getElementById("volrange").onmouseup=function(){

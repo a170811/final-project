@@ -10,7 +10,7 @@
   <body>
     <audio id="music" src="music.mp3" type="audio/mpeg" autoplay="true" hidden="false" controls="controls"></audio>
 	<div class="slidecontainer">
-	<input type="range" min="0" max="100" value="100" class="slider" id="volrange">
+	<input ontouchmove="moveFunction()" type="range" min="0" max="100" value="100" class="slider" id="volrange">
 	</div>
 	<script src="music.js"charset=UTF-8></script>
   </body>
