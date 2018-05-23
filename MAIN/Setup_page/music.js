@@ -1,11 +1,12 @@
 var vol;
-document.getElementById("volrange").touchend=function(){
+document.body.touchend=function(){
 	vol=document.getElementById("volrange").value/100;
 	document.getElementById("music").volume=vol; 
 	alert("change");
 }
-document.getElementById("volrange").onmouseup=function(){
+
+document.getElementsByTagName("volrange").onmouseup=function(){
 	vol=document.getElementById("volrange").value/100;
 	document.getElementById("music").volume=vol; 
-	alert("change");
+	alert(vol);
 }
