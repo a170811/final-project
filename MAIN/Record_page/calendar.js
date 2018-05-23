@@ -49,7 +49,7 @@ function refreshDate(){//重新獲取這個月的日曆
 		}else{
 			myclass = " class='lightgrey'"; //還沒到的日子是lightgrey
 		}
-		str += "<li id='day"+i+"'"+myclass+">"+i+"<br><img id='water"+i+"' class='drip' src='a.png'><img id='blank"+i+"' class='drip' src='b.png'></li>"; //把現在日期跟顏色的class加入str
+		str += "<li id='day"+i+"'"+myclass+">"+i+"<br><img id='water"+i+"' class='drip' src='../Record_page/a.png'><img id='blank"+i+"' class='drip' src='../Record_page/b.png'></li>"; //把現在日期跟顏色的class加入str
 	}
 	
 	holder.innerHTML = str; //將str(所有日期)顯示出來

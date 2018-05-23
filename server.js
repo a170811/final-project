@@ -21,14 +21,21 @@ var encode = "utf8";
 //    Flooding  = 3
 //    Setup     = 4
 //    About us  = 5
+//    Login     = 6
 //
 
-var page_num = 1;
+var page_num = 7;
 
 
 //---- html files ----//
 var txt_files = [
-  './MAIN/Home/pageHTML.txt' 
+  './MAIN/Home/pageHTML.txt', 
+  './MAIN/Daily_page/pageHTML.txt',
+  './MAIN/Record_page/pageHTML.txt',
+  './MAIN/Flooding_page/pageHTML.txt',
+  './MAIN/Setup_page/pageHTML.txt',
+  './MAIN/aboutus/pageHTML.txt',
+  './MAIN/pageHTML.txt'
 
 ];
 var PageTxt = [page_num];
@@ -36,7 +43,13 @@ var PageTxt = [page_num];
 
 //---- css files ----//
 var css_files = [
-  './MAIN/Home/index.css' 
+  './MAIN/Home/index.css' ,
+  './MAIN/Daily_page/index.css',
+  './MAIN/Record_page/index.css',
+  './MAIN/Flooding_page/index.css',
+  './MAIN/Setup_page/index.css',
+  './MAIN/aboutus/index.css',
+  './MAIN/index.css'
 
 ];
 var PageCss = [page_num];
@@ -45,7 +58,13 @@ var PageCss = [page_num];
 
 //---- js files ----//
 var js_files = [
-  './MAIN/Home/index.js' 
+  './MAIN/Home/index.js',
+  './MAIN/Daily_page/myscript.js',
+  './MAIN/Record_page/calendar.js',
+  './MAIN/Flooding_page/index.js',
+  './MAIN/Setup_page/index.js',
+  './MAIN/aboutus/index.js',
+  './MAIN/index.js'
 
 ];
 var PageJs = [page_num];
@@ -53,12 +72,20 @@ var PageJs = [page_num];
 
 
 for ( var  i=0; i < page_num; i++ ) {
-
+  PageTxt[i] = fs.readFileSync(txt_files[i], encode);
+  PageCss[i] = fs.readFileSync(css_files[i], encode);
+  if (i!=0 && i!=3 && i!=4 && i!=6){
+    PageJs[i] = fs.readFileSync(js_files[i], encode);
+  }
+  /*
   //---- read html ----//
   fs.readFile( txt_files[i], encode, (err, data) => {
+
     PageTxt[i] = data;
+    console.log(PageTxt.length);
     //console.log( PageTxt[i] );
-    //console.log( PageTxt[i] );
+    //console.log( "--------------------------" );
+    //console.log( data );
   });
 
   //---- read css ----//
@@ -69,14 +96,19 @@ for ( var  i=0; i < page_num; i++ ) {
   });
 
   //---- read js ----//
-  fs.readFile( js_files[i], encode, (err, data) => {
-    PageJs[i] = data;
-    //console.log( PageJs[i] );
-    //console.log( data );
-  });
+  if ( i != 6 ) {
+    
+    fs.readFile( js_files[i], encode, (err, data) => {
+      PageJs[i] = data;
+      //console.log( PageJs[i] );
+      //console.log( data );
+    });
+  }
+  */
 
 };
-
+//for (var i=0; i<7; i++)
+//console.log( PageTxt[0] );
 
 //----read data.json file----//
 //console.log('Test: \n' + data['admin'] )
@@ -96,14 +128,15 @@ app.use(express.static(__dirname + '/MAIN'));
 
 //---- login function ----//
 app.post("/login", function(req, res) {
-  //console.log ( data.hasOwnProperty('admin') );
+  // console.log ( data.hasOwnProperty('admin') );
   if ( data.hasOwnProperty(req.body.user) ) { 
     //console.log ( req.body.password);
     if ( data[req.body.user] == req.body.password ) {
       //---- send Home page to MAIN_Page #refresh ----//
       console.log( `correct password` );
-      res.send( packUp( 1 ) );
-      //console.log ( packUp( 1 ) );
+      res.send( packUp( 0 ) );
+      //console.log ( packUp( 0 ) );
+      //console.log( PageTxt[0] );
     }
   }
   else {
@@ -115,7 +148,8 @@ app.post("/login", function(req, res) {
 
 //----jump_to function: use to jump between the pages----//
 app.post("/jump_to", function(req, res) {
-  
+  console.log( `JUMP` );
+  res.send( packUp( req.body.call_page ) );
 
 
 

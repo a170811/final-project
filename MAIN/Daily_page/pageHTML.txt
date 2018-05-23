@@ -1,0 +1,11 @@
+<h1 id="page_name">EXP 2000c.c.</h1>
+        
+<div id="whale">
+  <img src="./../aboutus/whale.gif" alt="whale">
+</div>
+        
+<div class="circles">
+  <button id="blue" class="button"></button>
+  <button id="red" class="button"></button>
+  <button id="black" class="button"></button>
+</div>

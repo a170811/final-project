@@ -6,8 +6,10 @@ var ready_flag = 0;
 
 //---- start the function when web start ----//
 $(document).ready(function () {
-  //$("#Login_block").hide();
-  //$("#Login_block :input").attr('disabled','disabled');;
+
+  //--------- LOGIN Function ---------//
+    //$("#Login_block").hide();
+    //$("#Login_block :input").attr('disabled','disabled');;
   $("#Login_block :input").prop("disabled",true);
   checkOnLine(); 
       
@@ -21,34 +23,64 @@ $(document).ready(function () {
       },
       url: '/login',
       success: function(data) {
-        $("body").html(data);
+        $("#UNIQUE").html(data);
+        $("#cover").removeClass("cover");
+        $("#PS").text('');
       }
     });
-    $("#refresh").append($("<div></div>")).addClass("cover");
+    $("#cover").addClass("cover");
     $("#PS").text('Loading...');
   });
 
-  $('#ajax_search button[type=submit]').click(function() {
+  //-------- JUMP Function --------//
+  /*
+  $(".JUMP").click(function() {//all class in html
     event.preventDefault();
     $.ajax({
       method: "POST",
       data: {
-        student_id: $('#ajax_search input[name=student_id]').val()
+        //call_page: $('.JUMP').getAttribute("data-page-add").val()
+        call_page:parseInt(this.dataset.page-add)
       },
-      url: '/ajax_data_search',
+      url: '/jump_to',
       success: function(data) {
-        $('#ajax_output').html(data);
+        $('body').html(data);
       }
     });
-    $('#ajax_output').html('loading...');
+    $("body").append($("<div></div>")).addClass("cover");
+    $("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
   });
+  */
 });
 
+$(document).on('click', ".JUMP", function() {
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      data: {
+        //call_page: $(this).getAttribute("data-page-add").val()
+        call_page:parseInt(this.dataset.pageadd)
+      },
+      url: '/jump_to',
+      success: function(data) {
+        $("#UNIQUE").html(data);
+        $("#cover").removeClass("cover");
+        $("#PS").text('');
+        //$('body').html(data);
+      }
+    });
+    $("#cover").addClass("cover");
+    $("#PS").text('Loading...');
+    //$("body").append($("<div></div>")).addClass("cover");
+    //$("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
+    //alert( "hi" );
+
+});
 
 
 function checkOnLine(){   
     if (typeof(navigator.onLine)!="undefined"){
-      setTimeout(() => checkHandler(), 3000)
+      setTimeout(() => checkHandler(), 0)
          
     }else{   
         $("#refresh").text("你的瀏覽器不支援偵測是否online");   
