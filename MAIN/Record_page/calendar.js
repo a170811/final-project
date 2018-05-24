@@ -56,7 +56,7 @@ function refreshDate(){//重新獲取這個月的日曆
 	ctitle.innerHTML = month_name[my_month]; //將月份顯示出來
 	cyear.innerHTML = my_year; //將年分顯示出來
 	for(j=1;j<=totalDay;j++){
-		daily[j]=j/31;//存喝水百分比 //要改成取得每日喝水百分比
+		daily[j]= Math.random();//存喝水百分比 //要改成取得每日喝水百分比
 		document.getElementById("water"+j).style.position = "absolute";　
 		document.getElementById("water"+j).style.clip = "rect("+(4-daily[j]*4)+"vw 4vw 4vw 0vw)";//把藍色水滴切掉
 	}

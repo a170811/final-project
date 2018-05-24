@@ -34,7 +34,7 @@ var txt_files = [
   './MAIN/Record_page/pageHTML.txt',
   './MAIN/Flooding_page/pageHTML.txt',
   './MAIN/Setup_page/pageHTML.txt',
-  './MAIN/aboutus/pageHTML.txt',
+  './MAIN/Aboutus/pageHTML.txt',
   './MAIN/pageHTML.txt'
 
 ];
@@ -48,7 +48,7 @@ var css_files = [
   './MAIN/Record_page/index.css',
   './MAIN/Flooding_page/index.css',
   './MAIN/Setup_page/index.css',
-  './MAIN/aboutus/index.css',
+  './MAIN/Aboutus/index.css',
   './MAIN/index.css'
 
 ];
@@ -63,7 +63,7 @@ var js_files = [
   './MAIN/Record_page/calendar.js',
   './MAIN/Flooding_page/index.js',
   './MAIN/Setup_page/index.js',
-  './MAIN/aboutus/index.js',
+  './MAIN/Aboutus/index.js',
   './MAIN/index.js'
 
 ];

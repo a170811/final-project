@@ -27,7 +27,7 @@
     appearance: none;
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background-image: url(logo.svg); /* Green background */
+    background-image: url(../Setup_page/logo.svg); /* Green background */
     cursor: pointer; /* Cursor on hover 	*/
 }
 

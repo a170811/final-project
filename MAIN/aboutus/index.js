@@ -18,9 +18,9 @@ var intro = {
 }
 
 //var bubble_color = ['f44', 'f84', 'ff8', '8f8', '8ff', '88f', 'f88' ];
-var img = ['001.png', '002.png', '003.png', '004.png', '005.png', '006.png', '007.png'] ;
+var img = ['../Aboutus/001.png', '../Aboutus/002.png', '../Aboutus/003.png', '../Aboutus/004.png', '../Aboutus/005.png', '../Aboutus/006.png', '../Aboutus/007.png'] ;
 var bubble_num = 14;
-var bubble_img = "bubble3.svg";
+var bubble_img = "../Aboutus/bubble3.svg";
 var container=[bubble_num], bubble_ly, shadow_ly;
 var picture_ly;
 var Radius, Position, Destination;

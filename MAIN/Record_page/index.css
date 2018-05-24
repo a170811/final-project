@@ -1,7 +1,7 @@
 
 body{
 	background:#f2f2f2;
-	margin:40px;
+	margin:4.9vw;
 }
 *{
 	margin:0;
@@ -38,7 +38,7 @@ body{
 	top:0;
 	width:12vw;
 	height:14vw;
-	background:url(prev.png) no-repeat 50% 50%;
+	background:url(../Record_page/prev.png) no-repeat 50% 50%;
 	background-size: 2vw;
 }
 .drip{
@@ -51,7 +51,7 @@ body{
 	top:0;
 	width:12vw;
 	height:14vw;
-	background:url(next.png) no-repeat 50% 50%;
+	background:url(../Record_page/next.png) no-repeat 50% 50%;
 	background-size: 2vw;
 }
 .body{
