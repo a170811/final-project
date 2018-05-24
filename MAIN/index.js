@@ -53,7 +53,7 @@ $(document).ready(function () {
   */
 });
 
-$(document).on('click', ".JUMP", function() {
+$(document).on('tap', ".JUMP", function() {
     event.preventDefault();
     $.ajax({
       method: "POST",
