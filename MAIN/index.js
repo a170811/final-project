@@ -68,7 +68,7 @@ $(document).on('click', ".JUMP", function() {
         $("#UNIQUE").html(data);
         $("#cover").removeClass("cover");
         $("#PS").text('');
-        if( pageNum!=0 ) {
+        if( pageNum!=0 && pageNum!=5 ) {
           $("#prevIcon").removeClass("hideGoHome");
           $("#prevIcon").addClass("showGoHome");
         }

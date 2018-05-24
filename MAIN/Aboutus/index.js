@@ -58,7 +58,7 @@ function Bubble() {
   shadow_ly = document.createElement( 'div' );     //same as the one above, except this one create the shadow_ly
   
   //----------include all the stuff into container, and include container into body
-  document.body.appendChild( container[count] );
+  document.getElementById("COVER").appendChild( container[count] );
   
   container[count].appendChild( shadow_ly );          // place the element into the document // important!!!
   container[count].appendChild( picture_ly );          // place the element into the document // important!!!
@@ -188,12 +188,12 @@ function show( id = "" , sel = "0" ) {
     var board = document.createElement("p") ;
     var contain = document.createElement("div") ;
     var cover = document.createElement("div") ;
-    document.body.appendChild(contain) ;
+    document.getElementById("COVER").appendChild(contain) ;
     contain.appendChild(board) ;
     contain.appendChild(cover) ;
     board.classList.add("board") ;
     contain.classList.add("contain") ;
-    cover.classList.add("cover") ;
+    cover.classList.add("cover1") ;
     if (sel==1) { //show info
         id = "b14" ;
     }
