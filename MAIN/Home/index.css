@@ -9,11 +9,21 @@
   background: lightblue;
 }
 
-.JUMP {
+
+#BG_picture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -4;
+}
+
+.JUMP1 {
   position: fixed;
   width: 20vw;
   height: 20vw;
-  border-radius: 50%;
+  1border-radius: 50%;
 }
 
 #Daily {
@@ -22,24 +32,61 @@
   left: 10vw;
 }
 
+#Daily_bg {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
 
 #Flooding {
   background: green;
   top: 25vh;
   left: 20vw;
 }
+
+#Flooding_bg {
+  position: relative;
+  width: 100%;
+  top: 25vh;
+  left: 20vw;
+}
+
 #Record {
   background: yellow;
   top: 40vh;
   left: 30vw;
 }
+
+#Record_bg {
+  position: relative;
+  width: 100%;
+  top: 40vh;
+  left: 30vw;
+}
+
 #AboutUS {
-  background: orange;
+  1background: orange;
   top: 55vh;
   left: 40vw;
 }
+
+#AboutUS_bg {
+  position: relative;
+  width: 100%;
+  top: 55vh;
+  left: 40vw;
+}
+
 #Setup {
   background: purple;
+  top: 70vh;
+  left: 50vw;
+}
+
+#Setup_bg {
+  position: relative;
+  width: 100%;
   top: 70vh;
   left: 50vw;
 }

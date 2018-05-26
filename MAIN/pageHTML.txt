@@ -2,7 +2,7 @@
 
   <img id="Icon" src="../Picture/logo.svg">
   <img id="Word" src="../Picture/word.svg">
-  <img id="BG_picture" src="">
+  <img id="BG_picture" src="../Picture/start-bg.svg">
 </div>
 
 <!--   login    --> 
