@@ -19,6 +19,7 @@ body {
   height: 10vh;
 }
 
+
 .showGoHome {
   opacity: 1;
   position: fixed;
@@ -28,12 +29,21 @@ body {
   height: 10vh;
 }
 
+.showGoHome2 {
+  opacity: 1;
+  position: fixed;
+  bottom: 15vw;
+  left: 5vw;
+  width: 10vh;
+  height: 10vh;
+}
+
 #BG_picture {
   position: fixed;
-  top: 0;
+  top: -10vh;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  1height: 100vh;
   z-index: -4;
 }
 /*

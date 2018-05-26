@@ -148,7 +148,7 @@ app.post("/login", function(req, res) {
 
 //----jump_to function: use to jump between the pages----//
 app.post("/jump_to", function(req, res) {
-  console.log( `JUMP` );
+  //console.log( `JUMP` );
   res.send( packUp( req.body.call_page ) );
 
 
