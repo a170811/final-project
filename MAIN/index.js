@@ -57,6 +57,8 @@ $(document).ready(function () {
 $(document).on('touchstart click', ".JUMP", function() {
     event.preventDefault();
     var pageNum = parseInt(this.dataset.pageadd);
+    JumpPage(pageNum);
+    /*
     $.ajax({
       method: "POST",
       data: {
@@ -81,6 +83,7 @@ $(document).on('touchstart click', ".JUMP", function() {
     });
     $("#cover").addClass("cover");
     $("#PS").text('Loading...');
+    */
     //$("body").append($("<div></div>")).addClass("cover");
     //$("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
     //alert( "hi" );
@@ -90,12 +93,96 @@ $(document).on('touchstart click', ".JUMP", function() {
 
 function checkOnLine(){   
     if (typeof(navigator.onLine)!="undefined"){
-      setTimeout(() => checkHandler(), 0)
+      setTimeout(() => checkHandler(), 1000)
          
     }else{   
         $("#refresh").text("你的瀏覽器不支援偵測是否online");   
     }   
-}   
+} 
+
+
+
+
+
+
+
+function checkHandler(){   
+    var status=navigator.onLine;   
+    if(status){   
+      //$("#refresh").text("online");   
+      ready_flag = 1;
+      JumpPage(0);
+
+
+      /*
+      var pageNum = 0;
+      $.ajax({
+      method: "POST",
+      data: {
+        //call_page: $(this).getAttribute("data-page-add").val()
+        call_page:0
+      },
+      url: '/jump_to',
+      success: function(data) {
+        $("#UNIQUE").html(data);
+        $("#cover").removeClass("cover");
+        $("#PS").text('');
+        if( pageNum!=0 && pageNum!=5 ) {
+          $("#prevIcon").removeClass("hideGoHome");
+          $("#prevIcon").addClass("showGoHome");
+        }
+        else {
+          $("#prevIcon").removeClass("showGoHome");
+          $("#prevIcon").addClass("hideGoHome");
+        }
+        //$('body').html(data);
+      }
+      $("#cover").addClass("cover");
+      $("#PS").text('Loading...');
+
+      */
+    }else{   
+      //$("#refresh").text("offline");
+      $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "39vh", "left": "15vw", "width": "70vw","height":"16vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
+      $("#refresh").append($("<p></p>").text("Please connect to Internet").css({"position": "fixed", "top": "40vh", "left": "15vw", "width": "70vw","font-size": "4vh", "font-weight": "bold", "color": "white", "textAlign": "center", "opacity": "0"}).animate({opacity: '1'}, 1000)); 
+    }   
+}
+
+
+function JumpPage(pageNum) {
+  $.ajax({
+      method: "POST",
+      data: {
+        //call_page: $(this).getAttribute("data-page-add").val()
+        call_page:pageNum
+      },
+      url: '/jump_to',
+      success: function(data) {
+        $("#UNIQUE").html(data);
+        $("#cover").removeClass("cover");
+        $("#PS").text('');
+        if( pageNum!=0 && pageNum!=5 ) {
+          $("#prevIcon").removeClass("hideGoHome");
+          $("#prevIcon").addClass("showGoHome");
+        }
+        else {
+          $("#prevIcon").removeClass("showGoHome");
+          $("#prevIcon").addClass("hideGoHome");
+        }
+        //$('body').html(data);
+      }
+    });
+    $("#cover").addClass("cover");
+    $("#PS").text('Loading...');
+}
+
+
+
+
+
+
+
+/*---   with login animation
 function checkHandler(){   
     var status=navigator.onLine;   
     if(status){   
@@ -118,8 +205,7 @@ function checkHandler(){
     }else{   
       //$("#refresh").text("offline");
       $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "39vh", "left": "15vw", "width": "70vw","height":"16vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
-      $("#refresh").append($("<p></p>").text("Please connect to Internet").css({"position": "fixed", "top": "40vh", "left": "15vw", "width": "70vw","font-size": "4vh", "font-weight": "bold", "color": "white", "textAlign": "center", "opacity": "0"}).animate({opacity: '1'}, 1000));
-        
+      $("#refresh").append($("<p></p>").text("Please connect to Internet").css({"position": "fixed", "top": "40vh", "left": "15vw", "width": "70vw","font-size": "4vh", "font-weight": "bold", "color": "white", "textAlign": "center", "opacity": "0"}).animate({opacity: '1'}, 1000)); 
     }   
 }
-
+*/
