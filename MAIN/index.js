@@ -54,7 +54,7 @@ $(document).ready(function () {
   */
 });
 
-$(document).on('click', ".JUMP", function() {
+$(document).on('touchstart click', ".JUMP", function() {
     event.preventDefault();
     var pageNum = parseInt(this.dataset.pageadd);
     $.ajax({
