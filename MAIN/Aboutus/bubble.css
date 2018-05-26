@@ -7,8 +7,8 @@
 
 }
 
-.cover {
-    position : absolute ;
+.coVer {
+    position : fixed ;
     top : 0px ;
     left: -5vw;
     width : 110vw ;
