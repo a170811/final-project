@@ -6,20 +6,20 @@
   height: 100vh;
   width: 100vw;
   
-  background: lightblue;
+  1background: lightblue;
 }
 
 
 #BG_picture {
-  position: fixed;
-  top: 0;
+  position: relative;
+  bottom: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  1height: 100vh;
   z-index: -4;
 }
 
-.JUMP1 {
+.JUMP {
   position: fixed;
   width: 20vw;
   height: 20vw;
@@ -67,15 +67,15 @@
 
 #AboutUS {
   1background: orange;
-  top: 55vh;
-  left: 40vw;
+  bottom: 20vh;
+  left: 10vw;
 }
 
 #AboutUS_bg {
   position: relative;
   width: 100%;
-  top: 55vh;
-  left: 40vw;
+  top: 0;
+  left: 0;
 }
 
 #Setup {

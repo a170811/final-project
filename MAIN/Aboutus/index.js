@@ -221,11 +221,13 @@ $(document).ready(function(){
         show(this.getAttribute("id"),1); 
 
     }) ;
+    
 
+    /*
     $("#arrow").click(function(){ 
         show(this.getAttribute("id"),2); 
-
     }) ;
+    */
 
     $(document).ready(function(){
       $(".contain").click(function(){

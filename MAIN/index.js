@@ -54,7 +54,7 @@ $(document).ready(function () {
   */
 });
 
-$(document).on('click', ".JUMP", function() {
+$(document).on('touchstart click', ".JUMP", function() {
     event.preventDefault();
     var pageNum = parseInt(this.dataset.pageadd);
     JumpPage(pageNum);
@@ -150,15 +150,56 @@ function checkHandler(){
 
 
 function JumpPage(pageNum) {
+  var success=0;
   $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $(this).getAttribute("data-page-add").val()
-        call_page:pageNum
-      },
-      url: '/jump_to',
-      success: function(data) {
+    method: "POST",
+    data: {
+      //call_page: $(this).getAttribute("data-page-add").val()
+      call_page:pageNum
+    },
+    url: '/jump_to',
+    success: function(data) {
+      success = 1;
+      $("#UNIQUE").animate({
+        opacity: '0'
+      }, 1000);
+      $("#prevIcon").fadeOut(1000);
+      $("#UNIQUE").queue(function() {
         $("#UNIQUE").html(data);
+        $(this).dequeue();
+      });
+      $("#UNIQUE").queue(function() {
+        $("#prevIcon").removeClass("hideGoHome");
+        $("#prevIcon").removeClass("showGoHome");
+        $("#prevIcon").removeClass("showGoHome2");
+        if ( pageNum==2 ) {
+          $("#prevIcon").addClass("showGoHome2");
+        }
+        else if( pageNum!=0 && pageNum!=5 ) {
+          $("#prevIcon").addClass("showGoHome");
+        }
+        else {
+          $("#prevIcon").addClass("hideGoHome");
+        }
+        $("#UNIQUE").animate({
+          opacity: '1'
+        }, 1000);
+        $("#prevIcon").fadeIn(1000);
+        $("#UNIQUE").dequeue();
+      });
+        
+      $("#cover").removeClass("cover");
+      $("#PS").text('');
+        
+        
+        /*
+        $("#UNIQUE").animate({
+          opacity: '0'
+        }, 1000);
+        $("#UNIQUE").html(data);
+        $("#UNIQUE").animate({
+          opacity: '1'
+        }, 1000);
         $("#cover").removeClass("cover");
         $("#PS").text('');
         if( pageNum!=0 && pageNum!=5 ) {
@@ -169,11 +210,16 @@ function JumpPage(pageNum) {
           $("#prevIcon").removeClass("showGoHome");
           $("#prevIcon").addClass("hideGoHome");
         }
+        */
         //$('body').html(data);
-      }
-    });
-    $("#cover").addClass("cover");
-    $("#PS").text('Loading...');
+    }
+  });
+  setTimeout(() => {
+    if( !success ) {
+      $("#cover").addClass("cover");
+      $("#PS").text('Loading...');
+    }
+  }, 2000);
 }
 
 

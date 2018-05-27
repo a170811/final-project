@@ -1,25 +1,29 @@
 
     <div id="main">
-      <img id="BACKGROUND" src="">
+      <img id="BG_picture" src="../Picture/bg-2.svg">
 
       <div id="Daily" class="JUMP" data-pageadd="1">
       DAILY
+      <img id="Daily_bg" src="">
       </div>
       
       <div id="Flooding" class="JUMP" data-pageadd="3">
       FLOODING
+      <img id="Flooding-bg" src="">
       </div>
       
       <div id="Record" class="JUMP" data-pageadd="2">
       RECORD
+      <img id="Record_bg" src="">
       </div>
       
       <div id="AboutUS" class="JUMP" data-pageadd="5">
-      ABOUT US
+      <img id="AboutUS_bg" src="../Picture/boat.svg">
       </div>
       
       <div id="Setup" class="JUMP" data-pageadd="4">
       SETUP PAGE
+      <img id="Setup_bg" src="">
       </div>
 
 
