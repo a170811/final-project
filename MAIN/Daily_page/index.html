@@ -3,25 +3,38 @@
     <head>
         <title>Drink_Water_Page</title>
         <link rel="stylesheet" type="text/css" href="index.css">
-    
+   		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"> 
     </head>
     
     <body>
-
-        <h1 id="page_name">EXP 2000c.c.</h1>
+        <div>
         
-        <div id="whale">
-            <img src="./../aboutus/whale.gif" alt="whale">
+        <div><h2 id="page_name">2000 c.c.</h2><div>
+        <div id="whale" class="board_default">
+            <img src="./../Picture/whale.svg" alt="whale">
+            <button class="std_but" onclick="click_record()"><span style=" font-size : 1rem ; ">record</span></button>
+            <div class="board board_default">
+                <div><span>0</span><span>L/2L</span></div>
+                <div>
+                    <button class='drip' id='b1' onclick="b1()"><span>0.1L</span></button>
+                    <button class='drip' id='b2' onclick="b2()"><span>0.5L</span></button>
+                    <button class='drip' id='b3' onclick="b3()"><span>FULL</span></button>
+                </div>
+                <div>
+                    <button class='std_but check' onclick="click_comfirm()"><span>comfirm</span></button>
+                    <button class='std_but check' onclick="click_cancel()"><span>cancel</span></button>
+                </div>
+            
+            </div>
         </div>
         
-        <div class="circles">
-            <button id="blue" class="button"></button>
-            <button id="red" class="button"></button>
-            <button id="black" class="button"></button>
-        </div>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="myscript.js"></script>
+        
+
+        </div>
+    
     </body>
 
 </html>

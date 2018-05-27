@@ -1,75 +1,182 @@
-h1{
-    color: blue;
-    text-align: center;
-    background-color: transparent;
-    margin-top : 5vh ;
+/*tmplate*/
+
+.board_default {
+    position : relative ;
+    border : 2px solid #999 ;
+    border-radius : 7vh ;
+    background-color : rgba(255,255,255,0.75) ;
+}
+
+.std_but{
+    position : absolute ;
+    display : block ;
+    width: 18vh;
+    height: 8vh;
+    border-radius : 5vh ;
+    outline : none ;
+    cursor : pointer ;
+    border: 2px solid #999 ;
+    background-color : rgba(255, 255, 255 , 0.6) ;
+}
+
+
+/*setting*/
+* {
+    box-sizing : border-box ;
+}
+
+html {
+	font-size:16px ;
 }
 
 body {
+    background-image : url('./../Picture/bg.svg') ;
+    background-repeat : no-repeat ;
+    background-size : cover ;
+}
+
+body div {
     position : relative ;
+    text-align : center ;
+}
+
+h2{
+    position : relative ;
+    border : 0px solid #999 ;
+    border-radius : 5vh ;
+    background-color : rgba(255,255,255,0.85) ;
+    
+    display : inline-block ;
+    text-align: center;
+    margin-top : 5vh ;
+    width : 20vh ;
+    font-size: 1.6rem ;
 }
 
 #whale {
-    margin-top : 10vh ;
-    margin-bottom : 10vh ;
+    display: inline-block ;
+    width: 45vh;
+    height :45vh ;
+    top : 20vh ;
 }
 
-#whale img{
-    display: block;
-    position : relative ;
-    margin : 0 auto ;
-    width: 60vh;
+#whale > button {
+    bottom : 5vh ;
+	left: 50% ;
+	transform : translateX(-50%) ;
 }
 
-#whale img:hover{
-    display: block;
-    position : relative ;
-    margin : 0 auto ;
-    width: 60vh;
-    animation: shake 0.5s linear ;
+#whale > img{
+     display: inline-block;
+     position : relative ;
+     top : 5vh ;
+     width : 80% ;
 }
 
-.circles{
-    display : flex ;
-    flex-direction : row ;
-    justify-content : center ;
-    position : relative ;
+.board {
+    position : absolute ;
+    left:50% ;
+    top : 2vh ; 
+    transform: translateX(-50%) ;
+    display: flex ;
+    flex-direction : column ;
+    
+    width : 40vh ;
+    height : 38vh ;
+    background-color : rgb(255,255,255) ;
+    visibility : hidden ;
 }
 
-.button {
-    width: 8vh;
-    height: 8vh;
-    border-radius : 50% ;
-    margin : 2vh ;
+.board > div:first-of-type {
+    height : 4vh ;
+}
 
+.board > div:nth-of-type(2) {
+    height : 40vh ;
+}
+
+.board > div:last-of-type {
+    height : 20vh ;
+}
+
+.board > div:first-of-type span {
+    font-size : 1.5rem ;
+}
+
+.drip {
+    position:absolute ;
+    display : inline-block ;
+    width : 10vh ;
+    height : 12vh ;
+    top : 3vh ;
     outline : none ;
-    /*box-shadow: 2px 4px 0px 0px #999; width height blur size*/
-    cursor : pointer ;
-    border: none ;
+    border : 0px solid red ;
+
 }
 
-.button:hover {
-    width: 8vh;
-    height: 8vh;
-    border-radius : 50% ;
-    margin : 2vh ;
-
-    outline : none ;
-    cursor : pointer ;
-    border: none ;
-    animation : shake 0.2s linear ;
+#b1 {
+    left:25% ;
+    transform :translateX(-60%) ;
+    background-color : rgba(255 , 255 , 255 , 0 ) ;
+    background-image:url("./../Picture/drip_none.svg") ;
+    background-size : auto , cover ;
+    background-repeat : no-repeat ;
+    background-position: center ;
+}
+#b2 {
+    left:50% ;
+    transform :translateX(-50%) ;
+    background-color : rgba(255 , 255 , 255 , 0 ) ;
+    background-image:url("./../Picture/drip_half.svg") ;
+    background-size : auto , cover ;
+    background-repeat : no-repeat ;
+    background-position: center ;
+}
+#b3 {
+    left:75% ;
+    transform :translateX(-40%) ;
+    background-color : rgba(255 , 255 , 255 , 0 ) ;
+    background-image:url("./../Picture/drip_full.svg") ;
+    background-size : auto , cover ;
+    background-repeat : no-repeat ;
+    background-position: center ;
 }
 
-#blue{
-    background-color: blue ;
+.drip > img {
+    display : block ;
+    position : absolute ;
+    left : 50% ;
+    top : 0 ;
+    transform : translateX(-50%) ;
+    width : 12vh ;
 }
 
-#red{
-    background-color: red ;
+#b2 > img {
+    clip: rect( 6vh , 12vh , 20vh , 0vh ) ;
 }
 
-#black{
-    background-color: black ;
+.drip > span {
+    position : absolute ;
+    font-size: 1.2rem ;
+	left : 50% ;
+	transform : translateX(-50%) ;
+    top : 100% ;
+}
+
+.check {
+    display : inline-block ;
+    width : 14vh ;
+    font-size: 1.2rem ;
+	bottom : 4vh ;
+}
+
+.check:first-of-type {
+	left:30% ;
+	transform : translateX(-50%) ;
+}
+.check:last-of-type {
+	left:70% ;
+	transform : translateX(-50%) ;
 }
 
 @keyframes shake {
@@ -78,24 +185,3 @@ body {
     66% {transform : scale(1.2 , 1) ; } 
     to {transform : scale(1 , 1) ; } 
 }
-
-/*
-@keyframes swim {
-    0% {
-        transform : translate(0,0) ;
-    } 
-    25% {
-        transform : translate(100px , -100px) rotate(-90deg);
-    }
-    50% {
-        transform : translate(0,-200px) rotate(-180deg);
-    }
-    75% {
-        transform : translate(-100px,-100px) rotate(-270deg);
-    }
-    to {
-        transform : translate(0,0) ;
-    }
-
-}
-*/
