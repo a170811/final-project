@@ -38,3 +38,16 @@ function b3() {
     count+=1 ;
     document.getElementById("count").innerHTML = count.toFixed(1) ;
 }
+
+
+$.get("data.txt" , function(data){
+    var day = JSON.parse(data) ;
+    var d = new Date() ;
+    if(amount == 0 ) {
+        var n = d.getDate() ;
+        if(day[n-1] == 0 && day[n-2] == 0) {
+            document.getElementById("whale").setAttribute('src' , './../Picture/whale-bone.svg') ;
+        }
+    }
+}) ;
+
