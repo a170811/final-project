@@ -27,7 +27,7 @@
 }
 
 #Daily {
-  background: blue;
+  1background: blue;
   top: 10vh;
   left: 10vw;
 }
@@ -39,8 +39,15 @@
   left: 0;
 }
 
+#Daily_shadow {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 10px;
+}
+
 #Flooding {
-  background: green;
+  1background: green;
   top: 25vh;
   left: 20vw;
 }
@@ -48,12 +55,19 @@
 #Flooding_bg {
   position: relative;
   width: 100%;
-  top: 25vh;
-  left: 20vw;
+  top: 0;
+  left: 0;
+}
+
+#Flooding_shadow {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 10px;
 }
 
 #Record {
-  background: yellow;
+  1background: yellow;
   top: 40vh;
   left: 30vw;
 }
@@ -61,8 +75,15 @@
 #Record_bg {
   position: relative;
   width: 100%;
-  top: 40vh;
-  left: 30vw;
+  top: 0;
+  left: 0;
+}
+
+#Record_shadow {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 10px;
 }
 
 #AboutUS {
@@ -79,7 +100,7 @@
 }
 
 #Setup {
-  background: purple;
+  1background: purple;
   top: 70vh;
   left: 50vw;
 }
@@ -87,6 +108,19 @@
 #Setup_bg {
   position: relative;
   width: 100%;
-  top: 70vh;
+  top: 0;
+  left: 0;
+}
+
+#Share {
+  1background: purple;
+  bottom: 10vh;
   left: 50vw;
+}
+
+#Share_bg {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
 }

@@ -74,7 +74,8 @@ var PageJs = [page_num];
 for ( var  i=0; i < page_num; i++ ) {
   PageTxt[i] = fs.readFileSync(txt_files[i], encode);
   PageCss[i] = fs.readFileSync(css_files[i], encode);
-  if (i!=0 && i!=3 && i!=4 && i!=6){
+  //if (i!=0 && i!=3 && i!=4 && i!=6){
+  if (i!=3 && i!=4 && i!=6){
     PageJs[i] = fs.readFileSync(js_files[i], encode);
   }
   /*
