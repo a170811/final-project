@@ -30,6 +30,7 @@ html {
 }
 
 body {
+    position : relative ;
     background-image : url('./../Picture/bg.svg') ;
     background-repeat : no-repeat ;
     background-size : cover ;
@@ -43,7 +44,7 @@ body div {
 #arrow {
     position : absolute ;
     width : 3vh ;
-    top : 4vh ;
+    top : 3vh ;
     left : 4vh ;
 }
 
