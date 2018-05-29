@@ -42,12 +42,30 @@ body div {
 
 #arrow {
     position : absolute ;
-    width : 10vw ;
-    top : 10vw ;
-    left : 10vw ;
+    width : 3vh ;
+    top : 4vh ;
+    left : 4vh ;
 }
 
-h2{
+#show_text {
+    position : absolute ;
+    left : 50% ;
+    transform : translateX(-50%) ;
+    top : 14vh ;
+    height : 20vh ;
+    width :100% ;
+    text-align : center ;
+    color : red ;
+    opacity : 0 ;
+}
+
+#show_text > h1 {
+    width : 100% ;
+}
+
+
+
+#title > span{
     position : relative ;
     border : 0px solid #999 ;
     border-radius : 5vh ;
@@ -56,40 +74,41 @@ h2{
     display : inline-block ;
     text-align: center;
     margin-top : 5vh ;
-    width : 22vh ;
+    width : 20vh ;  
     font-size: 1.6rem ;
 }
 
-#whale {
+#whale_container {
     display: inline-block ;
     width: 45vh;
     height :45vh ;
     top : 20vh ;
 }
 
-#whale > button {
+#whale_container > button {
     bottom : 5vh ;
 	left: 50% ;
 	transform : translateX(-50%) ;
 }
 
-#whale > img{
+.whale {
      display: inline-block;
-     position : relative ;
-     top : 5vh ;
+     position : absolute  ;
+     bottom : 40% ;
+     transform : translateX(-50%) ;
      width : 80% ;
 }
 
 .board {
     position : absolute ;
     left:50% ;
-    top : 2vh ; 
+    top : 4vh ; 
     transform: translateX(-50%) ;
     display: flex ;
     flex-direction : column ;
     
-    width : 42vh ;
-    height : 38vh ;
+    width : 40vh ;
+    height : 34vh ;
     background-color : rgb(255,255,255) ;
     visibility : hidden ;
 }
@@ -114,9 +133,9 @@ h2{
 .drip {
     position:absolute ;
     display : inline-block ;
-    width : 10vh ;
-    height : 12vh ;
-    top : 3vh ;
+    width : 7vh ;
+    height : 9vh ;
+    top : 4vh ;
     outline : none ;
     border : 0px solid red ;
 }
@@ -149,42 +168,31 @@ h2{
     background-position: center ;
 }
 
-.drip > img {
-    display : block ;
-    position : absolute ;
-    left : 50% ;
-    top : 0 ;
-    transform : translateX(-50%) ;
-    width : 12vh ;
-}
-
-#b2 > img {
-    clip: rect( 6vh , 12vh , 20vh , 0vh ) ;
-}
-
 .drip > span {
     position : absolute ;
-    font-size: 1.2rem ;
+    font-size: 1rem ;
 	left : 50% ;
 	transform : translateX(-50%) ;
-    top : 100% ;
+    top : 105% ;
 }
 
 .check {
     display : inline-block ;
     width : 15vh ;
     font-size: 1.2rem ;
-	bottom : 4vh ;
+	bottom : 3vh ;
 }
 
 .check:first-of-type {
-	left:30% ;
+	left:28% ;
 	transform : translateX(-50%) ;
 }
 .check:last-of-type {
-	left:70% ;
+    text-align : center ;
+	left:72% ;
 	transform : translateX(-50%) ;
 }
+
 
 
 
