@@ -6,7 +6,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 20059;
+const port = 10059;
 
 var data_file = './data.json';
 var data = require(data_file);
@@ -62,7 +62,7 @@ var js_files = [
   './MAIN/Daily_page/myscript.js',
   './MAIN/Record_page/calendar.js',
   './MAIN/Flooding_page/index.js',
-  './MAIN/Setup_page/index.js',
+  './MAIN/Setup_page/music.js',
   './MAIN/Aboutus/index.js',
   './MAIN/index.js'
 
@@ -75,7 +75,7 @@ for ( var  i=0; i < page_num; i++ ) {
   PageTxt[i] = fs.readFileSync(txt_files[i], encode);
   PageCss[i] = fs.readFileSync(css_files[i], encode);
   //if (i!=0 && i!=3 && i!=4 && i!=6){
-  if (i!=3 && i!=4 && i!=6){
+  if (i!=3 && i!=6){
     PageJs[i] = fs.readFileSync(js_files[i], encode);
   }
   /*
