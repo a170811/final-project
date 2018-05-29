@@ -42,9 +42,9 @@ body  div {
 
 #arrow {
     position : absolute ;
-    width : 10vw ;
-    top : 10vw ;
-    left : 10vw ;
+    width : 3vh ;
+    top : 4vh ;
+    left : 4vh ;
 }
 
 #title > span{
@@ -92,7 +92,7 @@ body  div {
     width : 40vh ;
     height : 38vh ;
     background-color : rgb(255,255,255) ;
-    /*visibility : hidden ;*/
+    visibility : hidden ;
 }
 
 .board > div:first-of-type {
