@@ -54,7 +54,7 @@ function switch_whale( a ) {
     }
 } 
 
-$.get("data.txt" , function(data){
+$.get("../Daily_page/data.txt" , function(data){
     var day = JSON.parse(data) ;
     var d = new Date() ;
     if(amount == 0 ) {
