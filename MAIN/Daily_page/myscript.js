@@ -19,13 +19,12 @@ function click_comfirm() {
     if(count!=0) {
 
         amount = count ;
-        alert("you drink "+count.toFixed(1)*1000+" c.c. water") ;
+        show_text(count) ;
         count = 0 ;
         document.getElementById("count").innerHTML = count ;
         var board = document.getElementsByClassName('board') ;
         board[0].style.visibility = 'hidden' ;
         board[0].disabled = false ;
-        //document.getElementById("whale").setAttribute('src' , './../Picture/whale.svg') ;
         switch_whale(1) ;
     }
 } 
@@ -66,3 +65,11 @@ $.get("data.txt" , function(data){
     }
 }) ;
 
+function show_text( show ) {
+    var div_text = $("#show_text") ;
+    show *=1000 ;
+    $( "#show_text > h1" ).html( "you drink " + show.toFixed(0) + "c.c. water" ) ;
+    $( div_text ).animate( {opacity : 1 } , 800 , function(){
+        $(div_text).animate( { opacity : 0} , 100 ) ;
+    } ) ;
+}
