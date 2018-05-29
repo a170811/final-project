@@ -16,14 +16,18 @@ function click_cancel() {
 }
 
 function click_comfirm() {
-    amount = count ;
-    alert("you drink "+count.toFixed(1)*1000+" c.c. water") ;
-    count = 0 ;
-    document.getElementById("count").innerHTML = count ;
-    var board = document.getElementsByClassName('board') ;
-    board[0].style.visibility = 'hidden' ;
-    board[0].disabled = false ;
-    
+    if(count!=0) {
+
+        amount = count ;
+        alert("you drink "+count.toFixed(1)*1000+" c.c. water") ;
+        count = 0 ;
+        document.getElementById("count").innerHTML = count ;
+        var board = document.getElementsByClassName('board') ;
+        board[0].style.visibility = 'hidden' ;
+        board[0].disabled = false ;
+        //document.getElementById("whale").setAttribute('src' , './../Picture/whale.svg') ;
+        switch_whale(1) ;
+    }
 } 
 
 function b1() {
@@ -39,6 +43,17 @@ function b3() {
     document.getElementById("count").innerHTML = count.toFixed(1) ;
 }
 
+function switch_whale( a ) {
+    if(a==1) {
+        $(".whale:last-of-type").animate( {opacity : 1 },2000 ) ;
+        $(".whale:first-of-type").animate( {opacity : 0 } , 1200 ) ;
+
+    }
+    else if(a==0) {
+        $(".whale:last-of-type").animate( {opacity : 0 } , 1200 ) ;
+        $(".whale:first-of-type").animate( {opacity : 1 } , 2000 ) ;
+    }
+} 
 
 $.get("data.txt" , function(data){
     var day = JSON.parse(data) ;
@@ -46,7 +61,7 @@ $.get("data.txt" , function(data){
     if(amount == 0 ) {
         var n = d.getDate() ;
         if(day[n-1] == 0 && day[n-2] == 0) {
-            document.getElementById("whale").setAttribute('src' , './../Picture/whale-bone.svg') ;
+            switch_whale(0) ;
         }
     }
 }) ;
