@@ -6,13 +6,15 @@
   height: 100vh;
   width: 100vw;
   
-  1background: lightblue;
+  1background: url("../Picture/bg-2.svg");
+  1background-repeat: no-repeat;
+  1background-size: 100vw;
 }
 
 
-#BG_picture {
-  position: relative;
-  bottom: 0;
+#BG_pIcture1111{
+  position: absolute;
+  bottom: 0vh;
   left: 0;
   width: 100vw;
   1height: 100vh;
@@ -20,107 +22,114 @@
 }
 
 .JUMP {
-  position: fixed;
-  width: 20vw;
-  height: 20vw;
+  position: absolute;
+  1width3: 10vw;
+  1height3: 10vw;
   1border-radius: 50%;
 }
 
 #Daily {
   1background: blue;
-  top: 10vh;
+  bottom: 21vh;
   left: 10vw;
 }
 
 #Daily_bg {
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
+  position: absolute;
+  width: 30vw;
+  bottom: 0px;
+  left: 0px;
 }
 
 #Daily_shadow {
   position: relative;
-  width: 100%;
-  top: 0;
-  left: 10px;
+  width: 30vw;
+  bottom: -1vh;
+  left: 1.5vw;
+  opacity: 1;
 }
 
 #Flooding {
   1background: green;
-  top: 25vh;
-  left: 20vw;
+  bottom: 30vh;
+  right: 11vw;
 }
 
 #Flooding_bg {
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
+  position: absolute;
+  width: 20vw;
+  bottom: 0;
+  right: 0;
 }
 
 #Flooding_shadow {
   position: relative;
-  width: 100%;
-  top: 0;
-  left: 10px;
+  width: 20vw;
+  bottom: -1vh;
+  left: 1vw;
+  opacity: 1;
 }
 
 #Record {
   1background: yellow;
-  top: 40vh;
-  left: 30vw;
+  bottom: 60vh;
+  right: 30vw;
 }
 
 #Record_bg {
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
+  position: absolute;
+  width: 25vw;
+  bottom: 0;
+  right: 0;
 }
 
 #Record_shadow {
   position: relative;
-  width: 100%;
-  top: 0;
-  left: 10px;
+  width: 25vw;
+  bottom: -0.8vh;
+  left: 1vw;
+  opacity: 1;
 }
 
 #AboutUS {
   1background: orange;
   bottom: 20vh;
-  left: 10vw;
+  left: 40vw;
 }
 
 #AboutUS_bg {
   position: relative;
-  width: 100%;
+  position: absolute;
+  width: 15vh;
   top: 0;
   left: 0;
 }
 
 #Setup {
+  position: fixed;
   1background: purple;
-  top: 70vh;
-  left: 50vw;
+  bottom: 5vh;
+  left: 10vw;
 }
 
 #Setup_bg {
-  position: relative;
-  width: 100%;
-  top: 0;
+  position: absolute;
+  width: 10vw;
+  bottom: 0;
   left: 0;
 }
 
 #Share {
   1background: purple;
-  bottom: 10vh;
-  left: 50vw;
+  position: fixed;
+  bottom: 5vh;
+  right: 10vw;
 }
 
 #Share_bg {
   position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
+  position: absolute;
+  width: 10vw;
+  bottom: 0;
+  right: 0;
 }

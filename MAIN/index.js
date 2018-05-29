@@ -220,7 +220,7 @@ function JumpPage(pageNum) {
       $("#cover").addClass("cover");
       $("#PS").text('Loading...');
     }
-  }, 2000);
+  }, 500);
 }
 
 

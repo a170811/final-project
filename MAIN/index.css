@@ -41,8 +41,8 @@ body {
 
 #BG_picture {
   position: fixed;
-  top: -10vh;
-  left: 0;
+  top: 0vh;
+  left: 0vw;
   width: 100vw;
   1height: 100vh;
   z-index: -4;
