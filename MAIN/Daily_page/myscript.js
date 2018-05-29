@@ -59,7 +59,7 @@ $.get("data.txt" , function(data){
     var d = new Date() ;
     if(amount == 0 ) {
         var n = d.getDate() ;
-        if(day[n-1] == 0 && day[n-2] == 0) {
+        if(day[n-1] == 0 ) {
             switch_whale(0) ;
         }
     }
