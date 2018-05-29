@@ -51,15 +51,15 @@ body div {
     position : absolute ;
     left : 50% ;
     transform : translateX(-50%) ;
-    top : 14vh ;
+    top : 20vh ;
     height : 20vh ;
     width :100% ;
     text-align : center ;
-    color : red ;
+    color : white ;
     opacity : 0 ;
 }
 
-#show_text > h1 {
+#show_text > h2 {
     width : 100% ;
 }
 
