@@ -20,7 +20,7 @@ body{
 	border-color: gray;
 	border-radius:8vw;
 	width:80vw;
-	height:90vw;
+	height:100vw;
 	background:rgba(255, 255, 255, 0.85);
 	box-shadow:0px 1px 1px rgba(0,0,0,0.1);
 }
@@ -107,6 +107,6 @@ body{
 	display:block;
 	box-sizing:border-box;
 	text-align:center;
-	left:45vw;
-	top:85vw;
+	left:43vw;
+	top:108vw;
 }
