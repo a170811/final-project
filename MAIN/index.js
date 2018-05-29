@@ -178,7 +178,7 @@ function JumpPage(pageNum) {
         if ( pageNum==2 ) {
           $("#prevIcon").addClass("showGoHome2");
         }
-        else if( pageNum!=0 && pageNum!=5 ) {
+        else if( pageNum!=0 && pageNum!=1 && pageNum!=5 ) {
           $("#prevIcon").addClass("showGoHome");
         }
         else {
