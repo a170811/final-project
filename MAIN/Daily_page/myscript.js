@@ -68,8 +68,8 @@ $.get("data.txt" , function(data){
 function show_text( show ) {
     var div_text = $("#show_text") ;
     show *=1000 ;
-    $( "#show_text > h1" ).html( "you drink " + show.toFixed(0) + "c.c. water" ) ;
-    $( div_text ).animate( {opacity : 1 } , 800 , function(){
-        $(div_text).animate( { opacity : 0} , 100 ) ;
+    $( "#show_text > h2" ).html( "you drink " + show.toFixed(0) + "c.c. water" ) ;
+    $( div_text ).animate( {opacity : 1 } , 1200 , function(){
+        $(div_text).animate( { opacity : 0} , 200 ) ;
     } ) ;
 }
