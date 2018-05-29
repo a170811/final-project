@@ -35,7 +35,7 @@ body {
     background-size : cover ;
 }
 
-body div {
+body  div {
     position : relative ;
     text-align : center ;
 }
@@ -47,7 +47,7 @@ body div {
     left : 10vw ;
 }
 
-h2{
+#title > span{
     position : relative ;
     border : 0px solid #999 ;
     border-radius : 5vh ;
@@ -56,7 +56,7 @@ h2{
     display : inline-block ;
     text-align: center;
     margin-top : 5vh ;
-    width : 22vh ;
+    width : 20vh ;  
     font-size: 1.6rem ;
 }
 
@@ -89,10 +89,10 @@ h2{
     display: flex ;
     flex-direction : column ;
     
-    width : 42vh ;
+    width : 40vh ;
     height : 38vh ;
     background-color : rgb(255,255,255) ;
-    visibility : hidden ;
+    /*visibility : hidden ;*/
 }
 
 .board > div:first-of-type {
@@ -115,9 +115,9 @@ h2{
 .drip {
     position:absolute ;
     display : inline-block ;
-    width : 10vh ;
-    height : 12vh ;
-    top : 3vh ;
+    width : 7vh ;
+    height : 9vh ;
+    top : 4vh ;
     outline : none ;
     border : 0px solid red ;
 }
@@ -150,25 +150,12 @@ h2{
     background-position: center ;
 }
 
-.drip > img {
-    display : block ;
-    position : absolute ;
-    left : 50% ;
-    top : 0 ;
-    transform : translateX(-50%) ;
-    width : 12vh ;
-}
-
-#b2 > img {
-    clip: rect( 6vh , 12vh , 20vh , 0vh ) ;
-}
-
 .drip > span {
     position : absolute ;
-    font-size: 1.2rem ;
+    font-size: 1rem ;
 	left : 50% ;
 	transform : translateX(-50%) ;
-    top : 100% ;
+    top : 105% ;
 }
 
 .check {
@@ -179,13 +166,15 @@ h2{
 }
 
 .check:first-of-type {
-	left:30% ;
+	left:28% ;
 	transform : translateX(-50%) ;
 }
 .check:last-of-type {
-	left:70% ;
+    text-align : center ;
+	left:72% ;
 	transform : translateX(-50%) ;
 }
+
 
 
 
