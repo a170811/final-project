@@ -161,11 +161,13 @@ function JumpPage(pageNum) {
     url: '/jump_to',
     success: function(data) {
       success = 1;
+      $("#UNIQUE").clearQueue();
+      //$("#prevIcon").clearQueue();
       $("#UNIQUE").animate({
         opacity: '0'
-      }, 1000);
-      $("#prevIcon").fadeOut(1000);
+      }, 500);
       $("#UNIQUE").queue(function() {
+      $("#prevIcon").fadeOut(500);
         $("#UNIQUE").html(data);
         $(this).dequeue();
       });
@@ -184,8 +186,8 @@ function JumpPage(pageNum) {
         }
         $("#UNIQUE").animate({
           opacity: '1'
-        }, 1000);
-        $("#prevIcon").fadeIn(1000);
+        }, 500);
+        $("#prevIcon").fadeIn(500);
         $("#UNIQUE").dequeue();
       });
         
@@ -220,7 +222,7 @@ function JumpPage(pageNum) {
       $("#cover").addClass("cover");
       $("#PS").text('Loading...');
     }
-  }, 2000);
+  }, 500);
 }
 
 
