@@ -30,5 +30,5 @@ $(document).on('touchend mouseup', ".JUMP", function() {
     }
     
     //$(this).find(".front").css({"bottom": "0px","left": "0px"});
-    console.log(this);
+    //console.log(this);
 });
