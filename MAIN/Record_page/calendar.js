@@ -82,7 +82,7 @@ function refreshDate(){//重新獲取這個月的日曆
 			}
 			document.getElementById(clcword).style.border = "0.05vw solid red";//點的日子加框框
 			var clcdaynum =clcword.match(/\d+/g);//取出clcword數值部分
-			show.innerHTML =daily[clcdaynum]*100+"%";//顯示喝水百分比
+			show.innerHTML =(daily[clcdaynum]*100).toFixed(2)+"%";// 
 		}
 	}
 }
