@@ -1,11 +1,8 @@
 {
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3"
   "name": "final-project",
   "version": "1.0.0",
   "description": "",
-  "main": "Daily_server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -14,16 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/a170811/final-project.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/a170811/final-project/issues"
   },
-  "homepage": "https://github.com/a170811/final-project#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "fs": "0.0.1-security",
-    "http": "0.0.0"
-  }
+  "homepage": "https://github.com/a170811/final-project#readme"
 }

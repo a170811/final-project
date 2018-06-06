@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 
 const express = require('express');
-const http = require('http');
+const https = require('https');
 const fs = require('fs');
-const bodyParser = require('body-parser');
-
 const app = express();
 const port = 10059;
 
+const options = 
+{
+    ca: fs.readFileSync('/home/uidd2018/ssl/ca_bundle.crt'),
+    cert: fs.readFileSync('/home/uidd2018/ssl/certificate.crt'),
+    key: fs.readFileSync('/home/uidd2018/ssl/private.key')
+}
+https.createServer(options, app).listen(port, () => console.log(`listen on port:`+ port));
+const bodyParser = require('body-parser');
 var data_file = './data.json';
 var data = require(data_file);
 
@@ -177,7 +183,7 @@ function packUp( chosen ) {
 
 
 //----let user know which port is using----//
-app.listen(port, () => {
+/*app.listen(port, () => {
   console.log( `listening on port: ${port}` )
-});
+});*/
 
