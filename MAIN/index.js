@@ -283,14 +283,12 @@ function statusChangeCallback(response) {
 	
 	if(response.status === 'connected'){
 		console.log('connected');
-    JumpPage(0);
 	}
 	else{
 		console.log('user not authorized');
 	}
 		
 }
-
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
@@ -305,14 +303,29 @@ window.fbAsyncInit = function() {
     version: 'v2.8'
   });
   
-  FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
+ // FB.getLoginStatus(function(response) {
+ //     statusChangeCallback(response);
+ //   });
 	
     FB.Event.subscribe('auth.authResponseChange', function(response){
         if (response.status === 'connected'){
+  JumpPage(0);
 	console.log('authResponse changed to connected');
-	//window.top.location = 'Home/';
+  console.log(response.authResponse.accessToken); 
+  console.log(response.authResponse.userID);
+  document.getElementById('music').play();
+  //console.log(response.authReaponse.use)
+ FB.api('/me', function(response){
+       console.log(response.name);
+       //console.log(response);
+    }
+  );
+ FB.api('/me?fields=name,email,picture', function(response){
+       console.log(response);
+       //console.log(response.data);
+    }
+  );
+ //window.top.location = 'Home/';
   }
 });
 
@@ -338,6 +351,15 @@ function login() {
 	FB.login(function(response) {
 	// handle the response
 	statusChangeCallback(response);
+  document.getElementById('music').play();
+  document.getElementById('music').loop = true;
+  //console.log(response.authReaponse.use)
     console.log("Response goes here!");
-	}, {scope: 'public_profile,email'});            
+      if (response.authResponse) {
+                  //同意授權並且登入執行這段
+                  }
+      else { 
+        alert("須同意應用程式才能進入此頁面");//不同意此應用程式
+      }
+	}, {scope: 'email'});            
 }
