@@ -6,7 +6,7 @@ var ready_flag = 0;
 
 //---- start the function when web start ----//
 $(document).ready(function () {
-
+/*
   //--------- LOGIN Function ---------//
     //$("#Login_block").hide();
     //$("#Login_block :input").attr('disabled','disabled');;
@@ -31,8 +31,8 @@ $(document).ready(function () {
     });
     $("#cover").addClass("cover");
     $("#PS").text('Loading...');
-  });
-
+  }); 
+*/
   //-------- JUMP Function --------//
   /*
   $(".JUMP").click(function() {//all class in html
@@ -112,10 +112,10 @@ function checkHandler(){
     if(status){   
       //$("#refresh").text("online");   
       ready_flag = 1;
-      JumpPage(0);
+      //JumpPage(0);
 
 
-      /*
+      
       var pageNum = 0;
       $.ajax({
       method: "POST",
@@ -138,10 +138,11 @@ function checkHandler(){
         }
         //$('body').html(data);
       }
+      });
       $("#cover").addClass("cover");
       $("#PS").text('Loading...');
 
-      */
+      
     }else{   
       //$("#refresh").text("offline");
       $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "39vh", "left": "15vw", "width": "70vw","height":"16vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
@@ -258,3 +259,85 @@ function checkHandler(){
     }   
 }
 */
+
+//
+
+
+
+
+//FB
+
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}
+(document, 'script', 'facebook-jssdk'));
+
+
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+	
+	if(response.status === 'connected'){
+		console.log('connected');
+    JumpPage(0);
+	}
+	else{
+		console.log('user not authorized');
+	}
+		
+}
+
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+}
+  
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: '171183780224399',
+	cookie: true,
+    xfbml: true,
+    version: 'v2.8'
+  });
+  
+  FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+	
+    FB.Event.subscribe('auth.authResponseChange', function(response){
+        if (response.status === 'connected'){
+	console.log('authResponse changed to connected');
+	//window.top.location = 'Home/';
+  }
+});
+
+	
+	
+  //get friends
+  /*FB.api('/me/friends?limit=99',function(response){
+	var result_holder = document.getElementById('friend_list');
+	var friend_data = response.data.sort(sortMethod);
+	var results = '';
+	for(var i = 0; i< friend_data.length; i++){
+		result += '<div><img src="https://graph.facebook.com/' + friend_data[i].id + '/picture">' +'</div';
+	}
+	
+	//display friends
+	result_holder.innerHTML = results;
+	});*/
+};
+
+
+
+function login() {
+	FB.login(function(response) {
+	// handle the response
+	statusChangeCallback(response);
+    console.log("Response goes here!");
+	}, {scope: 'public_profile,email'});            
+}
