@@ -312,16 +312,16 @@ window.fbAsyncInit = function() {
   JumpPage(0);
 	console.log('authResponse changed to connected');
   console.log(response.authResponse.accessToken); 
-  console.log(response.authResponse.userID);
-  document.getElementById('music').play();
+  console.log(response.authResponse.userID);//id
   //console.log(response.authReaponse.use)
  FB.api('/me', function(response){
-       console.log(response.name);
+       console.log(response.name);//name
        //console.log(response);
     }
   );
- FB.api('/me?fields=name,email,picture', function(response){
+ FB.api('/me?fields=friends,name,email,picture', function(response){
        console.log(response);
+       console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
        //console.log(response.data);
     }
   );
@@ -361,5 +361,5 @@ function login() {
       else { 
         alert("須同意應用程式才能進入此頁面");//不同意此應用程式
       }
-	}, {scope: 'email'});            
+	}, {scope: ['user_friends','email']});            
 }
