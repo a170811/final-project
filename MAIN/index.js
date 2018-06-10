@@ -345,7 +345,12 @@ window.fbAsyncInit = function() {
 	});*/
 };
 
-
+function logout(){
+  FB.logout(function(response) {
+    window.top.location = '';
+    console.log("user logout!");
+  });
+}
 
 function login() {
 	FB.login(function(response) {
