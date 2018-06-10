@@ -1,5 +1,6 @@
 
-  <img id="BG_Setup" src="../Setup_page/bg.svg">
+    <img id="BG_Setup" src="../Setup_page/bg.svg">
+    <div id="hellouser"></div>
 	<div class="slidecontainer">
 	Volume:
 	<input ontouchmove="moveFunction()" type="range" min="0" max="100" value="100" class="slider" id="volrange">
