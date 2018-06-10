@@ -1,0 +1,16 @@
+
+    <img id="BG_Setup" src="../Setup_page/bg.svg">
+    <div id="hellouser"></div>
+	<div class="slidecontainer">
+	Volume:
+	<input ontouchmove="moveFunction()" type="range" min="0" max="100" value="100" class="slider" id="volrange">
+</div>
+<button type="button" onclick="logout()">登出</button>
+<!--	<div id="gender">User Gender:
+	</div>
+	<label class="button">
+  <input type="checkbox">
+  <span></span>
+  <span></span>
+  <span></span>
+</label> -->

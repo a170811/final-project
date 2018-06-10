@@ -1,0 +1,122 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  background: url("../Aboutus/bg.svg");
+  background-size: cover ;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+#whale1{
+  width: 40vw ;
+  position : relative ;
+  top : 7vw ;
+  right : -90vw ;
+}
+#whale2{
+  width: 40vw ;
+  position : relative ;
+  top : 7vw ;
+  right : -90vw ;
+}
+html {
+  font-size: 65% ;
+}
+
+#page_name {
+  width: 60vw;
+  height: 7vh;
+  font: 7vh arial;
+  /*height: 5vw;*/
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: -3vh;
+  left: 20vw;
+  z-index:2;
+  
+}
+
+#arrow {
+  position: absolute;
+  top: 1vh;
+  left: -10vw;
+  width: 4vh;
+  /*height: 7vh;*/
+  z-index:2;
+
+}
+
+#intro {
+  position: absolute;
+  top: 1vh;
+  right: -10vw;
+  width: 6vh;
+  z-index:2;
+  /*height: 7vh;*/
+
+}
+
+.contain {
+    position : absolute ;
+    top : 0px ;
+    width : 100vw ;
+    height : 100vh ; 
+    z-index : 4 ;
+
+}
+
+.cover1 {
+    position : fixed ;
+    top : 0px ;
+    left: -5vw;
+    width : 110vw ;
+    height : 110vh ; 
+    z-index : 3 ;
+    background : rgba(0,0,0,0.6) ;
+  
+}
+
+.board {
+    position : relative ;
+    box-sizing : border-box ;
+    padding : 3vw ;
+    padding-bottom : 5vw ;
+    border : 2px  ;
+    border-radius : 3vw ;
+    top : 50% ;
+    transform : translateY(-50%) ;
+    width : 80vw ;
+    
+    max-height : 80vh ;
+    margin : 0 auto ;
+    background : rgba(0,0,0,0.8) ;
+    text-align : center ;
+    font-size : 2rem ;
+    font-family: arial;
+    color : rgb(255,255,255) ;
+    overflow : auto ;
+    z-index : 4 ;
+}
+
+.board p {
+    text-indent : 2em ;
+}
+
+.shadow {
+    background : #333333 ;
+    opacity : 0.5 ;
+}
+@media screen and (min-width: 780px) {
+  #page_name {
+    font: 5vw arial;
+  }
+  #arrow {
+    left: -3vw;
+    width: 7vh;
+  }
+  #intro {
+    right: -3vw;
+    width: 10vh;
+  }
+}

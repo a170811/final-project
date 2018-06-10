@@ -1,0 +1,23 @@
+<div id="BACKGROUND">
+
+  <img id="Icon" src="../Picture/logo.svg">
+  <img id="Word" src="../Picture/word.svg">
+  <img id="BG_picture" src="../Picture/start-bg.svg">
+</div>
+
+<!--   login    --> 
+<div id="Login_block">
+  <form id="Login">
+    <input id="user" type="text" name="user" placeholder="User Name"><br>
+    <input id="password" type="text" name="password" placeholder="Password"><br>
+    <button id="submit" type="submit">Login</button> 
+  </form>
+</div>
+    
+    
+    
+<!-- --> 
+<div id="refresh">
+  <h1 id="PS"></h1>
+</div>
+

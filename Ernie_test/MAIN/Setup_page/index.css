@@ -1,0 +1,157 @@
+.slidecontainer {
+	height:5vh;
+	margin: 15vh 0 0 10vw;
+	font-size:5vw;
+	font-weight:800;
+}
+#BG_Setup{
+  position: absolute;
+  bottom: 0vh;
+  left: 0;
+  width: 100vw;
+  lheight: 100vh;
+  z-index: -4;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 55vw; /* Full-width */
+    height: 2.5vw; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+	margin-left:3vw;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 8vw; /* Set a specific slider handle width */
+    height: 8vw; /* Slider handle height */
+    background-image: url(../Setup_page/logo.svg); /* Green background */
+    cursor: pointer; /* Cursor on hover 	*/
+}
+
+.slider::-moz-range-thumb {
+    width: 5vw; /* Set a specific slider handle width */
+    height: 5vw; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+#gender{
+	font-size:5vw;
+	font-weight:800;
+	 position: absolute;
+	top: 33vh;
+	left: 11vw;
+}
+
+.button {
+  display: block;
+  position: absolute;
+  width: 36vw;
+  height: 12vw;
+  top: 35vh;
+  left: 70vw;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: -webkit-linear-gradient(top, #11181f 0%, #161f29 100%);
+  background: linear-gradient(to bottom, #11181f 0%, #161f29 100%);
+  border-radius: 6vw;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.button span {
+  position: absolute;
+  display: block;
+}
+.button span:first-of-type {
+  z-index: 100;
+  top: 0.6vw;
+  right: 0.6vw;
+  width: 21vw;
+  height: 10.8vw;
+  background: -webkit-linear-gradient(top, #2c3e50 0%, #1e2a36 100%);
+  background: linear-gradient(to bottom, #2c3e50 0%, #1e2a36 100%);
+  box-shadow: 0 6px 4px rgba(255, 255, 255, 0.1) inset, 0 2px 0px rgba(255, 255, 255, 0.2) inset, 0 -6px 0px rgba(0, 0, 0, 0.2) inset, 0 -2px 0px rgba(0, 0, 0, 0.2) inset, 0 2px 2px rgba(0, 0, 0, 0.4), -4px 2px 8px rgba(0, 0, 0, 0.4), 2px 0 1px rgba(242, 201, 197, 0.5) inset;
+  border-radius: 5.4vw;
+  -webkit-transition: right 400ms cubic-bezier(1, 0, 0, 1), box-shadow 400ms ease;
+          transition: right 400ms cubic-bezier(1, 0, 0, 1), box-shadow 400ms ease;
+}
+.button span:nth-last-of-type(-n+2) {
+  z-index: 10;
+  top: 0.6vw;
+  width: 17.4vw;
+  height: 10.8vw;
+  -webkit-transition: opacity 800ms ease 100ms;
+          transition: opacity 800ms ease 100ms;
+}
+.button span:nth-last-of-type(-n+2):after {
+  position: absolute;
+  top: 3.9vw;
+  line-height: 1;
+  font-family: "Open Sans";
+  font-weight: 800;
+  font-size: 4vw;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 20px #ffffff;
+}
+.button span:nth-of-type(2) {
+  left: 0.6vw;
+  background: -webkit-linear-gradient(top, #2b3cc0 0%, #485cd6 100%);
+  background: linear-gradient(to bottom, #312bc0 0%, #484cd6 100%);
+  border-top-left-radius: 5.4vw;
+  border-bottom-left-radius: 5.4vw;
+  box-shadow: 4px 4px 12px 4px rgba(0, 0, 0, 0.5) inset, 0 -2px 8px rgba(0, 0, 0, 0.4) inset;
+}
+.button span:nth-of-type(2):after {
+  content: "BOY";
+  left: 3.75vw;
+}
+.button span:last-of-type {
+  right: 0.6vw;
+  background: -webkit-linear-gradient(top, #cc2e91 0%, #e27ed6 100%);
+  background: linear-gradient(to bottom, #cc2e87 0%, #e27eaa 100%);
+  border-top-right-radius: 5.4vw;
+  border-bottom-right-radius: 5.4vw;
+  box-shadow: -4px 4px 12px 4px rgba(0, 0, 0, 0.5) inset, 0 -2px 8px rgba(0, 0, 0, 0.4) inset;
+  opacity: 0.2;
+}
+.button span:last-of-type:after {
+  content: "GIRL";
+  right: 3.75vw;
+}
+.button input[type="checkbox"] {
+  display: none;
+}
+.button input[type="checkbox"]:checked ~ span:first-of-type {
+  right: 14.4vw;
+  box-shadow: 0 6px 4px rgba(255, 255, 255, 0.1) inset, 0 2px 0px rgba(255, 255, 255, 0.2) inset, 0 -6px 0px rgba(0, 0, 0, 0.2) inset, 0 -2px 0px rgba(0, 0, 0, 0.2) inset, 0 2px 2px rgba(0, 0, 0, 0.4), 4px 2px 8px rgba(0, 0, 0, 0.4), -2px 0 1px rgba(209, 245, 224, 0.5) inset;
+}
+.button input[type="checkbox"]:checked ~ span:nth-of-type(2) {
+  opacity: 0.2;
+}
+.button input[type="checkbox"]:checked ~ span:last-of-type {
+  opacity: 1;
+}
+
