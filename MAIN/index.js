@@ -266,7 +266,7 @@ function checkHandler(){
 
 
 //FB
-
+var guestnum=1;
 (function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -350,6 +350,10 @@ function logout(){
     window.top.location = '';
     console.log("user logout!");
   });
+}
+function guest(){
+  JumpPage(0);
+  guestnum=0;
 }
 
 function login() {

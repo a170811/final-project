@@ -49,7 +49,7 @@
     cursor: pointer; /* Cursor on hover */
 }
 
-
+/*
 *,
 *:before,
 *:after {
@@ -154,4 +154,4 @@
 .button input[type="checkbox"]:checked ~ span:last-of-type {
   opacity: 1;
 }
-
+*/
