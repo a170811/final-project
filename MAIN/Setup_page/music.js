@@ -13,8 +13,16 @@ document.getElementById("volrange").ontouchend=function(){
 	document.getElementById("music").volume=vol; 
 }
 var username;
- FB.api('/me', function(response){
-   username=(response.name);
-   console.log(response.name);//name
-   document.getElementById("hellouser").innerHTML="親愛的"+username+"您好";
-});
+   // FB.Event.subscribe('auth.authResponseChange', function(response){
+        if (guestnum == 1){
+          FB.api('/me', function(response){
+            username=(response.name);
+            console.log(response.name);//name
+            document.getElementById("hellouser").innerHTML="親愛的"+username+"您好";
+          });
+        }
+        else{
+          username="guest";
+            document.getElementById("hellouser").innerHTML="親愛的"+username+"您好";
+        }
+     //     });
