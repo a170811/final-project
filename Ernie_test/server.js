@@ -6,6 +6,8 @@ const fs = require('fs');
 const app = express();
 const port = 10052;
 
+
+/*
 const options = 
 {
     ca: fs.readFileSync('/home/uidd2018/ssl/ca_bundle.crt'),
@@ -13,6 +15,49 @@ const options =
     key: fs.readFileSync('/home/uidd2018/ssl/private.key')
 }
 https.createServer(options, app).listen(port, () => console.log(`listen on port:`+ port));
+*/
+
+//-------------- Create Connection For Message ------------//
+
+
+
+const webpush = require('web-push');
+
+// VAPID keys should only be generated only once.
+const vapidKeys = webpush.generateVAPIDKeys();
+
+webpush.setGCMAPIKey('<Your GCM API Key Here>');
+webpush.setVapidDetails(
+  'mailto:Ernie-Wang@luffy.ee.ncku.edu.tw',
+  vapidKeys.publicKey,
+  vapidKeys.privateKey
+);
+
+
+var addressData = {
+  "1": {
+    "endpoint": "testEndpoint",
+    "auth": "testAuth",
+    "p256dh": "testP256dh"
+  }
+}
+
+function createConfig(i) => {
+  var pushConfig = {
+    endpoint: addressData[i][endpoint],
+    keys: {
+      auth: addressData[i][auth],
+      p256dh: addressData[i][p256dh]
+    }
+  };
+};
+
+for (var i=0; i<addressData.size(); i++) {
+  webpush.sendNotification(createConfig[i], JSON.stringify('Time to Drink Water');
+}
+
+
+//-------------- Setup post ----------//
 const bodyParser = require('body-parser');
 var data_file = './data.json';
 var data = require(data_file);
@@ -183,7 +228,7 @@ function packUp( chosen ) {
 
 
 //----let user know which port is using----//
-/*app.listen(port, () => {
+app.listen(port, () => {
   console.log( `listening on port: ${port}` )
-});*/
+});
 
