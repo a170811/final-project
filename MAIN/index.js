@@ -16,6 +16,9 @@ $(document).ready(function () {
         top: '-10.5vh',
         opacity: '0'
       }, 1000);
+      $("#loginbutton").animate({
+        top: '-3vh'
+      },1500);
       /*
   //--------- LOGIN Function ---------//
     //$("#Login_block").hide();
