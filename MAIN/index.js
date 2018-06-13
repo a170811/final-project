@@ -1,12 +1,25 @@
 var ready_flag = 0;
 
-
-
-
-
 //---- start the function when web start ----//
 $(document).ready(function () {
-/*
+
+ $("#Login_block").animate({
+        top: '54vh',
+        opacity: '1'
+      }, 1000);
+      $("#Login_block").prop("disabled",false);
+      $("#Icon").animate({
+        top: '-5.5vh',
+        opacity: '1'
+      }, 1000);
+      $("#Word").animate({
+        top: '-10.5vh',
+        opacity: '0'
+      }, 1000);
+      $("#loginbutton").animate({
+        top: '-3vh'
+      },1500);
+      /*
   //--------- LOGIN Function ---------//
     //$("#Login_block").hide();
     //$("#Login_block :input").attr('disabled','disabled');;
@@ -103,19 +116,16 @@ function checkOnLine(){
 
 
 
-
-
-
-
 function checkHandler(){   
     var status=navigator.onLine;   
     if(status){   
       //$("#refresh").text("online");   
       ready_flag = 1;
-      //JumpPage(0);
+      JumpPage(0);
+      console.log("imin");
 
 
-      
+      /*
       var pageNum = 0;
       $.ajax({
       method: "POST",
@@ -141,7 +151,7 @@ function checkHandler(){
       });
       $("#cover").addClass("cover");
       $("#PS").text('Loading...');
-
+*/
       
     }else{   
       //$("#refresh").text("offline");
@@ -266,7 +276,7 @@ function checkHandler(){
 
 
 //FB
-
+var guestnum=1;
 (function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -310,6 +320,7 @@ window.fbAsyncInit = function() {
     FB.Event.subscribe('auth.authResponseChange', function(response){
         if (response.status === 'connected'){
   JumpPage(0);
+
 	console.log('authResponse changed to connected');
   console.log(response.authResponse.accessToken); 
   console.log(response.authResponse.userID);//id
@@ -348,8 +359,14 @@ window.fbAsyncInit = function() {
 function logout(){
   FB.logout(function(response) {
     window.top.location = '';
-    console.log("user logout!");
   });
+}
+function guestlogout(){
+  window.top.location='';
+}
+function guest(){
+  JumpPage(0);
+  guestnum=0;
 }
 
 function login() {
@@ -366,5 +383,5 @@ function login() {
       else { 
         alert("須同意應用程式才能進入此頁面");//不同意此應用程式
       }
-	}, {scope: ['user_friends','email']});            
+	}, {scope: ['email']});            
 }

@@ -191,17 +191,21 @@ body {
     top: 20vh;
   }
 }
-
 #loginbutton{
   position:absolute;
   top:70%;
   background-repeat:no-repeat;
-  height:8vh;
+  height:14.5vw;
   width:60vw;
-  left:20%;
+  left:-10vw;
   background-image: url(../Picture/fb.png);
   background-size:100% 100%;
+  border-color:#0000;
+  background-color:#0000;
 }
-
-
-
+#guestbutton{
+  position:absolute;
+  top:15vh;
+  left:10vw;
+  background-size:100% 100%;
+}

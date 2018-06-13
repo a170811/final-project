@@ -187,3 +187,9 @@ function packUp( chosen ) {
   console.log( `listening on port: ${port}` )
 });*/
 
+
+//Setup Reminder
+const urlencodedParser=bodyParser.urlencoded({extended:true});
+app.post('/reminder_post',urlencodedParser,function(req,res){
+    res.send(`Hello`+req.body.time);
+})
