@@ -356,8 +356,10 @@ window.fbAsyncInit = function() {
 function logout(){
   FB.logout(function(response) {
     window.top.location = '';
-    console.log("user logout!");
   });
+}
+function guestlogout(){
+  window.top.location='';
 }
 function guest(){
   JumpPage(0);

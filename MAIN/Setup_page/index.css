@@ -12,7 +12,16 @@
   lheight: 100vh;
   z-index: -4;
 }
-
+#hellouser{
+  height:5vh;
+	margin: 15vh 0 0 12vw;
+	font-size:5vw;
+	font-weight:800;
+  letter-spacing:1vw;
+}
+#logout{
+  margin-left:10vw;
+}
 /* The slider itself */
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
