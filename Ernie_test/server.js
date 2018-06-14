@@ -52,7 +52,7 @@ function createConfig(i) {
   };
 };
 
-for (var i=0; i<addressData.size(); i++) {
+for (var i=0; i<addressData.length; i++) {
   webpush.sendNotification(createConfig[i], "Time to Drink Water");
 }
 
