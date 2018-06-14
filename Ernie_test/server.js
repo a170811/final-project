@@ -42,7 +42,7 @@ var addressData = {
   }
 }
 
-function createConfig(i) => {
+function createConfig(i) {
   var pushConfig = {
     endpoint: addressData[i][endpoint],
     keys: {
@@ -53,7 +53,7 @@ function createConfig(i) => {
 };
 
 for (var i=0; i<addressData.size(); i++) {
-  webpush.sendNotification(createConfig[i], JSON.stringify('Time to Drink Water');
+  webpush.sendNotification(createConfig[i], "Time to Drink Water");
 }
 
 
