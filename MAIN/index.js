@@ -1,4 +1,5 @@
 var ready_flag = 0;
+var Account_data ;
 
 //---- start the function when web start ----//
 $(document).ready(function () {
@@ -297,11 +298,10 @@ function statusChangeCallback(response) {
 	else{
 		console.log('user not authorized');
 	}
-		
 }
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+        statusChangeCallback(response);
     });
 }
   
@@ -317,27 +317,33 @@ window.fbAsyncInit = function() {
  //     statusChangeCallback(response);
  //   });
 	
-    FB.Event.subscribe('auth.authResponseChange', function(response){
-        if (response.status === 'connected'){
-  JumpPage(0);
+FB.Event.subscribe('auth.authResponseChange', function(response){
+    if (response.status === 'connected'){
+        JumpPage(0);
+        
+        console.log('authResponse changed to connected');
+        console.log(response.authResponse.accessToken); 
+        console.log(response.authResponse.userID);//id
+        var id = response.authResponse.userID;
+        //console.log(response.authReaponse.use)
+        FB.api('/me', function(response){
+            account_data( id , response.name ) ;
+            target_water( 100 ) ;
+            console.log(id) ;
+            console.log(response.name);//name
+            }
+        );
+        /*
+        FB.api('/me?fields=friends,name,email,picture', function(response){
+            console.log(response);
+            console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
+            //console.log(response.data);
+            }
+        );
+        */
 
-	console.log('authResponse changed to connected');
-  console.log(response.authResponse.accessToken); 
-  console.log(response.authResponse.userID);//id
-  //console.log(response.authReaponse.use)
- FB.api('/me', function(response){
-       console.log(response.name);//name
-       //console.log(response);
+        //window.top.location = 'Home/';
     }
-  );
- FB.api('/me?fields=friends,name,email,picture', function(response){
-       console.log(response);
-       console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
-       //console.log(response.data);
-    }
-  );
- //window.top.location = 'Home/';
-  }
 });
 
 	
@@ -371,17 +377,43 @@ function guest(){
 
 function login() {
 	FB.login(function(response) {
-	// handle the response
-	statusChangeCallback(response);
-  document.getElementById('music').play();
-  document.getElementById('music').loop = true;
-  //console.log(response.authReaponse.use)
-    console.log("Response goes here!");
-      if (response.authResponse) {
-                  //同意授權並且登入執行這段
-                  }
-      else { 
-        alert("須同意應用程式才能進入此頁面");//不同意此應用程式
-      }
+        // handle the response
+        statusChangeCallback(response);
+        document.getElementById('music').play();
+        document.getElementById('music').loop = true;
+        //console.log(response.authReaponse.use)
+        console.log("Response goes here!");
+        if (response.authResponse) {
+             //同意授權並且登入執行這段
+        }
+        else { 
+            alert("須同意應用程式才能進入此頁面");//不同意此應用程式
+        }
 	}, {scope: ['email']});            
+}
+
+//save account data
+function account_data( _id , _name ) {
+    $.post( "save_account_data" , {
+        _id : _id , 
+        _name : _name 
+        } , (data , status)=>{
+        Account_data = JSON.parse(data) ;
+        console.log(Account_data) ;
+        console.log(typeof Account_data) ;
+        }
+    ) ;
+}
+
+function target_water( _target ) {
+    console.log(Account_data) ;
+    console.log("end") ;
+    /*
+    $.post( "save_target_water" , (){
+        _target_water : _target
+        } , (data , status)=>{
+            Account_data.target = data ;
+        }
+    ) ;
+    */
 }

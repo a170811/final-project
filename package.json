@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/a170811/final-project/issues"
   },
-  "homepage": "https://github.com/a170811/final-project#readme"
+  "homepage": "https://github.com/a170811/final-project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "mysql": "^2.15.0"
+  }
 }

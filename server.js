@@ -19,6 +19,17 @@ var data = require(data_file);
 
 var encode = "utf8";
 
+var mysql = require("mysql") ;
+var con = mysql.createConnection({
+    host : 'localhost' ,
+    user : 'uidd2018_groupF' ,
+    password : 'group_f@uidd2018' ,
+    database : 'uidd2018_groupF'
+}) ;
+con.connect(function(err){
+    if (err) throw err ;
+}) ;
+
 
 //---- Page --> Number ----//
 //    Home      = 0
@@ -193,3 +204,35 @@ const urlencodedParser=bodyParser.urlencoded({extended:true});
 app.post('/reminder_post',urlencodedParser,function(req,res){
     res.send(`Hello`+req.body.time);
 })
+
+//--------------save login data------------------//
+app.post( "/save_account_data" ,( req , res )=>{
+    var _id = req.body._id ;
+    var _name = req.body._name ;
+    console.log(`ID:${_id} , name:${_name}`) ;
+    var sql = " SELECT * FROM data WHERE ID = " + _id ;
+    con.query( sql , (err , result)=>{
+        if (err) throw err ;
+        if ( result.length > 0 ) {
+            res.send(JSON.stringify(result[0])) ;
+        }
+        else {
+            var sql = `INSERT INTO data ( ID , name , target , today ) VALUES ( ${_id} , '${_name}' , 0 , 0 )` ;
+            con.query( sql , (err , result)=>{
+                if (err) throw err ;
+                res.send(JSON.stringify(result[0])) ;
+            }) ;
+        }
+    }) ;
+
+}) ; 
+
+app.post( "/save_target_water" , (req , res)=>{
+    var water = req.body._target_water ;
+    var sql = "UPDATE data SET target = ''"
+}) ;
+/*
+app.post("/getdata" , (reg , res)=>{
+
+}) ;
+*/
