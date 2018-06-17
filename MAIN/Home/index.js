@@ -1,5 +1,5 @@
 $(document).on('touchstart mousedown', ".JUMP", function() {
-    event.preventDefault();
+    //event.preventDefault();
         
     var pageNum = parseInt(this.dataset.pageadd);
     if( pageNum == 1){  //daily

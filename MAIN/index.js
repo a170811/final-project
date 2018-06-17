@@ -350,7 +350,7 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
             good() ;
             function good() {
                 setTimeout( function(){ 
-					drinking_water(300);
+                    target_water(2000) ;        
 					console.log(Account_data.ID) ;
 					console.log(Account_data.name);//name
 					console.log(Account_data.target) ;
@@ -427,7 +427,8 @@ function account_data( _id , _name ) {
         _id : _id , 
         _name : _name 
         } , (data , status)=>{
-        Account_data = JSON.parse(data) ;
+            Account_data = JSON.parse(data) ;
+            console.log("login "+status) ;
         }
     ) ;
 }

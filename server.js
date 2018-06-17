@@ -220,7 +220,13 @@ app.post( "/save_account_data" ,( req , res )=>{
             var sql = `INSERT INTO data ( ID , name , target , today ) VALUES ( ${_id} , '${_name}' , 0 , 0 )` ;
             con.query( sql , (err , result)=>{
                 if (err) throw err ;
-                res.send(JSON.stringify(result[0])) ;
+                console.log('success') ;
+
+                var sql = " SELECT * FROM data WHERE ID = " + _id ;
+                con.query( sql , (err , result)=>{
+                    if (err) throw err ;
+                        res.send(JSON.stringify(result[0])) ;
+                });
             }) ;
         }
     }) ;
