@@ -1,5 +1,6 @@
 var ready_flag = 0;
 var Account_data ;
+//Account_data (ID , name , target , today )
 
 //---- start the function when web start ----//
 $(document).ready(function () {
