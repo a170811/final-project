@@ -239,6 +239,7 @@ app.post( "/save_target_water" , (req , res)=>{
     var sql = `UPDATE data SET target = ${water} WHERE ID = ${_id} ` ;
     con.query( sql , (err , result )=>{
         if (err) throw err ;
+        res.send("success") ;
     }) ;
 }) ;
 
@@ -248,6 +249,7 @@ app.post( "/drinking_water" , (req , res)=>{
     var sql = `UPDATE data SET today = ${drinking_water} WHERE ID = ${_id} ` ;
     con.query( sql , (err , result )=>{
         if (err) throw err ;
+        res.send("success") ;
     }) ;
 }) ;
 

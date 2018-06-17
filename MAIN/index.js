@@ -346,11 +346,12 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 				}
 			)
 */
-            account_data( id , response.name ) ;
+            account_data( id , response.name , function(){
+                target_water(2000) ;        
+            }) ;
             good() ;
             function good() {
                 setTimeout( function(){ 
-                    target_water(2000) ;        
 					console.log(Account_data.ID) ;
 					console.log(Account_data.name);//name
 					console.log(Account_data.target) ;
@@ -420,7 +421,7 @@ function login() {
 //================================database=================================
 
 //save account data
-function account_data( _id , _name ) {
+function account_data( _id , _name , func ) {
 	var d = new Date() ;
 	//console.log( `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}-${d.getHours()}:${d.getMinutes()}` ) ;
     $.post( "save_account_data" , {
@@ -429,23 +430,34 @@ function account_data( _id , _name ) {
         } , (data , status)=>{
             Account_data = JSON.parse(data) ;
             console.log("login "+status) ;
+            if (typeof func == 'function')
+                func() ;
         }
     ) ;
 }
 
-function target_water( _target ) {
+function target_water( _target , func ) {
     Account_data.target = _target ;
     $.post( "save_target_water" , {
         _id : Account_data.ID , 
         _target_water : _target
+        } , (data,status)=>{
+            console.log(data) ;
+            if (typeof func == 'function')
+                func() ;
         }
     ) ;
 }
 
-function drinking_water( _amount ) {
+function drinking_water( _amount , func) {
 	Account_data.today += _amount ;
 	$.post( "drinking_water" , {
 		_id : Account_data.ID , 
 		_drinking_water : Account_data.today 
-	}) ;
+	}, (data,status)=>{
+        console.log(data) ;
+        if (typeof func == 'function')
+            func() ;
+        }
+    ) ;
 }

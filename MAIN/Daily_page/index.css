@@ -92,6 +92,10 @@ body div {
 	transform : translateX(-50%) ;
 }
 
+#whale_container > img:nth-of-type(2) {
+    clip : rect( 150px , auto , auto , auto ) ;
+}
+
 .whale {
      display: inline-block;
      position : absolute  ;
