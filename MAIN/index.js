@@ -327,13 +327,37 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
         var id = response.authResponse.userID;
         //console.log(response.authReaponse.use)
         FB.api('/me', function(response){
+/*
+			var testing = function(id) {
+				return new Promise(function(resolve , reject){
+            		account_data( id , response.name ) ;
+					resolve(Account_data) ;
+				}) ;
+			}
+			testing(id).then(function(value){
+				//target_water(100) ;
+				console.log(value) ;
+			}).then( function(value) {
+					console.log(Account_data.ID) ;
+					console.log(Account_data.name);//name
+					console.log(Account_data.target) ;
+					console(value) ;
+				}
+			)
+*/
             account_data( id , response.name ) ;
-            target_water( 100 ) ;
-            console.log(id) ;
-            console.log(response.name);//name
+            good() ;
+            function good() {
+                setTimeout( function(){ 
+					drinking_water(300);
+					console.log(Account_data.ID) ;
+					console.log(Account_data.name);//name
+					console.log(Account_data.target) ;
+					console.log(Account_data.today) ;
+				} , 3000) ;
             }
-        );
-        /*
+        });
+       /*
         FB.api('/me?fields=friends,name,email,picture', function(response){
             console.log(response);
             console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
@@ -392,28 +416,34 @@ function login() {
 	}, {scope: ['email']});            
 }
 
+//================================database=================================
+
 //save account data
 function account_data( _id , _name ) {
+	var d = new Date() ;
+	//console.log( `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}-${d.getHours()}:${d.getMinutes()}` ) ;
     $.post( "save_account_data" , {
         _id : _id , 
         _name : _name 
         } , (data , status)=>{
         Account_data = JSON.parse(data) ;
-        console.log(Account_data) ;
-        console.log(typeof Account_data) ;
         }
     ) ;
 }
 
 function target_water( _target ) {
-    console.log(Account_data) ;
-    console.log("end") ;
-    /*
-    $.post( "save_target_water" , (){
+    Account_data.target = _target ;
+    $.post( "save_target_water" , {
+        _id : Account_data.ID , 
         _target_water : _target
-        } , (data , status)=>{
-            Account_data.target = data ;
         }
     ) ;
-    */
+}
+
+function drinking_water( _amount ) {
+	Account_data.today += _amount ;
+	$.post( "drinking_water" , {
+		_id : Account_data.ID , 
+		_drinking_water : Account_data.today 
+	}) ;
 }

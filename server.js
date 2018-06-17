@@ -228,9 +228,23 @@ app.post( "/save_account_data" ,( req , res )=>{
 }) ; 
 
 app.post( "/save_target_water" , (req , res)=>{
+    var _id = req.body._id ;
     var water = req.body._target_water ;
-    var sql = "UPDATE data SET target = ''"
+    var sql = `UPDATE data SET target = ${water} WHERE ID = ${_id} ` ;
+    con.query( sql , (err , result )=>{
+        if (err) throw err ;
+    }) ;
 }) ;
+
+app.post( "/drinking_water" , (req , res)=>{
+    var _id = req.body._id ;
+    var drinking_water = req.body._drinking_water ;
+    var sql = `UPDATE data SET today = ${drinking_water} WHERE ID = ${_id} ` ;
+    con.query( sql , (err , result )=>{
+        if (err) throw err ;
+    }) ;
+}) ;
+
 /*
 app.post("/getdata" , (reg , res)=>{
 
