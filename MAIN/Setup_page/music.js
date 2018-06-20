@@ -13,12 +13,19 @@ document.getElementById("volrange").ontouchend=function(){
 	document.getElementById("music").volume=vol; 
 }
 var username;
+var temp="";
    // FB.Event.subscribe('auth.authResponseChange', function(response){
         if (guestnum == 1){
-          FB.api('/me', function(response){
+          FB.api('/me?fields=friends,name,email,picture', function(response){
             username=(response.name);
             console.log(response.name);//name
             document.getElementById("hellouser").innerHTML="親愛的"+username+'您好<button id="logout" type="button" onclick="logout()">登出</button>';
+            var frinum = (response.friends.data.length);
+            for(i=0;i<frinum;i++){
+              var friendid= response.friends.data[i].id;
+              temp+="<br>"+ (response.friends.data[i].name)+'<button type="button" onclick="steal('+friendid+')">偷水</button>';
+            }
+            document.getElementById("friendlist").innerHTML=temp;
           });
         }
         else{
@@ -41,3 +48,4 @@ $(document).ready(function(){
       })
   })
 })
+

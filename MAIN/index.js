@@ -359,14 +359,16 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 				} , 3000) ;
             }
         });
-       /*
+       
         FB.api('/me?fields=friends,name,email,picture', function(response){
-            console.log(response);
-            console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
-            //console.log(response.data);
+           // console.log("名字:"+response.friends.data[0].name);
+            //console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
+            console.log(response.friends.data[0]);
+           // console.log(response.friends.Array);
+            //console.log(response.friends.data.length);
             }
         );
-        */
+      
 
         //window.top.location = 'Home/';
     }
@@ -415,7 +417,7 @@ function login() {
         else { 
             alert("須同意應用程式才能進入此頁面");//不同意此應用程式
         }
-	}, {scope: ['email']});            
+	}, {scope: ['email','user_friends']});            
 }
 
 //================================database=================================
