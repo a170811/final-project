@@ -1,6 +1,6 @@
 var ready_flag = 0;
 var Account_data ;
-//Account_data (ID , name , target , today )
+//Account_data (ID , name , target , today , total )
 
 //---- start the function when web start ----//
 $(document).ready(function () {
@@ -350,12 +350,13 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
                 target_water(2000) ;        
             }) ;
             good() ;
+            console.log( date_string() ) ;
+            var str = "2018-2-19" ;
+            var arr = str.split("-") ;
+            arr.map( (s)=>{console.log(s+"  ") ;} ) ;
             function good() {
                 setTimeout( function(){ 
-					console.log(Account_data.ID) ;
-					console.log(Account_data.name);//name
-					console.log(Account_data.target) ;
-					console.log(Account_data.today) ;
+					console.log(Account_data) ;
 				} , 3000) ;
             }
         });
@@ -422,11 +423,11 @@ function login() {
 
 //save account data
 function account_data( _id , _name , func ) {
-	var d = new Date() ;
-	//console.log( `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}-${d.getHours()}:${d.getMinutes()}` ) ;
+
     $.post( "save_account_data" , {
         _id : _id , 
-        _name : _name 
+        _name : _name ,
+        _this_month : date_string() 
         } , (data , status)=>{
             Account_data = JSON.parse(data) ;
             console.log("login "+status) ;
@@ -440,7 +441,7 @@ function target_water( _target , func ) {
     Account_data.target = _target ;
     $.post( "save_target_water" , {
         _id : Account_data.ID , 
-        _target_water : _target
+        _target_water : _target 
         } , (data,status)=>{
             console.log(data) ;
             if (typeof func == 'function')
@@ -449,15 +450,44 @@ function target_water( _target , func ) {
     ) ;
 }
 
-function drinking_water( _amount , func) {
+function drinking_water( _amount , func ) {
 	Account_data.today += _amount ;
+    Account_data.total += _amount ;
+
 	$.post( "drinking_water" , {
 		_id : Account_data.ID , 
-		_drinking_water : Account_data.today 
+		_drinking_water : Account_data.today ,
+        _total_water : Account_data.total , 
+        _this_month : date_string() 
 	}, (data,status)=>{
         console.log(data) ;
         if (typeof func == 'function')
             func() ;
         }
     ) ;
+    month_water( (data)=>{
+        alert( data ) ;
+    }) ;
+}
+
+function month_water( func ) {
+    
+	$.post( "month_water" , {
+		_id : Account_data.ID , 
+        _this_month : date_string() 
+	}, (data,status)=>{
+        console.log(data) ;
+        if (typeof func == 'function')
+            func( data ) ;
+        }
+    ) ;
+
+}
+
+function date_string() {
+    var d = new Date() ;
+    var thisMonth = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}-` ;
+    d = new Date( d.getFullYear() , d.getMonth()+1 , 0 ) ;
+    thisMonth += d.getDate() ;
+    return thisMonth ;
 }

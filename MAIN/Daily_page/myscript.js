@@ -45,14 +45,16 @@ function b3() {
 
 function switch_whale( a ) {
     var whale = $("#whale_container > img:nth-of-type(2)") ;
-    var whale_height = whale.width()*0.62 ;
+    var whale_height = whale.width()*0.63 ;
     if(a==1) {
 
         var cul = ( 1-(Account_data.today/Account_data.target) )*whale_height ;
         if(cul<0) cul=0 ;
+        console.log("cul= " + cul) ;
         $(".whale:last-of-type").animate( {opacity : 1 },2000 ) ;
         $(".whale:first-of-type").animate( {opacity : 0 } , 1200 ) ;
         whale.css("clip" , `rect(${cul}px , auto , auto, auto )`) ;
+        //whale.animate( { clip : `rect(${cul}px , auto , auto, auto )` } , 1500 ) ;
 
     }
     else if(a==0) { //show bone

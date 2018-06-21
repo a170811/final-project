@@ -4,7 +4,7 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const app = express();
-const port = 10059;
+const port = 10058;
 
 const options = 
 {
@@ -209,23 +209,54 @@ app.post('/reminder_post',urlencodedParser,function(req,res){
 app.post( "/save_account_data" ,( req , res )=>{
     var _id = req.body._id ;
     var _name = req.body._name ;
-    console.log(`ID:${_id} , name:${_name}`) ;
+    var this_month = req.body._this_month ;
+    var today_date = this_month.split("-") ; //[year] [month] [date] [num_of_date]
+    console.log(`ID:${_id} , name:${_name} login`) ;
     var sql = " SELECT * FROM data WHERE ID = " + _id ;
     con.query( sql , (err , result)=>{
         if (err) throw err ;
         if ( result.length > 0 ) {
-            res.send(JSON.stringify(result[0])) ;
+            
+            sql = `SELECT water FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
+            con.query( sql , (err , result1)=>{
+                if (err) throw err ;
+                if ( result1[0]=="" ) {
+
+                    var array = new Array( parseInt(today_date[3]) ).fill(0) ;
+                    var input_string = array.join('-') ;
+                    sql = `INSERT INTO daily_water ( ID , year , month , water ) VALUES ( ${_id} , ${today_date[0]} , ${today_date[1]} , '${input_string}' )` ;
+                    con.query( sql , (err , result2)=>{
+                        if (err) throw err ;
+                        result[0].today = 0 ;
+                        res.send(JSON.stringify(result[0])) ;
+                    }) ;
+                    
+                }
+                else {
+                    var array = result1[0].water.split('-') ;
+                    result[0].today = parseInt(array[ parseInt(today_date[2])-1 ]) ;
+                    console.log( result[0] ) ;
+                    res.send(JSON.stringify( result[0] )) ;
+                }
+            }) ;
         }
         else {
-            var sql = `INSERT INTO data ( ID , name , target , today ) VALUES ( ${_id} , '${_name}' , 0 , 0 )` ;
+            var sql = `INSERT INTO data ( ID , name , target , total ) VALUES ( ${_id} , '${_name}' , 0 ,0 )` ;
             con.query( sql , (err , result)=>{
                 if (err) throw err ;
-                console.log('success') ;
 
-                var sql = " SELECT * FROM data WHERE ID = " + _id ;
+                var array = new Array( parseInt(today_date[3]) ).fill(0) ;
+                var input_string = array.join('-') ;
+                sql = `INSERT INTO daily_water ( ID , year , month , water ) VALUES ( ${_id} , ${today_date[0]} , ${today_date[1]} , '${input_string}' )` ;
+                con.query( sql , (err , result2)=>{
+                    if (err) throw err ;
+                }) ;
+
+                sql = " SELECT * FROM data WHERE ID = " + _id ;
                 con.query( sql , (err , result)=>{
                     if (err) throw err ;
-                        res.send(JSON.stringify(result[0])) ;
+                    result[0].today = 0 ;
+                    res.send(JSON.stringify(result[0])) ;
                 });
             }) ;
         }
@@ -246,15 +277,43 @@ app.post( "/save_target_water" , (req , res)=>{
 app.post( "/drinking_water" , (req , res)=>{
     var _id = req.body._id ;
     var drinking_water = req.body._drinking_water ;
-    var sql = `UPDATE data SET today = ${drinking_water} WHERE ID = ${_id} ` ;
-    con.query( sql , (err , result )=>{
+    var total_water = req.body._total_water ;
+    var this_month = req.body._this_month ;
+    var today_date = this_month.split("-") ; //[year] [month] [date] [num_of_date]
+    var sql = `SELECT water From daily_water WHERE ID = ${_id} and year = ${today_date[0]} and month = ${today_date[1]}` ;
+    con.query( sql , (err,result)=>{
         if (err) throw err ;
-        res.send("success") ;
+
+        sql = `UPDATE data SET total = ${total_water} WHERE ID = ${_id}` ;
+        con.query( sql , (err , result1)=>{
+            if(err) throw err ;
+
+            var str_tmp = result[0].water ; 
+            var array = str_tmp.split('-') ;
+            array[ parseInt(today_date[2])-1 ] = drinking_water ;
+            var input_string = array.join('-') ;
+            sql = `UPDATE daily_water SET water = '${input_string}' WHERE ID = ${_id} and year = ${today_date[0]} and month = ${today_date[1]}` ;
+            con.query( sql , (err , result)=>{
+                if(err) throw err ;
+                res.send('success') ;
+            } ) ;
+
+        }) ;
     }) ;
 }) ;
 
-/*
-app.post("/getdata" , (reg , res)=>{
-
+app.post("/month_water" , (req , res)=>{
+    
+    var _id = req.body._id ;
+    var this_month = req.body._this_month ;
+    var today_date = this_month.split('-') ;
+    var sql = `SELECT water FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
+    con.query( sql , (err,result)=>{
+        if(err) throw err ;
+        var ret = result[0].water.split('-').map((item)=>{
+            return parseInt(item) ;
+        }) ;
+        console.log( ret ) ;
+        res.send( ret ) ;
+    }) ;
 }) ;
-*/
