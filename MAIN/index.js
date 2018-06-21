@@ -321,7 +321,7 @@ window.fbAsyncInit = function() {
 FB.Event.subscribe('auth.authResponseChange', function(response){
     if (response.status === 'connected'){
         JumpPage(0);
-        
+
         console.log('authResponse changed to connected');
         console.log(response.authResponse.accessToken); 
         console.log(response.authResponse.userID);//id
@@ -495,3 +495,4 @@ function date_string() {
     thisMonth += d.getDate() ;
     return thisMonth ;
 }
+
