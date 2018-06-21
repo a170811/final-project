@@ -467,9 +467,11 @@ function drinking_water( _amount , func ) {
             func() ;
         }
     ) ;
+    /*testing
     month_water( (data)=>{
         alert( data ) ;
     }) ;
+    */
 }
 
 function month_water( func ) {

@@ -313,7 +313,6 @@ app.post("/month_water" , (req , res)=>{
         var ret = result[0].water.split('-').map((item)=>{
             return parseInt(item) ;
         }) ;
-        console.log( ret ) ;
         res.send( ret ) ;
     }) ;
 }) ;
