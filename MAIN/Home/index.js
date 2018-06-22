@@ -32,3 +32,19 @@ $(document).on('touchend mouseup', ".JUMP", function() {
     //$(this).find(".front").css({"bottom": "0px","left": "0px"});
     //console.log(this);
 });
+
+$(document).ready(function(){
+    if( Account_data.target == 0 ) {
+        $('#setting_board').animate( { left : '0' } , 200) ;
+    }
+    var target = $("#setting_board input[name='target']") ;
+    var lasting_time = $("#setting_board input[name='lasting_time']") ;
+    $("#send_target").click((e)=>{
+        e.preventDefault() ;
+        if( target.val()!=0 && lasting_time.val()!=0 ) {
+            target_water( target.val() , lasting_time.val() ) ;    
+            $('#setting_board').animate( { bottom : '100vh' } , 200) ;
+        }
+    }) ;
+
+}) ;

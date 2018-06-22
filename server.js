@@ -4,7 +4,7 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const app = express();
-const port = 10059;
+const port = 10058;
 
 const options = 
 {
@@ -215,12 +215,12 @@ app.post( "/save_account_data" ,( req , res )=>{
     var sql = " SELECT * FROM data WHERE ID = " + _id ;
     con.query( sql , (err , result)=>{
         if (err) throw err ;
-        if ( result.length > 0 ) {
+        if ( result.length > 0 ) { //registed
             
             sql = `SELECT water FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
-            con.query( sql , (err , result1)=>{
+            con.query( sql , (err , result1)=>{ 
                 if (err) throw err ;
-                if ( result1[0]=="" ) {
+                if ( result1[0]=="" ) { //new month ------> might error
 
                     var array = new Array( parseInt(today_date[3]) ).fill(0) ;
                     var input_string = array.join('-') ;
@@ -228,6 +228,7 @@ app.post( "/save_account_data" ,( req , res )=>{
                     con.query( sql , (err , result2)=>{
                         if (err) throw err ;
                         result[0].today = 0 ;
+                        result[0].steal = 0 ;
                         res.send(JSON.stringify(result[0])) ;
                     }) ;
                     
@@ -239,7 +240,7 @@ app.post( "/save_account_data" ,( req , res )=>{
                 }
             }) ;
         }
-        else {
+        else { //not registed
             var sql = `INSERT INTO data ( ID , name , total ) VALUES ( ${_id} , '${_name}' , 0 )` ;
             con.query( sql , (err , result)=>{
                 if (err) throw err ;
@@ -266,7 +267,9 @@ app.post( "/save_account_data" ,( req , res )=>{
 app.post( "/save_target_water" , (req , res)=>{
     var _id = req.body._id ;
     var water = req.body._target_water ;
-    var sql = `UPDATE data SET target = ${water} WHERE ID = ${_id} ` ;
+    var lasting_time = req.body._lasting_time ;
+    var total_target = water*lasting_time ;
+    var sql = `UPDATE data SET target=${water} , lasting_time=${lasting_time} , total_target=${total_target} WHERE ID = ${_id} ` ;
     con.query( sql , (err , result )=>{
         if (err) throw err ;
         res.send("success") ;

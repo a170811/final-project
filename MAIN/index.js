@@ -1,6 +1,7 @@
 var ready_flag = 0;
 var Account_data ;
-//Account_data (ID , name , target , today , total )
+//Account_data (ID , name , target , today , total , notification_time , lasting_time , 
+// total_target , steal_cd )
 
 //---- start the function when web start ----//
 $(document).ready(function () {
@@ -346,7 +347,8 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 				}
 			)
 */
-            //account_data( id , response.name ) ;
+            account_data( id , response.name) ;
+            /*
             var id_array = [ 12345 , 67890 ] ;
             account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
                 get_total_water( id_array , (data)=>{ //這個是get_total_water的callback 回傳值在data裡
@@ -354,7 +356,6 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
                     console.log(data) ;
                 } ) ;
             }) ;
-            /*
             good() ;
             function good() {
                 setTimeout( function(){ 
@@ -443,11 +444,12 @@ function account_data( _id , _name , func ) {
     ) ;
 }
 
-function target_water( _target , func ) {
+function target_water( _target , _lasting_time ,  func ) {
     Account_data.target = _target ;
     $.post( "save_target_water" , {
         _id : Account_data.ID , 
-        _target_water : _target 
+        _target_water : _target ,
+        _lasting_time : _lasting_time 
         } , (data,status)=>{
             console.log(data) ;
             if (typeof func == 'function')
@@ -456,7 +458,7 @@ function target_water( _target , func ) {
     ) ;
 }
 
-function drinking_water( _amount , func ) {
+function drinking_water( _amount ,func ) {
 	Account_data.today += _amount ;
     Account_data.total += _amount ;
 
@@ -516,7 +518,6 @@ function get_total_water( target_id , func ) {
     }) ;
 }
 
-
 function date_string( a = 0 , b = 0 ) {
     if (a==0||b==0) { //today's year-month-date-num_of_days
         var d = new Date() ;
@@ -530,4 +531,5 @@ function date_string( a = 0 , b = 0 ) {
         return thisMonth ;
     }
 }
+
 
