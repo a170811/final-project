@@ -6,7 +6,6 @@ var ready_flag = 0;
 
 //---- start the function when web start ----//
 $(document).ready(function () {
-/*
   //--------- LOGIN Function ---------//
     //$("#Login_block").hide();
     //$("#Login_block :input").attr('disabled','disabled');;
@@ -14,6 +13,7 @@ $(document).ready(function () {
   $("#prevIcon").addClass("hideGoHome");
   checkOnLine(); 
       
+/*
   $('#Login button[type=submit]').click(function() {
     event.preventDefault();
     $.ajax({
