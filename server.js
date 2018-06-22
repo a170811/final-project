@@ -4,7 +4,7 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const app = express();
-const port = 10059;
+const port = 10058;
 
 const options = 
 {
@@ -18,6 +18,17 @@ var data_file = './data.json';
 var data = require(data_file);
 
 var encode = "utf8";
+
+var mysql = require("mysql") ;
+var con = mysql.createConnection({
+    host : 'localhost' ,
+    user : 'uidd2018_groupF' ,
+    password : 'group_f@uidd2018' ,
+    database : 'uidd2018_groupF'
+}) ;
+con.connect(function(err){
+    if (err) throw err ;
+}) ;
 
 
 //---- Page --> Number ----//
@@ -193,3 +204,148 @@ const urlencodedParser=bodyParser.urlencoded({extended:true});
 app.post('/reminder_post',urlencodedParser,function(req,res){
     res.send(`Hello`+req.body.time);
 })
+
+//--------------save login data------------------//
+app.post( "/save_account_data" ,( req , res )=>{
+    var _id = req.body._id ;
+    var _name = req.body._name ;
+    var this_month = req.body._this_month ;
+    var today_date = this_month.split("-") ; //[year] [month] [date] [num_of_date]
+    console.log(`ID:${_id} , name:${_name} login`) ;
+    var sql = " SELECT * FROM data WHERE ID = " + _id ;
+    con.query( sql , (err , result)=>{
+        if (err) throw err ;
+        if ( result.length > 0 ) { //registed
+            
+            sql = `SELECT water FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
+            con.query( sql , (err , result1)=>{ 
+                if (err) throw err ;
+                if ( result1[0]=="" ) { //new month ------> might error
+
+                    var array = new Array( parseInt(today_date[3]) ).fill(0) ;
+                    var input_string = array.join('-') ;
+                    sql = `INSERT INTO daily_water ( ID , year , month , water ) VALUES ( ${_id} , ${today_date[0]} , ${today_date[1]} , '${input_string}' )` ;
+                    con.query( sql , (err , result2)=>{
+                        if (err) throw err ;
+                        result[0].today = 0 ;
+                        result[0].steal = 0 ;
+                        res.send(JSON.stringify(result[0])) ;
+                    }) ;
+                    
+                }
+                else {
+                    var array = result1[0].water.split('-') ;
+                    result[0].today = parseInt(array[ parseInt(today_date[2])-1 ]) ;
+                    res.send(JSON.stringify( result[0] )) ;
+                }
+            }) ;
+        }
+        else { //not registed
+            var sql = `INSERT INTO data ( ID , name , total ) VALUES ( ${_id} , '${_name}' , 0 )` ;
+            con.query( sql , (err , result)=>{
+                if (err) throw err ;
+
+                var array = new Array( parseInt(today_date[3]) ).fill(0) ;
+                var input_string = array.join('-') ;
+                sql = `INSERT INTO daily_water ( ID , year , month , water ) VALUES ( ${_id} , ${today_date[0]} , ${today_date[1]} , '${input_string}' )` ;
+                con.query( sql , (err , result2)=>{
+                    if (err) throw err ;
+                }) ;
+
+                sql = " SELECT * FROM data WHERE ID = " + _id ;
+                con.query( sql , (err , result)=>{
+                    if (err) throw err ;
+                    result[0].today = 0 ;
+                    res.send(JSON.stringify(result[0])) ;
+                });
+            }) ;
+        }
+    }) ;
+
+}) ; 
+
+app.post( "/save_target_water" , (req , res)=>{
+    var _id = req.body._id ;
+    var water = req.body._target_water ;
+    var lasting_time = req.body._lasting_time ;
+    var total_target = water*lasting_time ;
+    var sql = `UPDATE data SET target=${water} , lasting_time=${lasting_time} , total_target=${total_target} WHERE ID = ${_id} ` ;
+    con.query( sql , (err , result )=>{
+        if (err) throw err ;
+        res.send("success") ;
+    }) ;
+}) ;
+
+app.post( "/drinking_water" , (req , res)=>{
+    var _id = req.body._id ;
+    var drinking_water = req.body._drinking_water ;
+    var total_water = req.body._total_water ;
+    var this_month = req.body._this_month ;
+    var today_date = this_month.split("-") ; //[year] [month] [date] [num_of_date]
+    var sql = `SELECT water From daily_water WHERE ID = ${_id} and year = ${today_date[0]} and month = ${today_date[1]}` ;
+    con.query( sql , (err,result)=>{
+        if (err) throw err ;
+
+        sql = `UPDATE data SET total = ${total_water} WHERE ID = ${_id}` ;
+        con.query( sql , (err , result1)=>{
+            if(err) throw err ;
+
+            var str_tmp = result[0].water ; 
+            var array = str_tmp.split('-') ;
+            array[ parseInt(today_date[2])-1 ] = drinking_water ;
+            var input_string = array.join('-') ;
+            sql = `UPDATE daily_water SET water = '${input_string}' WHERE ID = ${_id} and year = ${today_date[0]} and month = ${today_date[1]}` ;
+            con.query( sql , (err , result)=>{
+                if(err) throw err ;
+                res.send('success') ;
+            } ) ;
+
+        }) ;
+    }) ;
+}) ;
+
+app.post("/month_water" , (req , res)=>{
+    
+    var _id = req.body._id ;
+    var this_month = req.body._this_month ;
+    var today_date = this_month.split('-') ;
+    var sql = `SELECT * FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
+        con.query( sql , (err,result)=>{
+            if(err) throw err ;
+            if( result.length>0 ) {
+                var ret = result[0].water.split('-').map((item)=>{
+                    return parseInt(item) ;
+                }) ;
+                res.send( ret ) ;
+            }
+            else {
+                res.send( "" ) ;
+            }
+        }) ;
+}) ;
+
+app.post("/notification_time" , (req , res)=>{
+    
+    var _id = req.body._id ;
+    var notification_time = req.body._notification_time ;
+    var sql = `UPDATE data SET notification_time = ${notification_time} WHERE ID=${_id}` ;
+    con.query( sql , ( err, result )=>{
+        if (err) throw err ;
+        res.send( result.affectedRows + " record(s) updated" ) ;
+    } ) ;
+
+} ) ;
+
+app.post("/get_total_water" , (req , res)=>{
+
+    var id_string = req.body._target ;
+    var ret_array = [] ;
+    var sql = `SELECT total FROM data WHERE ID IN ( ${id_string} )` ;
+    con.query( sql , (err , result)=>{
+        if(err) throw err ;
+        result.map( (x)=>{
+            ret_array.push( x.total ) ;    
+        } ) ;
+        res.send( ret_array ) ;
+    }) ;
+} );

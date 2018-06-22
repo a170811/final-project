@@ -19,6 +19,7 @@
   <h1 id="success"></h1>
 
 </form>
+<div id= "friendlist"></div>
 <!--	<div id="gender">User Gender:
 	</div>
 	<label class="button">

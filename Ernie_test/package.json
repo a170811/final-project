@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/a170811/final-project/issues"
   },
-  "homepage": "https://github.com/a170811/final-project#readme"
+  "homepage": "https://github.com/a170811/final-project#readme",
+  "dependencies": {
+    "web-push": "^3.3.1"
+  }
 }

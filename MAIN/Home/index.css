@@ -1,3 +1,8 @@
+html {
+  font-size : 16px ;
+}
+
+
 #main {
   position:fixed;
   top: 0;
@@ -132,4 +137,68 @@
   width: 10vw;
   bottom: 0;
   right: 0;
+}
+
+.center {
+  position: absolute ;
+  left : 50% ;
+  transform : translateX(-50%) ;
+}
+
+#setting_board {
+    position : absolute ;
+    width : 100vw ;
+    height : 100vh ;
+    left : -100%;
+}
+
+#setting_board > form {
+  padding-top : 2vh ;
+  font-size : 1.5rem ;
+  font-weight : 900 ;
+  width : 44vh ;
+  height : 38vh ;
+  top : 30vh ;
+  background-color : rgba(255 , 255 , 255 , 0.9 ) ;
+  border-radius : 4vh ;
+}
+
+#setting_board label {
+  margin-left : 3vh ;
+  margin-top : 2vh ;
+}
+
+#setting_board input{
+  font-size : 1.2rem ;
+  width: 70% ;
+  padding: 12px 20px ;
+  margin : 0vh 0 1vh 6vh ;
+  display: inline-block ;
+  border : 3px solid #ccc ;
+  border-radius : 7px ;
+  box-sizing: border-box ;
+}
+
+#target {
+  top : 3vh ;
+}
+
+#lasting_time {
+  top : 6vh ;
+}
+
+#send_target{
+  bottom : 3vh ;
+  width : 18vh ;
+  height : 8vh ;
+  border-radius : 10px ;
+  outline : none ;
+  cursor : pointer ;
+  border : 2px solid #999 ;
+  background-color : rgba( 255 , 255 , 255 , 0.6 ) ;
+}
+
+#send_target > span{
+  font-size : 1.2rem ;
+  font-weight : 800 ;
 }

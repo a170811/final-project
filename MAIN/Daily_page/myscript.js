@@ -1,5 +1,5 @@
 
-var amount = 0 ;
+//var amount = 0 ;
 var count = 0 ;
 function click_record() {
     var board = document.getElementsByClassName('board') ;
@@ -18,7 +18,8 @@ function click_cancel() {
 function click_comfirm() {
     if(count!=0) {
 
-        amount = count ;
+        //amount = count ;
+        drinking_water( count*1000 ) ;
         show_text(count) ;
         count = 0 ;
         document.getElementById("count").innerHTML = count ;
@@ -43,27 +44,36 @@ function b3() {
 }
 
 function switch_whale( a ) {
+    var whale = $("#whale_container > img:nth-of-type(2)") ;
+    var whale2 = $("#whale_container > img:nth-of-type(1)") ;
+    var whale_height = whale.width()*0.63 ;
     if(a==1) {
+
+        var cul = ( 1-(Account_data.today/Account_data.target) )*whale_height ;
+        var cul2 = cul-43 ;
+        if(cul<0) cul=0 ;
+        if(cul2<0) cul2=0 ;
         $(".whale:last-of-type").animate( {opacity : 1 },2000 ) ;
-        $(".whale:first-of-type").animate( {opacity : 0 } , 1200 ) ;
+        $(".whale:first-of-type").animate( {opacity : 1 } , 1200 ) ;
+        whale.css("clip" , `rect(${cul}px , auto , auto, auto )`) ;
+        whale2.css("clip" , `rect( auto , auto , ${cul2} , auto )`) ;
 
     }
-    else if(a==0) {
+    else if(a==0) { //show bone
         $(".whale:last-of-type").animate( {opacity : 0 } , 1200 ) ;
         $(".whale:first-of-type").animate( {opacity : 1 } , 2000 ) ;
     }
 } 
+$(document).ready(function(){
 
-$.get("../Daily_page/data.txt" , function(data){
-    var day = JSON.parse(data) ;
-    var d = new Date() ;
-    if(amount == 0 ) {
-        var n = d.getDate() ;
-        if(day[n-1] == 0 ) {
-            switch_whale(0) ;
-        }
+    $("#title > span > span").html(Account_data.target) ;
+    if(Account_data.today == 0 ) {
+        switch_whale(0) ;
     }
-}) ;
+    else switch_whale(1) ;
+
+});
+
 
 function show_text( show ) {
     var div_text = $("#show_text") ;

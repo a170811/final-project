@@ -14,6 +14,10 @@ var my_month = my_date.getMonth();//將預設日期設這個月
 var my_day = my_date.getDate();//將預設日期設為今天
 var dayshow;//把可以被點的日子存在dayshow
 var daily = new Array(40);//存每日喝水百分比
+if( 1==1 ) {
+  $("#cover").addClass("cover");
+  $("#PSIN").text('Loading...');
+}
 prev.onclick = function(e){//點到上個月
 	e.preventDefault();
 	my_month--;//月份減一
@@ -21,7 +25,7 @@ prev.onclick = function(e){//點到上個月
 		my_year--;
 		my_month = 11;
 	}
-	refreshDate();//重新獲取這個月的日曆
+	updatewater();//重新獲取這個月的日曆
 }
 next.onclick = function(e){//點到下個月
 	e.preventDefault();
@@ -30,10 +34,24 @@ next.onclick = function(e){//點到下個月
 		my_year++;
 		my_month = 0;
 	}
-	refreshDate();
+	updatewater();
 }
-function refreshDate(){//重新獲取這個月的日曆
-	var str = "";
+function updatewater(){
+ month_water(my_year,my_month+1, (data)=>{ 
+   daily =  data;
+   if(daily === ""){
+     daily= new Array(40);
+     for(j=0;j<daysMonth(my_month, my_year);j++){
+       daily[j] = 0;
+     }
+   }
+   $("#cover").removeClass("cover");
+   $("#PSIN").text(''); 
+   refreshDate();
+ });
+}
+ function refreshDate(){//重新獲取這個月的日曆
+   var str = "";
 	var totalDay = daysMonth(my_month, my_year); //將總天數存進total
 	var firstDay = dayStart(my_month, my_year); //將一號是星期幾存到firstday
 	var myclass;//用myclass存文字的樣式
@@ -51,20 +69,13 @@ function refreshDate(){//重新獲取這個月的日曆
 		}
 		str += "<li id='day"+i+"'"+myclass+">"+i+"<br><img id='water"+i+"' class='drip' src='../Record_page/a.png'><img id='blank"+i+"' class='drip' src='../Record_page/b.png'></li>"; //把現在日期跟顏色的class加入str
 	}
-	
 	holder.innerHTML = str; //將str(所有日期)顯示出來
 	ctitle.innerHTML = month_name[my_month]; //將月份顯示出來
 	cyear.innerHTML = my_year; //將年分顯示出來
 	for(j=1;j<=totalDay;j++){
-		if((j<my_day && my_year==my_date.getFullYear() && my_month==my_date.getMonth()) || my_year<my_date.getFullYear() || ( my_year==my_date.getFullYear() && my_month<my_date.getMonth())){ 
-			daily[j]= Math.random();//存喝水百分比 //要改成取得每日喝水百分比
-		}else if (j==my_day && my_year==my_date.getFullYear() && my_month==my_date.getMonth()){
-			daily[j]= Math.random();//存喝水百分比 //要改成取得每日喝水百分比
-		}else{
-			daily[j]= 0;
-		}
+		
 		document.getElementById("water"+j).style.position = "absolute";　
-		document.getElementById("water"+j).style.clip = "rect("+(4-daily[j]*4)+"vw 4vw 4vw 0vw)";//把藍色水滴切掉
+		document.getElementById("water"+j).style.clip = "rect("+(4-daily[j-1]/2000*4)+"vw 4vw 4vw 0vw)";//把藍色水滴切掉
 	}
 	for(k=1;k<=totalDay;k++){//讓每一天都能被點
 		dayshow=document.getElementById("day"+k);//把可以被點的日子存在dayshow
@@ -82,7 +93,7 @@ function refreshDate(){//重新獲取這個月的日曆
 			}
 			document.getElementById(clcword).style.border = "0.05vw solid red";//點的日子加框框
 			var clcdaynum =clcword.match(/\d+/g);//取出clcword數值部分
-			show.innerHTML =(daily[clcdaynum]*100).toFixed(2)+"%";// 
+			show.innerHTML =(daily[clcdaynum-1]*100/2000).toFixed(2)+"%";// 
 		}
 	}
 }
@@ -101,7 +112,7 @@ function daysMonth(month, year) {//這個月有幾天
 		return (month_normal[month]);//回傳平年當月天數
 	}
 }
-refreshDate();
+updatewater();
 
 
 

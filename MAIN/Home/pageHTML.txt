@@ -29,6 +29,15 @@
         <img id="Share_bg" src="../Picture/share.svg">
       </div>
 
+      <div id='setting_board'>
+         <form class='center'>
+            <label for='target'>target</label>
+            <br><input type='text' name='target' placeholder='daily target(ml)'><br>
+            <label for='lasting_time'>lasting_time</label>
+            <br><input type='text' name='lasting_time' placeholder='lasting days'><br>
+            <button id='send_target' type='submit' class='center'><span>Submit</span></button>
+         </form>
+      </div>
 
 
     </div>

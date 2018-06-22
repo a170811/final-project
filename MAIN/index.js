@@ -1,4 +1,7 @@
 var ready_flag = 0;
+var Account_data ;
+//Account_data (ID , name , target , today , total , notification_time , lasting_time , 
+// total_target , steal_cd )
 
 //---- start the function when web start ----//
 $(document).ready(function () {
@@ -297,11 +300,10 @@ function statusChangeCallback(response) {
 	else{
 		console.log('user not authorized');
 	}
-		
 }
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+        statusChangeCallback(response);
     });
 }
   
@@ -317,27 +319,64 @@ window.fbAsyncInit = function() {
  //     statusChangeCallback(response);
  //   });
 	
-    FB.Event.subscribe('auth.authResponseChange', function(response){
-        if (response.status === 'connected'){
-  JumpPage(0);
+FB.Event.subscribe('auth.authResponseChange', function(response){
+    if (response.status === 'connected'){
+        JumpPage(0);
 
-	console.log('authResponse changed to connected');
-  console.log(response.authResponse.accessToken); 
-  console.log(response.authResponse.userID);//id
-  //console.log(response.authReaponse.use)
- FB.api('/me', function(response){
-       console.log(response.name);//name
-       //console.log(response);
+        console.log('authResponse changed to connected');
+        console.log(response.authResponse.accessToken); 
+        console.log(response.authResponse.userID);//id
+        var id = response.authResponse.userID;
+        //console.log(response.authReaponse.use)
+        FB.api('/me', function(response){
+/*
+			var testing = function(id) {
+				return new Promise(function(resolve , reject){
+            		account_data( id , response.name ) ;
+					resolve(Account_data) ;
+				}) ;
+			}
+			testing(id).then(function(value){
+				//target_water(100) ;
+				console.log(value) ;
+			}).then( function(value) {
+					console.log(Account_data.ID) ;
+					console.log(Account_data.name);//name
+					console.log(Account_data.target) ;
+					console(value) ;
+				}
+			)
+*/
+            account_data( id , response.name) ;
+            /*
+            var id_array = [ 12345 , 67890 ] ;
+            account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
+                get_total_water( id_array , (data)=>{ //這個是get_total_water的callback 回傳值在data裡
+                    console.log("testing here:") ;
+                    console.log(data) ;
+                } ) ;
+            }) ;
+            good() ;
+            function good() {
+                setTimeout( function(){ 
+					console.log(Account_data) ;
+				} , 3000) ;
+            }
+            */
+        });
+       
+        FB.api('/me?fields=friends,name,email,picture', function(response){
+           // console.log("名字:"+response.friends.data[0].name);
+            //console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
+            console.log(response.friends.data[0]);
+           // console.log(response.friends.Array);
+            //console.log(response.friends.data.length);
+            }
+        );
+      
+
+        //window.top.location = 'Home/';
     }
-  );
- FB.api('/me?fields=friends,name,email,picture', function(response){
-       console.log(response);
-       console.log("這是大頭貼:https://graph.facebook.com/"+response.id+"/picture?type=large"); 
-       //console.log(response.data);
-    }
-  );
- //window.top.location = 'Home/';
-  }
 });
 
 	
@@ -371,17 +410,126 @@ function guest(){
 
 function login() {
 	FB.login(function(response) {
-	// handle the response
-	statusChangeCallback(response);
-  document.getElementById('music').play();
-  document.getElementById('music').loop = true;
-  //console.log(response.authReaponse.use)
-    console.log("Response goes here!");
-      if (response.authResponse) {
-                  //同意授權並且登入執行這段
-                  }
-      else { 
-        alert("須同意應用程式才能進入此頁面");//不同意此應用程式
-      }
-	}, {scope: ['email']});            
+        // handle the response
+        statusChangeCallback(response);
+        document.getElementById('music').play();
+        document.getElementById('music').loop = true;
+        //console.log(response.authReaponse.use)
+        console.log("Response goes here!");
+        if (response.authResponse) {
+             //同意授權並且登入執行這段
+        }
+        else { 
+            alert("須同意應用程式才能進入此頁面");//不同意此應用程式
+        }
+	}, {scope: ['email','user_friends']});            
 }
+
+//================================database=================================
+
+//save account data
+function account_data( _id , _name , func ) {
+
+    $.post( "save_account_data" , {
+        _id : _id , 
+        _name : _name ,
+        _this_month : date_string() 
+        } , (data , status)=>{
+            Account_data = JSON.parse(data) ;
+            console.log("login "+status) ;
+            console.log( data ) ;
+            if (typeof func == 'function')
+                func() ;
+        }
+    ) ;
+}
+
+function target_water( _target , _lasting_time ,  func ) {
+    Account_data.target = _target ;
+    $.post( "save_target_water" , {
+        _id : Account_data.ID , 
+        _target_water : _target ,
+        _lasting_time : _lasting_time 
+        } , (data,status)=>{
+            console.log(data) ;
+            if (typeof func == 'function')
+                func() ;
+        }
+    ) ;
+}
+
+function drinking_water( _amount ,func ) {
+	Account_data.today += _amount ;
+    Account_data.total += _amount ;
+
+	$.post( "drinking_water" , {
+		_id : Account_data.ID , 
+		_drinking_water : Account_data.today ,
+        _total_water : Account_data.total , 
+        _this_month : date_string() 
+	}, (data,status)=>{
+        console.log(data) ;
+        if (typeof func == 'function')
+            func() ;
+        }
+    ) ;
+    /*testing
+    month_water( (data)=>{
+        alert( data ) ;
+    }) ;
+    */
+}
+
+function month_water( year , month , func ) { //if data not exist , data = "
+    
+	$.post( "month_water" , {
+		_id : Account_data.ID , 
+        _this_month : date_string(year , month) 
+	}, (data,status)=>{
+        console.log(data) ;
+        if (typeof func == 'function')
+            func( data ) ;
+        }
+    ) ;
+
+}
+
+function set_notification_time( value , func ) {
+
+    Account_data.notification_time = value ;
+    $.post( "notification_time" , {
+        _id : Account_data.ID , 
+        _notification_time : value 
+    } , ( data , status )=>{
+        if (typeof func =='function') {
+            func() ;
+        }
+    } ) ;
+}
+
+function get_total_water( target_id , func ) {
+    var id_string = target_id.join(',') ;
+    $.post( "get_total_water" , {
+        _target : id_string 
+    } , ( data , status )=>{
+        if (typeof func =='function') {
+            func( data ) ;
+        }
+    }) ;
+}
+
+function date_string( a = 0 , b = 0 ) {
+    if (a==0||b==0) { //today's year-month-date-num_of_days
+        var d = new Date() ;
+        var thisMonth = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}-` ;
+        d = new Date( d.getFullYear() , d.getMonth()+1 , 0 ) ;
+        thisMonth += d.getDate() ;
+        return thisMonth ;
+    }
+    else {
+        var thisMonth = `${a}-${b}` ;
+        return thisMonth ;
+    }
+}
+
+
