@@ -69,7 +69,7 @@ function updatewater(){
 	for(j=1;j<=totalDay;j++){
 		
 		document.getElementById("water"+j).style.position = "absolute";　
-		document.getElementById("water"+j).style.clip = "rect("+(4-daily[j]*4)+"vw 4vw 4vw 0vw)";//把藍色水滴切掉
+		document.getElementById("water"+j).style.clip = "rect("+(4-daily[j-1]/2000*4)+"vw 4vw 4vw 0vw)";//把藍色水滴切掉
 	}
 	for(k=1;k<=totalDay;k++){//讓每一天都能被點
 		dayshow=document.getElementById("day"+k);//把可以被點的日子存在dayshow
@@ -87,7 +87,7 @@ function updatewater(){
 			}
 			document.getElementById(clcword).style.border = "0.05vw solid red";//點的日子加框框
 			var clcdaynum =clcword.match(/\d+/g);//取出clcword數值部分
-			show.innerHTML =(daily[clcdaynum]*100).toFixed(2)+"%";// 
+			show.innerHTML =(daily[clcdaynum-1]*100/2000).toFixed(2)+"%";// 
 		}
 	}
 }

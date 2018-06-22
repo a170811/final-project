@@ -26,6 +26,10 @@
   background-color:#00e3e3;
   width:40vw;
   height:4vw;
+  
+}
+.friendlist{
+display:inline;
 }
 /* The slider itself */
 .slider {

@@ -23,7 +23,7 @@ var temp="";
             var frinum = (response.friends.data.length);
             for(i=0;i<frinum;i++){
               var friendid= response.friends.data[i].id;
-              temp+="<br>"+ (response.friends.data[i].name)+'<div id="friwater'+i+'" class="friwater" style="width:'+1000/2000*60+'vw;"></div><button type="button" onclick="steal('+friendid+')">偷水</button>';
+              temp+="<br><div>"+ (response.friends.data[i].name)+'<div id="friwater'+i+'" class="friwater" style="width:'+1000/2000*60+'vw;"></div><button type="button" onclick="steal('+friendid+')">偷水</button></div>';
             }
             document.getElementById("friendlist").innerHTML=temp;
           });
