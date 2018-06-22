@@ -346,13 +346,22 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 				}
 			)
 */
-            account_data( id , response.name ) ;
+            //account_data( id , response.name ) ;
+            var id_array = [ 12345 , 67890 ] ;
+            account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
+                get_total_water( id_array , (data)=>{ //這個是get_total_water的callback 回傳值在data裡
+                    console.log("testing here:") ;
+                    console.log(data) ;
+                } ) ;
+            }) ;
+            /*
             good() ;
             function good() {
                 setTimeout( function(){ 
 					console.log(Account_data) ;
 				} , 3000) ;
             }
+            */
         });
        
         FB.api('/me?fields=friends,name,email,picture', function(response){
@@ -496,7 +505,7 @@ function set_notification_time( value , func ) {
     } ) ;
 }
 
-function get_total_water( target_id , funct ) {
+function get_total_water( target_id , func ) {
     var id_string = target_id.join(',') ;
     $.post( "get_total_water" , {
         _target : id_string 
