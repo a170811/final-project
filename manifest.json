@@ -7,6 +7,5 @@
   "icons": [{
     "src": "./MAIN/Picture/whale-phone.png",
     "type": "image/png"
-  }],
-  "gcm_sender_id": "103953800507"
+  }]
 }
