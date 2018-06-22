@@ -37,8 +37,14 @@ next.onclick = function(e){//點到下個月
 	updatewater();
 }
 function updatewater(){
- month_water( async(data)=>{ 
-   daily = await data;
+ month_water(my_year,my_month+1, (data)=>{ 
+   daily =  data;
+   if(daily === ""){
+     daily= new Array(40);
+     for(j=0;j<daysMonth(my_month, my_year);j++){
+       daily[j] = 0;
+     }
+   }
    $("#cover").removeClass("cover");
    $("#PSIN").text(''); 
    refreshDate();
