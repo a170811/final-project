@@ -7,7 +7,6 @@ const app = express();
 const port = 10052;
 
 
-/*
 const options = 
 {
     ca: fs.readFileSync('/home/uidd2018/ssl/ca_bundle.crt'),
@@ -15,7 +14,6 @@ const options =
     key: fs.readFileSync('/home/uidd2018/ssl/private.key')
 }
 https.createServer(options, app).listen(port, () => console.log(`listen on port:`+ port));
-*/
 
 //-------------- Create Connection For Message ------------//
 
@@ -26,7 +24,7 @@ const webpush = require('web-push');
 // VAPID keys should only be generated only once.
 const vapidKeys = webpush.generateVAPIDKeys();
 
-webpush.setGCMAPIKey('<Your GCM API Key Here>');
+webpush.setGCMAPIKey('AIzaSyDvne8cRLcCzHcgLqE4jdOIeC8fCSI8VJY');
 webpush.setVapidDetails(
   'mailto:Ernie-Wang@luffy.ee.ncku.edu.tw',
   vapidKeys.publicKey,
