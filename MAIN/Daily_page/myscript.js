@@ -45,14 +45,18 @@ function b3() {
 
 function switch_whale( a ) {
     var whale = $("#whale_container > img:nth-of-type(2)") ;
+    var whale2 = $("#whale_container > img:nth-of-type(1)") ;
     var whale_height = whale.width()*0.63 ;
     if(a==1) {
 
         var cul = ( 1-(Account_data.today/Account_data.target) )*whale_height ;
+        var cul2 = cul-43 ;
         if(cul<0) cul=0 ;
+        if(cul2<0) cul2=0 ;
         $(".whale:last-of-type").animate( {opacity : 1 },2000 ) ;
-        $(".whale:first-of-type").animate( {opacity : 0 } , 1200 ) ;
+        $(".whale:first-of-type").animate( {opacity : 1 } , 1200 ) ;
         whale.css("clip" , `rect(${cul}px , auto , auto, auto )`) ;
+        whale2.css("clip" , `rect( auto , auto , ${cul2} , auto )`) ;
         //whale.animate( { clip : `rect( ${cul}px , auto , auto, auto )` } , 1500 ) ;
 
     }
@@ -64,7 +68,6 @@ function switch_whale( a ) {
 $(document).ready(function(){
 
     $("#title > span > span").html(Account_data.target) ;
-    //console.log(Account_data.ID+" taaaa") ;
     if(Account_data.today == 0 ) {
         switch_whale(0) ;
     }
@@ -72,19 +75,6 @@ $(document).ready(function(){
 
 });
 
-/*
-$.get("../Daily_page/data.txt" , function(data){
-    console.log(Account_data.ID+" taaaa") ;
-    var day = JSON.parse(data) ;
-    var d = new Date() ;
-    if(amount == 0 ) {
-        var n = d.getDate() ;
-        if(day[n-1] == 0 ) {
-            switch_whale(0) ;
-        }
-    }
-}) ;
-*/
 
 function show_text( show ) {
     var div_text = $("#show_text") ;

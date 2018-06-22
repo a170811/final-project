@@ -93,7 +93,7 @@ body div {
 }
 
 #whale_container > img:nth-of-type(2) {
-    clip : rect( 150px , auto , auto , auto ) ;
+    clip : rect( 200px , auto , auto , auto ) ;
 }
 
 .whale {
