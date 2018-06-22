@@ -306,14 +306,19 @@ app.post("/month_water" , (req , res)=>{
     var _id = req.body._id ;
     var this_month = req.body._this_month ;
     var today_date = this_month.split('-') ;
-    var sql = `SELECT water FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
-    con.query( sql , (err,result)=>{
-        if(err) throw err ;
-        var ret = result[0].water.split('-').map((item)=>{
-            return parseInt(item) ;
+    var sql = `SELECT * FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
+        con.query( sql , (err,result)=>{
+            if(err) throw err ;
+            if( result.length>0 ) {
+                var ret = result[0].water.split('-').map((item)=>{
+                    return parseInt(item) ;
+                }) ;
+                res.send( ret ) ;
+            }
+            else {
+                res.send( "" ) ;
+            }
         }) ;
-        res.send( ret ) ;
-    }) ;
 }) ;
 
 app.post("/notification_time" , (req , res)=>{
