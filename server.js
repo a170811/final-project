@@ -235,13 +235,12 @@ app.post( "/save_account_data" ,( req , res )=>{
                 else {
                     var array = result1[0].water.split('-') ;
                     result[0].today = parseInt(array[ parseInt(today_date[2])-1 ]) ;
-                    console.log( result[0] ) ;
                     res.send(JSON.stringify( result[0] )) ;
                 }
             }) ;
         }
         else {
-            var sql = `INSERT INTO data ( ID , name , target , total ) VALUES ( ${_id} , '${_name}' , 0 ,0 )` ;
+            var sql = `INSERT INTO data ( ID , name , total ) VALUES ( ${_id} , '${_name}' , 0 )` ;
             con.query( sql , (err , result)=>{
                 if (err) throw err ;
 
@@ -316,3 +315,15 @@ app.post("/month_water" , (req , res)=>{
         res.send( ret ) ;
     }) ;
 }) ;
+
+app.post("/notification_time" , (req , res)=>{
+    
+    var _id = req.body._id ;
+    var notification_time = req.body._notification_time ;
+    var sql = `UPDATE data SET notification_time = ${notification_time} WHERE ID=${_id}` ;
+    con.query( sql , ( err, result )=>{
+        if (err) throw err ;
+        res.send( result.affectedRows + " record(s) updated" ) ;
+    } ) ;
+
+} ) ;

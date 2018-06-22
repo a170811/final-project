@@ -346,14 +346,9 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 				}
 			)
 */
-            account_data( id , response.name , function(){
-                target_water(2000) ;        
-            }) ;
+            account_data( id , response.name ) ;
             good() ;
             console.log( date_string() ) ;
-            var str = "2018-2-19" ;
-            var arr = str.split("-") ;
-            arr.map( (s)=>{console.log(s+"  ") ;} ) ;
             function good() {
                 setTimeout( function(){ 
 					console.log(Account_data) ;
@@ -433,6 +428,7 @@ function account_data( _id , _name , func ) {
         } , (data , status)=>{
             Account_data = JSON.parse(data) ;
             console.log("login "+status) ;
+            console.log( data ) ;
             if (typeof func == 'function')
                 func() ;
         }
@@ -486,6 +482,19 @@ function month_water( func ) {
         }
     ) ;
 
+}
+
+function set_notification_time( value , func ) {
+
+    Account_data.notification_time = value ;
+    $.post( "notification_time" , {
+        _id : Account_data.ID , 
+        _notification_time : value 
+    } , ( data , status )=>{
+        if (typeof func =='function') {
+            func() ;
+        }
+    } ) ;
 }
 
 function date_string() {
