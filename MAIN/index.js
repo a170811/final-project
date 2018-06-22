@@ -347,7 +347,6 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 			)
 */
             account_data( id , response.name ) ;
-//            } ) ;
             good() ;
             function good() {
                 setTimeout( function(){ 
@@ -496,6 +495,18 @@ function set_notification_time( value , func ) {
         }
     } ) ;
 }
+
+function get_total_water( target_id , funct ) {
+    var id_string = target_id.join(',') ;
+    $.post( "get_total_water" , {
+        _target : id_string 
+    } , ( data , status )=>{
+        if (typeof func =='function') {
+            func( data ) ;
+        }
+    }) ;
+}
+
 
 function date_string( a = 0 , b = 0 ) {
     if (a==0||b==0) { //today's year-month-date-num_of_days
