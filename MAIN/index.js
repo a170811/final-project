@@ -347,7 +347,7 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 			)
 */
             account_data( id , response.name ) ;
-            } ) ;
+//            } ) ;
             good() ;
             function good() {
                 setTimeout( function(){ 
