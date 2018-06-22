@@ -57,7 +57,6 @@ function switch_whale( a ) {
         $(".whale:first-of-type").animate( {opacity : 1 } , 1200 ) ;
         whale.css("clip" , `rect(${cul}px , auto , auto, auto )`) ;
         whale2.css("clip" , `rect( auto , auto , ${cul2} , auto )`) ;
-        //whale.animate( { clip : `rect( ${cul}px , auto , auto, auto )` } , 1500 ) ;
 
     }
     else if(a==0) { //show bone

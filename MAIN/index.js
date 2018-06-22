@@ -347,8 +347,8 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 			)
 */
             account_data( id , response.name ) ;
+            } ) ;
             good() ;
-            console.log( date_string() ) ;
             function good() {
                 setTimeout( function(){ 
 					console.log(Account_data) ;
@@ -470,11 +470,11 @@ function drinking_water( _amount , func ) {
     */
 }
 
-function month_water( func ) {
+function month_water( year , month , func ) { //if data not exist , data = "
     
 	$.post( "month_water" , {
 		_id : Account_data.ID , 
-        _this_month : date_string() 
+        _this_month : date_string(year , month) 
 	}, (data,status)=>{
         console.log(data) ;
         if (typeof func == 'function')
@@ -497,11 +497,17 @@ function set_notification_time( value , func ) {
     } ) ;
 }
 
-function date_string() {
-    var d = new Date() ;
-    var thisMonth = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}-` ;
-    d = new Date( d.getFullYear() , d.getMonth()+1 , 0 ) ;
-    thisMonth += d.getDate() ;
-    return thisMonth ;
+function date_string( a = 0 , b = 0 ) {
+    if (a==0||b==0) { //today's year-month-date-num_of_days
+        var d = new Date() ;
+        var thisMonth = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}-` ;
+        d = new Date( d.getFullYear() , d.getMonth()+1 , 0 ) ;
+        thisMonth += d.getDate() ;
+        return thisMonth ;
+    }
+    else {
+        var thisMonth = `${a}-${b}` ;
+        return thisMonth ;
+    }
 }
 
