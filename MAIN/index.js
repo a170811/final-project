@@ -9,12 +9,15 @@ var messaging = null; // later use in firebase message
 
 $(document).ready(function () {
 
-
-////------------ For FireBase ----------////
+/******************************
+ *                            *
+ *          Firebase          *
+ *                            *
+ ******************************/
   
   // Initialize Firebase
   var config = {
-      apiKey: "",
+      apiKey: "AIzaSyDvne8cRLcCzHcgLqE4jdOIeC8fCSI8VJY",
       authDomain: "uidd2018-groupf.firebaseapp.com",
       databaseURL: "https://uidd2018-groupf.firebaseio.com",
       projectId: "uidd2018-groupf",
@@ -37,12 +40,34 @@ $(document).ready(function () {
       setTimeout(notification.close.bind(notification), 3000);
     }
   });
+  messaging.getToken()
+      .then(function (currentToken) {
+          console.log("TOKEN: " + currentToken);
+          //$('#log').append("TOKEN: " + currentToken + "<br><br>")
+          if (currentToken) {
+            RegistUserTokenToSelfServer(currentToken, function (result) {
+              console.log("送回給自己 Server 的結果 :" + result );
+              //$('#log').prepend("送回給自己 Server 的結果 :" + result + "<br><br>")
+            });
+          } else {
+            console.log('註冊失敗請檢查相關設定.');
+            //$('#log').prepend('註冊失敗請檢查相關設定.');
+          }
+      })
+      .catch(function (err) {
+          console.log("跟 Server 註冊失敗 原因:" + err );
+          //$('#log').prepend("跟 Server 註冊失敗 原因:" + err + "<br>");
+      });
 
 
+
+
+/******************************
+ *                            *
+ *      Login Animation       *
+ *                            *
+ ******************************/
   
-  
-  
-////----------login animation -------//
   $("#Login_block").animate({
         top: '54vh',
         opacity: '1'
@@ -67,6 +92,42 @@ $(document).on('touchend click', ".JUMP", function() {
     var pageNum = parseInt(this.dataset.pageadd);
     JumpPage(pageNum);
 });
+
+
+//-------Sent the Token to server-------//
+function RegistUserTokenToSelfServer(user_token, successFunc, errorFunc) {
+  var $res = '';
+  $.ajax({
+    type: "POST",
+    url: "/post_user_token",
+    //contentType: 'application/x-www-form-urlencoded',
+    async: true,
+    cache: false,
+    dataType: 'text',
+    data: { user_token: user_token },
+    success: function (data) {
+      if (data.hasOwnProperty("d")) {
+        $res = data.d;
+        if (successFunc != null)
+          successFunc(data.d);
+      }
+      else {
+        $res = data;
+        if (successFunc != null)
+          successFunc(data);
+      }
+    },
+    error: function (e) {
+      if (errorFunc != null)
+        errorFunc(e);
+    }
+  });
+  return $res;
+}
+
+
+
+
 
 
 function checkOnLine(){   

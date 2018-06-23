@@ -25,12 +25,19 @@ var data_file = './data.json';
 var data = require(data_file);
 
 
+/**************************************************
+ *                                                *
+ *      Start up Firebase for sending message     *
+ *                                                *
+ **************************************************/
+
+
 ///---------- Setup firebase admin inorder to send notification to user ---------///
 var admin = require("firebase-admin");
 
 var serviceAccount = require("./uidd2018-groupf-firebase-adminsdk-8cze1-83b0154802.json");
 
-console.log(serviceAccount);
+//console.log(serviceAccount);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -52,7 +59,7 @@ var payload = {
 
 
 ///---------- store registrationToken, for knowing where to send --------//
-var registrationToken = "";
+var registrationToken = null;
 
 ///------ Message option setup -------///
 var messageOptions = {
@@ -63,13 +70,53 @@ var messageOptions = {
 
 
 ///------- send notification to the client -------//
-admin.messaging().sendToDevice(registrationToken, payload, options)
+
+setInterval(function() {
+if(registrationToken != null) {
+admin.messaging().send(payload)
   .then(function(response) {
       console.log("Successfully sent message:", response);
   })
   .catch(function(error) {
       console.log("Error sending message:", error);
   });
+}
+
+}, 5000);
+
+
+if(registrationToken != null) {
+admin.messaging().send(payload)
+  .then(function(response) {
+      console.log("Successfully sent message:", response);
+  })
+  .catch(function(error) {
+      console.log("Error sending message:", error);
+  });
+}
+
+///------ get regist token, and store it for later send messaging                         NOT YET!!!
+app.post("/post_user_token", function(req, res) {
+  console.log ( req.body.user_token );
+  registrationToken = JSON.stringify( req.body.user_token );
+  
+  /*
+  if ( data.hasOwnProperty(req.body.user) ) { 
+    //console.log ( req.body.password);
+    if ( data[req.body.user] == req.body.password ) {
+      //---- send Home page to MAIN_Page #refresh ----//
+      console.log( `correct password` );
+      res.send( packUp( 0 ) );
+      //console.log ( packUp( 0 ) );
+      //console.log( PageTxt[0] );
+    }
+  }
+  else {
+    res.send( `${req.body.user} is not registed, please regist first` );
+  }
+  */
+
+});
 
 
 
@@ -78,6 +125,12 @@ admin.messaging().sendToDevice(registrationToken, payload, options)
 
 
 
+
+/****************************
+ *                          *
+ *      End of Firebase     *
+ *                          *
+ ****************************/
 
 ///------- Setup code type ------///
 var encode = "utf8";

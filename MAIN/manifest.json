@@ -1,0 +1,12 @@
+{
+  "name": "Drink_Water",
+  "short_name": "Lim Dea",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [{
+    "src": "./Picture/whale-phone.png",
+    "type": "image/png"
+  }],
+  "gcm_sender_id": "103953800507"
+}
