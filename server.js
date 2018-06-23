@@ -4,7 +4,7 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const app = express();
-const port = 10055;
+const port = 10058;
 
 const options = 
 {
@@ -212,19 +212,22 @@ app.post( "/save_account_data" ,( req , res )=>{
     con.query( sql , (err , result)=>{
         if (err) throw err ;
         if ( result.length > 0 ) { //registed
+            if( result.last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[1]}` ) {
+                con.query(`UPDATE date SET today=0 , steal=0 , last_login_date='${today_date[0]}-${today_date[1]}-${today_date[2]}' WHERE ID=${_id}`) ;
+                result[0].today = 0 ;
+                result[0].steal_cd = 0 ;
+            }
             
             sql = `SELECT water FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
             con.query( sql , (err , result1)=>{ 
                 if (err) throw err ;
-                if ( result1[0]=="" ) { //new month ------> might error
+                if ( result1[0]=="" ) { //new month
 
                     var array = new Array( parseInt(today_date[3]) ).fill(0) ;
                     var input_string = array.join('-') ;
                     sql = `INSERT INTO daily_water ( ID , year , month , water ) VALUES ( ${_id} , ${today_date[0]} , ${today_date[1]} , '${input_string}' )` ;
                     con.query( sql , (err , result2)=>{
                         if (err) throw err ;
-                        result[0].today = 0 ;
-                        result[0].steal = 0 ;
                         res.send(JSON.stringify(result[0])) ;
                     }) ;
                     
