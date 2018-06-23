@@ -48,3 +48,32 @@ $(document).ready(function(){
     }) ;
 
 }) ;
+function showfriend(){
+	var username;
+	var temp="";
+  document.getElementById("friendboard").style.visibility = 'visible' ;
+		if (guestnum == 1){
+        FB.api('/me?fields=friends,name,email,picture', function(response){
+        username=(response.name);
+        var frinum = (response.friends.data.length);
+        var friendid = new Array(frinum);
+		//temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.id + '/picture">'+ username+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div></div>';
+        for(j=0;j<frinum;j++){
+              friendid[j] = response.friends.data[j].id;
+            }
+            get_total_water(friendid, (data)=>{
+				var friendwater =  data;
+				for(i=0;i<frinum;i++){
+					temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.friends.data[i].id + '/picture">'+ (response.friends.data[i].name)+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div><button type="button" onclick="steal('+friendid+')">偷水</button></div>';
+					document.getElementById("friendlist").innerHTML=temp;
+				}
+            })
+          });
+        }
+        else{
+          document.getElementById("friendlist").innerHTML='guest沒朋友啦 去登入FB<button id="logout" type="button" onclick="guestlogout()">用FB登入</button>';
+        }
+}
+function closefriend(){
+  document.getElementById('friendboard').style.visibility = 'hidden' ;	
+}

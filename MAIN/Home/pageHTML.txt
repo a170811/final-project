@@ -25,7 +25,7 @@
         <img id="Setup_bg" src="../Picture/setting.svg">
       </div>
 
-      <div id="Share" class=" icoN" data-pageadd="">
+      <div id="Share" class=" icoN" data-pageadd="" onclick="showfriend()">
         <img id="Share_bg" src="../Picture/share.svg">
       </div>
 
@@ -38,6 +38,10 @@
             <button id='send_target' type='submit' class='center'><span>Submit</span></button>
          </form>
       </div>
-
+      <div id="friendboard" class="friendboard">
+         好友<br> <button onclick="closefriend()" >點我離開</button>
+         <div id="friendlist">
+         </div>
+      </div>
 
     </div>
