@@ -4,7 +4,7 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const app = express();
-const port = 10058;
+const port = 10055;
 
 const options = 
 {
@@ -20,12 +20,8 @@ var data = require(data_file);
 var encode = "utf8";
 
 var mysql = require("mysql") ;
-var con = mysql.createConnection({
-    host : 'localhost' ,
-    user : 'uidd2018_groupF' ,
-    password : 'group_f@uidd2018' ,
-    database : 'uidd2018_groupF'
-}) ;
+var database_info = require('./database.js') ;
+var con = mysql.createConnection( database_info ) ;
 con.connect(function(err){
     if (err) throw err ;
 }) ;
