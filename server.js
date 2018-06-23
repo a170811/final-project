@@ -212,8 +212,8 @@ app.post( "/save_account_data" ,( req , res )=>{
     con.query( sql , (err , result)=>{
         if (err) throw err ;
         if ( result.length > 0 ) { //registed
-            if( result.last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[1]}` ) {
-                con.query(`UPDATE date SET today=0 , steal=0 , last_login_date='${today_date[0]}-${today_date[1]}-${today_date[2]}' WHERE ID=${_id}`) ;
+            if( result[0].last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[1]}` ) {
+                con.query(`UPDATE data SET steal_cd=0 , last_login_date='${today_date[0]}-${today_date[1]}-${today_date[2]}' WHERE ID=${_id}`) ;
                 result[0].today = 0 ;
                 result[0].steal_cd = 0 ;
             }
