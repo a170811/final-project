@@ -6,7 +6,8 @@ $(document).ready(function () {
       method: "POST",
       data: {
         name: $('#ajax_form input[name=name]').val(),
-        student_id: $('#ajax_form input[name=student_id]').val()
+        student_id: $('#ajax_form input[name=student_id]').val(),
+        checkBox: $('#ajax_form input[name=checkBox]').prop("checked")
       },
       url: '/ajax_data',
       success: function(data) {
@@ -14,6 +15,7 @@ $(document).ready(function () {
       }
     });
     $('#ajax_output').html('loading...');
+    //console.log($('#ajax_form input[name=checkBox]'));
   });
 
   $('#ajax_search button[type=submit]').click(function() {

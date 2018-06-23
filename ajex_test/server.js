@@ -47,17 +47,32 @@ app.post('/post_data', function(req, res) {
 
 //----Ajax_post function----//
 app.post("/ajax_data", function(req, res) {
+  
   if ( data.hasOwnProperty(req.body.student_id) ) { 
     res.send('Student ID ' + req.body.student_id + ' is owned by ' + data[req.body.student_id]);
   }
   else {
     res.send(`Hello ${req.body.name}, your student ID is ${req.body.student_id}, Let me regist for you`);
-
     //----add new data into .json----//
     data[req.body.student_id] = req.body.name ;
     fs.writeFile('./id_data.json', JSON.stringify(data, null, 2));
   }
+/*
+  var tmp=0;
+  tmp =`${req.body.checkBox}`;
+  if(tmp=="false")
+    tmp=1;
+  else
+    tmp=0;
+  if ( tmp ) 
+    res.send('Hello ' + req.body.student_id );
+  else 
+    res.send(`Hello   ${req.body.student_id}  ${req.body.name}`);
 
+  
+  console.log('req.body.checkBox');
+  console.log(tmp);
+*/
 });
 
 
