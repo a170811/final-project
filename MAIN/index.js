@@ -4,9 +4,46 @@ var Account_data ;
 // total_target , steal_cd )
 
 //---- start the function when web start ----//
+
+var messaging = null; // later use in firebase message
+
 $(document).ready(function () {
 
- $("#Login_block").animate({
+
+////------------ For FireBase ----------////
+  
+  // Initialize Firebase
+  var config = {
+      apiKey: "",
+      authDomain: "uidd2018-groupf.firebaseapp.com",
+      databaseURL: "https://uidd2018-groupf.firebaseio.com",
+      projectId: "uidd2018-groupf",
+      storageBucket: "uidd2018-groupf.appspot.com",
+      messagingSenderId: "363801879198"
+  };
+  firebase.initializeApp(config);
+  
+  messaging = firebase.messaging();
+
+  //-- getting message
+  messaging.onMessage(function (payload) {
+
+    //$('#log').prepend("Message received :" + JSON.stringify(payload) + "<br><br>")
+    console.log("Message received :" + JSON.stringify(payload) );
+
+    if (Notification.permission === 'granted') {
+      ShowNotification(payload.data.title, payload.data.body);
+      //三秒後自動關閉
+      setTimeout(notification.close.bind(notification), 3000);
+    }
+  });
+
+
+  
+  
+  
+////----------login animation -------//
+  $("#Login_block").animate({
         top: '54vh',
         opacity: '1'
       }, 1000);
@@ -22,52 +59,6 @@ $(document).ready(function () {
       $("#loginbutton").animate({
         top: '-3vh'
       },1500);
-      /*
-  //--------- LOGIN Function ---------//
-    //$("#Login_block").hide();
-    //$("#Login_block :input").attr('disabled','disabled');;
-  $("#Login_block :input").prop("disabled",true);
-  $("#prevIcon").addClass("hideGoHome");
-  checkOnLine(); 
-      
-  $('#Login button[type=submit]').click(function() {
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      data: {
-        user: $('#Login input[name=user]').val(),
-        password: $('#Login input[name=password]').val()
-      },
-      url: '/login',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-      }
-    });
-    $("#cover").addClass("cover");
-    $("#PS").text('Loading...');
-  }); 
-*/
-  //-------- JUMP Function --------//
-  /*
-  $(".JUMP").click(function() {//all class in html
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $('.JUMP').getAttribute("data-page-add").val()
-        call_page:parseInt(this.dataset.page-add)
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $('body').html(data);
-      }
-    });
-    $("body").append($("<div></div>")).addClass("cover");
-    $("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
-  });
-  */
 });
 
 
@@ -75,36 +66,6 @@ $(document).on('touchend click', ".JUMP", function() {
     event.preventDefault();
     var pageNum = parseInt(this.dataset.pageadd);
     JumpPage(pageNum);
-    /*
-    $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $(this).getAttribute("data-page-add").val()
-        call_page:parseInt(this.dataset.pageadd)
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        //$('body').html(data);
-      }
-    });
-    $("#cover").addClass("cover");
-    $("#PS").text('Loading...');
-    */
-    //$("body").append($("<div></div>")).addClass("cover");
-    //$("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
-    //alert( "hi" );
-
 });
 
 
