@@ -202,3 +202,28 @@ html {
   font-size : 1.2rem ;
   font-weight : 800 ;
 }
+.friendboard {
+  position : absolute ;
+  left: 12vw ;
+  top : 15vw ; 
+  display: flex ;
+  flex-direction : column ;                   
+  width : 76vw ;
+  height : 135vw ;
+  background-color : #3797EC ;
+  visibility : hidden ;
+  border-style: solid;
+  border-width: 0.5vw;
+  border-color: #336e9b;
+  border-radius: 6vw;
+}
+.friwater{
+  background-color:#00e3e3;
+  width:40vw;
+  height:4vw;
+  
+}
+.friendlist{
+display:inline;
+}
+

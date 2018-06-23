@@ -85,12 +85,8 @@ var encode = "utf8";
 
 ///----------- setup mySQL ----------------/// 
 var mysql = require("mysql") ;
-var con = mysql.createConnection({
-    host : 'localhost' ,
-    user : 'uidd2018_groupF' ,
-    password : 'idd2018' ,
-    database : 'uidd2018_groupF'
-}) ;
+var database_info = require('./database.js') ;
+var con = mysql.createConnection( database_info ) ;
 con.connect(function(err){
     if (err) throw err ;
 }) ;
