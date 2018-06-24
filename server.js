@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const app = express();
-const port = 10053;
+const port = 10058;
 
 ///------------- Setup https connection ---------///
 const options = 
@@ -312,26 +312,34 @@ app.post("/get_total_water" , (req , res)=>{
         res.send( ret_array ) ;
     }) ;
 } );
-/*
+
 app.post('/steal_water' , (req , res)=>{
     
     var my_id = req.body._my_id ;
     var target_id = req.body._target_id ;
-    var amount = req.body._amount ;
+    var amount = parseInt(req.body._amount) ;
+    var my_total = parseInt(req.body._my_total) ;
     var res_data = {
         id1 : [ 0 , 0 ] ,  
         id2 : [ 0 , 0 ]
     }
+    res_data.id1[0] = my_total ; 
     var sql = `SELECT total FROM data WHERE ID=${target_id}` ;
     con.query( sql , (err , result)=>{
         if (err) throw err ;
-        console.log(`first data: ${result[0].total}`) ;
         res_data.id2[0] = result[0].total ;
-    });
-    console.log('middle') ;
-    var sql = `SELECT total FROM data WHERE ID=${my_id}` ;
-    con.query( sql , (err , result)=>{
-        console.log(`second data: ${result[0].total}`) ;
+        if ( res_data.id2[0] <= amount ) {
+            res_data.id2[1] = 0 ;
+            res_data.id1[1] = my_total+result[0].total ; 
+        }
+        else {
+            res_data.id2[1] = res_data.id2[0] - amount ; 
+            res_data.id1[1] = my_total+amount ; 
+        }
+        sql = `UPDATE data SET total=${res_data.id1[1]} , steal_cd=1 WHERE ID=${my_id}` ;
+        con.query(sql) ;
+        sql = `UPDATE data SET total=${res_data.id2[1]} WHERE ID=${target_id}` ;
+        con.query(sql) ;
+        res.send( res_data ) ;
     });
 }) ;
-*/

@@ -249,7 +249,9 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
             account_data( id , response.name ) ;
             /*
             account_data( id , response.name , ()=>{
-                steal_water( 1203611163114575 , 123 ) ;
+                steal_water( 1203611163114575 , ()=>{
+                    console.log(`my water now = ${Account_data.total}`) ;
+                } ) ;
             }) ;
             */
             /*
@@ -421,20 +423,23 @@ function get_total_water( target_id , func ) {
         }
     }) ;
 }
-/*
+
 function steal_water( target_id , func ) {
-    
+    Account_data.steal_cd = 1 ;
     $.post('steal_water' , {
         _my_id : Account_data.ID , 
         _target_id : target_id  , 
-        _amount : Account_data.today*0.1
+        _amount : Account_data.today*0.1 , 
+        _my_total : Account_data.total 
     } , (data , status)=>{
+        Account_data.total = data.id1[1] ;
+        //console.log( data.id1 ) ;
+        //console.log( data.id2 ) ;
         if (typeof func =='function') {
-            func() ;
+            func( ) ;
         }
     }) ;
 }
-*/
 
 function date_string( a = 0 , b = 0 ) {
     if (a==0||b==0) { //today's year-month-date-num_of_days
