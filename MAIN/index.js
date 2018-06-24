@@ -9,55 +9,7 @@ var messaging = null; // later use in firebase message
 
 $(document).ready(function () {
 
-/******************************
- *                            *
- *          Firebase          *
- *                            *
- ******************************/
- /* 
-  // Initialize Firebase
-  var config = {
-      projectId: "uidd2018-groupf",
-      storageBucket: "uidd2018-groupf.appspot.com",
-      messagingSenderId: "363801879198"
-  };
-  firebase.initializeApp(config);
-  
-  messaging = firebase.messaging();
 
-  //-- getting message
-  messaging.onMessage(function (payload) {
-
-    //$('#log').prepend("Message received :" + JSON.stringify(payload) + "<br><br>")
-    console.log("Message received :" + JSON.stringify(payload) );
-
-    if (Notification.permission === 'granted') {
-      ShowNotification(payload.data.title, payload.data.body);
-      //三秒後自動關閉
-      setTimeout(notification.close.bind(notification), 3000);
-    }
-  });
-  messaging.getToken()
-      .then(function (currentToken) {
-          console.log("TOKEN: " + currentToken);
-          //$('#log').append("TOKEN: " + currentToken + "<br><br>")
-          if (currentToken) {
-            RegistUserTokenToSelfServer(currentToken, function (result) {
-              console.log("送回給自己 Server 的結果 :" + result );
-              //$('#log').prepend("送回給自己 Server 的結果 :" + result + "<br><br>")
-            });
-          } else {
-            console.log('註冊失敗請檢查相關設定.');
-            //$('#log').prepend('註冊失敗請檢查相關設定.');
-          }
-      })
-      .catch(function (err) {
-          console.log("跟 Server 註冊失敗 原因:" + err );
-          //$('#log').prepend("跟 Server 註冊失敗 原因:" + err + "<br>");
-      });
-
-
-*/
 
 /******************************
  *                            *
@@ -91,40 +43,6 @@ $(document).on('touchend click', ".JUMP", function() {
 });
 
 
-//-------Sent the Token to server-------//
-/*
-function RegistUserTokenToSelfServer(user_token, successFunc, errorFunc) {
-  var $res = '';
-  $.ajax({
-    type: "POST",
-    url: "/post_user_token",
-    //contentType: 'application/x-www-form-urlencoded',
-    async: true,
-    cache: false,
-    dataType: 'text',
-    data: { user_token: user_token },
-    success: function (data) {
-      if (data.hasOwnProperty("d")) {
-        $res = data.d;
-        if (successFunc != null)
-          successFunc(data.d);
-      }
-      else {
-        $res = data;
-        if (successFunc != null)
-          successFunc(data);
-      }
-    },
-    error: function (e) {
-      if (errorFunc != null)
-        errorFunc(e);
-    }
-  });
-  return $res;
-}
-
-
-*/
 
 
 
@@ -148,33 +66,6 @@ function checkHandler(){
       console.log("imin");
 
 
-      /*
-      var pageNum = 0;
-      $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $(this).getAttribute("data-page-add").val()
-        call_page:0
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        //$('body').html(data);
-      }
-      });
-      $("#cover").addClass("cover");
-      $("#PS").text('Loading...');
-*/
       
     }else{   
       //$("#refresh").text("offline");
@@ -281,43 +172,6 @@ function chooseUrl(pageNum, online) {
            return '//pageHTML.txt';
       }
 }
-
-
-
-
-
-
-
-/*---   with login animation
-function checkHandler(){   
-    var status=navigator.onLine;   
-    if(status){   
-      //$("#refresh").text("online");   
-      ready_flag = 1;
-      //$("#Login_block").hide().fadeIn(400);
-      $("#Login_block").animate({
-        top: '54vh',
-        opacity: '1'
-      }, 1000);
-      $("#Login_block :input").prop("disabled",false);
-      $("#Icon").animate({
-        top: '-5.5vh',
-        opacity: '1'
-      }, 1000);
-      $("#Word").animate({
-        top: '-10.5vh',
-        opacity: '0'
-      }, 1000);
-    }else{   
-      //$("#refresh").text("offline");
-      $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "39vh", "left": "15vw", "width": "70vw","height":"16vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
-      $("#refresh").append($("<p></p>").text("Please connect to Internet").css({"position": "fixed", "top": "40vh", "left": "15vw", "width": "70vw","font-size": "4vh", "font-weight": "bold", "color": "white", "textAlign": "center", "opacity": "0"}).animate({opacity: '1'}, 1000)); 
-    }   
-}
-*/
-
-//
-
 
 
 
