@@ -50,13 +50,15 @@ function switch_whale( a ) {
     if(a==1) {
 
         var cul = ( 1-(Account_data.today/Account_data.target) )*whale_height ;
-        var cul2 = cul-43 ;
+        //var cul2 = cul-43 ;
         if(cul<0) cul=0 ;
-        if(cul2<0) cul2=0 ;
+        //if(cul2<0) cul2=0 ;
         $(".whale:last-of-type").animate( {opacity : 1 },2000 ) ;
-        $(".whale:first-of-type").animate( {opacity : 1 } , 1200 ) ;
+        //$(".whale:first-of-type").animate( {opacity : 1 } , 1200 ) ;
+        $(".whale:first-of-type").attr( 'src' , '../Picture/whale-black.svg' );
+
         whale.css("clip" , `rect(${cul}px , auto , auto, auto )`) ;
-        whale2.css("clip" , `rect( auto , auto , ${cul2} , auto )`) ;
+        //whale2.css("clip" , `rect( auto , auto , ${cul2} , auto )`) ;
 
     }
     else if(a==0) { //show bone
