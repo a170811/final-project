@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const app = express();
-const port = 10058;
+const port = 10053;
 
 ///------------- Setup https connection ---------///
 const options = 
@@ -138,6 +138,10 @@ app.post("/login", function(req, res) {
 //----jump_to function: use to jump between the pages----//
 app.post("/jump_to", function(req, res) {
   res.send( packUp( req.body.call_page ) );
+  console.log( req.body );
+  console.log( req.body.data );
+  console.log( req.body.call_page );
+  console.log( req.body.call_page );
 });
 
 
