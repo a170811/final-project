@@ -49,9 +49,13 @@ $(document).ready(function(){
 
 }) ;
 function steal(stealwho){
-  steal_water( stealwho , ()=>{
-    showfriend();
-  } )
+  if(Account_data.steal_cd ==1){
+    alert("今天已經偷過水了喔~");
+  }else{
+    steal_water( stealwho , ()=>{
+      showfriend();
+    })
+  }
 }
 function showfriend(){
 	var username;
