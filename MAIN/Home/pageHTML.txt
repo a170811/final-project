@@ -45,3 +45,260 @@
       </div>
 
     </div>
+<style>
+
+html {
+  font-size : 16px ;
+}
+
+
+#main {
+  position:fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+  
+  1background: url("../Picture/bg-2.svg");
+  1background-repeat: no-repeat;
+  1background-size: 100vw;
+}
+
+
+#BG_pIcture1111{
+  position: absolute;
+  bottom: 0vh;
+  left: 0;
+  width: 100vw;
+  1height: 100vh;
+  z-index: -4;
+}
+
+.JUMP {
+  position: absolute;
+  1width3: 10vw;
+  1height3: 10vw;
+  1border-radius: 50%;
+}
+
+#Daily {
+  1background: blue;
+  bottom: 21vh;
+  left: 10vw;
+}
+
+#Daily_bg {
+  position: absolute;
+  width: 30vw;
+  bottom: 0px;
+  left: 0px;
+}
+
+#Daily_shadow {
+  position: relative;
+  width: 30vw;
+  bottom: -1vh;
+  left: 1.5vw;
+  opacity: 1;
+}
+
+#Flooding {
+  1background: green;
+  bottom: 30vh;
+  right: 11vw;
+}
+
+#Flooding_bg {
+  position: absolute;
+  width: 20vw;
+  bottom: 0;
+  right: 0;
+}
+
+#Flooding_shadow {
+  position: relative;
+  width: 20vw;
+  bottom: -1vh;
+  left: 1vw;
+  opacity: 1;
+}
+
+#Record {
+  1background: yellow;
+  bottom: 60vh;
+  right: 30vw;
+}
+
+#Record_bg {
+  position: absolute;
+  width: 25vw;
+  bottom: 0;
+  right: 0;
+}
+
+#Record_shadow {
+  position: relative;
+  width: 25vw;
+  bottom: -0.8vh;
+  left: 1vw;
+  opacity: 1;
+}
+
+#AboutUS {
+  1background: orange;
+  bottom: 20vh;
+  left: 40vw;
+}
+
+#AboutUS_bg {
+  position: relative;
+  position: absolute;
+  width: 15vh;
+  top: 0;
+  left: 0;
+}
+
+#Setup {
+  position: fixed;
+  1background: purple;
+  bottom: 5vh;
+  left: 10vw;
+}
+
+#Setup_bg {
+  position: absolute;
+  width: 10vw;
+  bottom: 0;
+  left: 0;
+}
+
+#Share {
+  1background: purple;
+  position: fixed;
+  bottom: 5vh;
+  right: 10vw;
+}
+
+#Share_bg {
+  position: relative;
+  position: absolute;
+  width: 10vw;
+  bottom: 0;
+  right: 0;
+}
+
+.center {
+  position: absolute ;
+  left : 50% ;
+  transform : translateX(-50%) ;
+}
+
+#setting_board {
+    position : absolute ;
+    width : 100vw ;
+    height : 100vh ;
+    left : -100%;
+}
+
+#setting_board > form {
+  padding-top : 2vh ;
+  font-size : 1.5rem ;
+  font-weight : 900 ;
+  width : 44vh ;
+  height : 38vh ;
+  top : 30vh ;
+  background-color : rgba(255 , 255 , 255 , 0.9 ) ;
+  border-radius : 4vh ;
+}
+
+#setting_board label {
+  margin-left : 3vh ;
+  margin-top : 2vh ;
+}
+
+#setting_board input{
+  font-size : 1.2rem ;
+  width: 70% ;
+  padding: 12px 20px ;
+  margin : 0vh 0 1vh 6vh ;
+  display: inline-block ;
+  border : 3px solid #ccc ;
+  border-radius : 7px ;
+  box-sizing: border-box ;
+}
+
+#target {
+  top : 3vh ;
+}
+
+#lasting_time {
+  top : 6vh ;
+}
+
+#send_target{
+  bottom : 3vh ;
+  width : 18vh ;
+  height : 8vh ;
+  border-radius : 10px ;
+  outline : none ;
+  cursor : pointer ;
+  border : 2px solid #999 ;
+  background-color : rgba( 255 , 255 , 255 , 0.6 ) ;
+}
+
+#send_target > span{
+  font-size : 1.2rem ;
+  font-weight : 800 ;
+}
+.friendboard {
+  position : absolute ;
+  left: 12vw ;
+  top : 15vw ; 
+  display: flex ;
+  flex-direction : column ;                   
+  width : 76vw ;
+  height : 135vw ;
+  background-color : #3797EC ;
+  visibility : hidden ;
+  border-style: solid;
+  border-width: 0.5vw;
+  border-color: #336e9b;
+  border-radius: 6vw;
+}
+.friwater{
+  background-color:#00e3e3;
+  width:40vw;
+  height:4vw;
+  
+}
+.friendlist{
+display:inline;
+}
+
+</style>
+
+<script>
+$(document).on('touchstart mousedown', ".JUMP", function() {
+    //event.preventDefault();
+        
+    var pageNum = parseInt(this.dataset.pageadd);
+    if( pageNum == 1){  //daily
+      $(this).find(".front").css({"bottom": "-1vh","left": "1.5vw"});
+    }
+    else if( pageNum == 2){ //Record
+      $(this).find(".front").css({"bottom": "-0.8vh","left": "auto", "right": "-1vw"});
+    }
+    else if( pageNum == 3){ //Flooding
+      $(this).find(".front").css({"bottom": "-0.95vh","left": "auto", "right": "-1vw"});
+    }
+      //$(this).find(".front").css({"bottom": "1","left": "0"});
+    //$(this).find(".front").addClass("");
+    
+});
+$(document).on('touchend mouseup', ".JUMP", function() {
+    event.preventDefault();
+    
+    var pageNum = parseInt(this.dataset.pageadd);
+    if( pageNum == 1){  //daily
+</script>

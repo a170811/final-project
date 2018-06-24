@@ -4,9 +4,71 @@ var Account_data ;
 // total_target , steal_cd )
 
 //---- start the function when web start ----//
+
+var messaging = null; // later use in firebase message
+
 $(document).ready(function () {
 
- $("#Login_block").animate({
+/******************************
+ *                            *
+ *          Firebase          *
+ *                            *
+ ******************************/
+ /* 
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyDvne8cRLcCzHcgLqE4jdOIeC8fCSI8VJY",
+      authDomain: "uidd2018-groupf.firebaseapp.com",
+      databaseURL: "https://uidd2018-groupf.firebaseio.com",
+      projectId: "uidd2018-groupf",
+      storageBucket: "uidd2018-groupf.appspot.com",
+      messagingSenderId: "363801879198"
+  };
+  firebase.initializeApp(config);
+  
+  messaging = firebase.messaging();
+
+  //-- getting message
+  messaging.onMessage(function (payload) {
+
+    //$('#log').prepend("Message received :" + JSON.stringify(payload) + "<br><br>")
+    console.log("Message received :" + JSON.stringify(payload) );
+
+    if (Notification.permission === 'granted') {
+      ShowNotification(payload.data.title, payload.data.body);
+      //三秒後自動關閉
+      setTimeout(notification.close.bind(notification), 3000);
+    }
+  });
+  messaging.getToken()
+      .then(function (currentToken) {
+          console.log("TOKEN: " + currentToken);
+          //$('#log').append("TOKEN: " + currentToken + "<br><br>")
+          if (currentToken) {
+            RegistUserTokenToSelfServer(currentToken, function (result) {
+              console.log("送回給自己 Server 的結果 :" + result );
+              //$('#log').prepend("送回給自己 Server 的結果 :" + result + "<br><br>")
+            });
+          } else {
+            console.log('註冊失敗請檢查相關設定.');
+            //$('#log').prepend('註冊失敗請檢查相關設定.');
+          }
+      })
+      .catch(function (err) {
+          console.log("跟 Server 註冊失敗 原因:" + err );
+          //$('#log').prepend("跟 Server 註冊失敗 原因:" + err + "<br>");
+      });
+
+
+*/
+
+/******************************
+ *                            *
+ *      Login Animation       *
+ *                            *
+ ******************************/
+  
+  $("#Login_block").animate({
         top: '54vh',
         opacity: '1'
       }, 1000);
@@ -22,52 +84,6 @@ $(document).ready(function () {
       $("#loginbutton").animate({
         top: '-3vh'
       },1500);
-      /*
-  //--------- LOGIN Function ---------//
-    //$("#Login_block").hide();
-    //$("#Login_block :input").attr('disabled','disabled');;
-  $("#Login_block :input").prop("disabled",true);
-  $("#prevIcon").addClass("hideGoHome");
-  checkOnLine(); 
-      
-  $('#Login button[type=submit]').click(function() {
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      data: {
-        user: $('#Login input[name=user]').val(),
-        password: $('#Login input[name=password]').val()
-      },
-      url: '/login',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-      }
-    });
-    $("#cover").addClass("cover");
-    $("#PS").text('Loading...');
-  }); 
-*/
-  //-------- JUMP Function --------//
-  /*
-  $(".JUMP").click(function() {//all class in html
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $('.JUMP').getAttribute("data-page-add").val()
-        call_page:parseInt(this.dataset.page-add)
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $('body').html(data);
-      }
-    });
-    $("body").append($("<div></div>")).addClass("cover");
-    $("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
-  });
-  */
 });
 
 
@@ -75,37 +91,44 @@ $(document).on('touchend click', ".JUMP", function() {
     event.preventDefault();
     var pageNum = parseInt(this.dataset.pageadd);
     JumpPage(pageNum);
-    /*
-    $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $(this).getAttribute("data-page-add").val()
-        call_page:parseInt(this.dataset.pageadd)
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        //$('body').html(data);
-      }
-    });
-    $("#cover").addClass("cover");
-    $("#PS").text('Loading...');
-    */
-    //$("body").append($("<div></div>")).addClass("cover");
-    //$("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
-    //alert( "hi" );
-
 });
+
+
+//-------Sent the Token to server-------//
+/*
+function RegistUserTokenToSelfServer(user_token, successFunc, errorFunc) {
+  var $res = '';
+  $.ajax({
+    type: "POST",
+    url: "/post_user_token",
+    //contentType: 'application/x-www-form-urlencoded',
+    async: true,
+    cache: false,
+    dataType: 'text',
+    data: { user_token: user_token },
+    success: function (data) {
+      if (data.hasOwnProperty("d")) {
+        $res = data.d;
+        if (successFunc != null)
+          successFunc(data.d);
+      }
+      else {
+        $res = data;
+        if (successFunc != null)
+          successFunc(data);
+      }
+    },
+    error: function (e) {
+      if (errorFunc != null)
+        errorFunc(e);
+    }
+  });
+  return $res;
+}
+
+
+*/
+
 
 
 function checkOnLine(){   
@@ -166,13 +189,23 @@ function checkHandler(){
 
 function JumpPage(pageNum) {
   var success=0;
+  var online = navigator.onLine;
+  var url = chooseUrl(pageNum, online);
+  var method = chooseMethod(online);
+  var data = chooseData(online);
+  //if(navigator.online) {
+  
   $.ajax({
-    method: "POST",
+    method: method,
+    /*
     data: {
+      data
       //call_page: $(this).getAttribute("data-page-add").val()
-      call_page:pageNum
     },
-    url: '/jump_to',
+*/
+    data,
+    //url: '/jump_to',
+    url: url,
     success: function(data) {
       success = 1;
       $("#UNIQUE").clearQueue();
@@ -207,28 +240,6 @@ function JumpPage(pageNum) {
         
       $("#cover").removeClass("cover");
       $("#PS").text('');
-        
-        
-        /*
-        $("#UNIQUE").animate({
-          opacity: '0'
-        }, 1000);
-        $("#UNIQUE").html(data);
-        $("#UNIQUE").animate({
-          opacity: '1'
-        }, 1000);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        */
-        //$('body').html(data);
     }
   });
   setTimeout(() => {
@@ -237,6 +248,41 @@ function JumpPage(pageNum) {
       $("#PS").text('Loading...');
     }
   }, 500);
+}
+function chooseData(pageNum, online) {
+  if(online)
+    return `data{call_page:${pageNum}}`;
+  else
+    return '';
+}
+function chooseMethod(online) {
+  if(online)
+    return 'POST';
+  else
+    return 'GET';
+}
+function chooseUrl(pageNum, online) {
+      if(online) {
+         return '/jump_to';
+      }
+      else{
+        if(pageNum == 0)
+           return '/Home/pageHTML.txt';
+        else if(pageNum == 1)
+           return '/Daily_page/pageHTML.txt';
+        else if(pageNum == 2)
+           return '/Record_page/pageHTML.txt';
+        else if(pageNum == 3)
+           return '/Flodding_page/pageHTML.txt';
+        else if(pageNum == 4)
+           return '/Setup_page/pageHTML.txt';
+        else if(pageNum == 5)
+           return '/Aboutus/pageHTML.txt';
+        else if(pageNum == 6)
+           return '/pageHTML.txt';
+        else
+           return '//pageHTML.txt';
+      }
 }
 
 

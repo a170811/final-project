@@ -25,3 +25,304 @@
     
 
     </div>
+    <style>
+    
+/*tmplate*/
+
+.board_default {
+    position : relative ;
+    border : 2px solid #999 ;
+    border-radius : 7vh ;
+    background-color : rgba(255,255,255,0.75) ;
+}
+
+.std_but{
+    position : absolute ;
+    display : block ;
+    width: 18vh;
+    height: 8vh;
+    border-radius : 5vh ;
+    outline : none ;
+    cursor : pointer ;
+    border: 2px solid #999 ;
+    background-color : rgba(255, 255, 255 , 0.6) ;
+}
+
+
+/*setting*/
+* {
+    box-sizing : border-box ;
+}
+
+html {
+	font-size:16px ;
+}
+
+body {
+    position : relative ;
+    background-image : url('./../Picture/bg.svg') ;
+    background-repeat : no-repeat ;
+    background-size : cover ;
+}
+
+body div {
+    position : relative ;
+    text-align : center ;
+}
+
+#arrow {
+    position : absolute ;
+    width : 3vh ;
+    top : 3vh ;
+    left : 4vh ;
+}
+
+#show_text {
+    position : absolute ;
+    left : 50% ;
+    transform : translateX(-50%) ;
+    top : 20vh ;
+    height : 20vh ;
+    width :100% ;
+    text-align : center ;
+    color : white ;
+    opacity : 0 ;
+}
+
+#show_text > h2 {
+    width : 100% ;
+}
+
+
+
+#title > span{
+    position : relative ;
+    border : 0px solid #999 ;
+    border-radius : 5vh ;
+    background-color : rgba(255,255,255,0.85) ;
+    
+    display : inline-block ;
+    text-align: center;
+    margin-top : 5vh ;
+    width : 20vh ;  
+    font-size: 1.6rem ;
+}
+
+#whale_container {
+    display: inline-block ;
+    width: 45vh;
+    height :45vh ;
+    top : 20vh ;
+}
+
+#whale_container > button {
+    bottom : 5vh ;
+	left: 50% ;
+	transform : translateX(-50%) ;
+}
+
+#whale_container > img:nth-of-type(2) {
+    clip : rect( 200px , auto , auto , auto ) ;
+}
+
+.whale {
+     display: inline-block;
+     position : absolute  ;
+     bottom : 40% ;
+     transform : translateX(-50%) ;
+     width : 80% ;
+}
+
+.board {
+    position : absolute ;
+    left:50% ;
+    top : 4vh ; 
+    transform: translateX(-50%) ;
+    display: flex ;
+    flex-direction : column ;
+    
+    width : 40vh ;
+    height : 34vh ;
+    background-color : rgb(255,255,255) ;
+    visibility : hidden ;
+}
+
+.board > div:first-of-type {
+    top : 1vh ;
+    height : 15% ;
+}
+
+.board > div:nth-of-type(2) {
+    height : 55% ;
+}
+
+.board > div:last-of-type {
+    height : 30% ;
+}
+
+.board > div:first-of-type span {
+    font-size : 1.5rem ;
+}
+
+.drip {
+    position:absolute ;
+    display : inline-block ;
+    width : 7vh ;
+    height : 9vh ;
+    top : 4vh ;
+    outline : none ;
+    border : 0px solid red ;
+}
+
+#b1 {
+    left:25% ;
+    transform :translateX(-60%) ;
+    background-color : rgba(255 , 255 , 255 , 0 ) ;
+    background-image:url("./../Picture/drip_none.svg") ;
+    background-size : auto , cover ;
+    background-repeat : no-repeat ;
+    background-position: center ;
+}
+#b2 {
+    left:50% ;
+    transform :translateX(-50%) ;
+    background-color : rgba(255 , 255 , 255 , 0 ) ;
+    background-image:url("./../Picture/drip_half.svg") ;
+    background-size : auto , cover ;
+    background-repeat : no-repeat ;
+    background-position: center ;
+}
+#b3 {
+    left:75% ;
+    transform :translateX(-40%) ;
+    background-color : rgba(255 , 255 , 255 , 0 ) ;
+    background-image:url("./../Picture/drip_full.svg") ;
+    background-size : auto , cover ;
+    background-repeat : no-repeat ;
+    background-position: center ;
+}
+
+.drip > span {
+    position : absolute ;
+    font-size: 1rem ;
+	left : 50% ;
+	transform : translateX(-50%) ;
+    top : 105% ;
+}
+
+.check {
+    display : inline-block ;
+    width : 15vh ;
+    font-size: 1.2rem ;
+	bottom : 3vh ;
+}
+
+.check:first-of-type {
+	left:28% ;
+	transform : translateX(-50%) ;
+}
+.check:last-of-type {
+    text-align : center ;
+	left:72% ;
+	transform : translateX(-50%) ;
+}
+
+
+
+
+@keyframes shake {
+    0%  {transform : scale(1 , 1) ; }
+    33% {transform : scale(1 , 1.2) ; }
+    66% {transform : scale(1.2 , 1) ; } 
+    to {transform : scale(1 , 1) ; } 
+}
+    </style>
+        <script>
+        
+
+//var amount = 0 ;
+var count = 0 ;
+function click_record() {
+    var board = document.getElementsByClassName('board') ;
+    board[0].style.visibility = 'visible' ;
+    board[0].disabled = true ;
+}
+
+function click_cancel() {
+    var board = document.getElementsByClassName('board') ;
+    board[0].style.visibility = 'hidden' ;
+    board[0].disabled = false ;
+    count = 0 ;
+    document.getElementById("count").innerHTML = count ;
+}
+
+function click_comfirm() {
+    if(count!=0) {
+
+        //amount = count ;
+        drinking_water( count*1000 ) ;
+        show_text(count) ;
+        count = 0 ;
+        document.getElementById("count").innerHTML = count ;
+        var board = document.getElementsByClassName('board') ;
+        board[0].style.visibility = 'hidden' ;
+        board[0].disabled = false ;
+        switch_whale(1) ;
+    }
+} 
+
+function b1() {
+    count+=0.1 ;
+    document.getElementById("count").innerHTML = count.toFixed(1) ;
+}
+function b2() {
+    count+=0.5 ;
+    document.getElementById("count").innerHTML = count.toFixed(1) ;
+}
+function b3() {
+    count+=1 ;
+    document.getElementById("count").innerHTML = count.toFixed(1) ;
+}
+
+function switch_whale( a ) {
+    var whale = $("#whale_container > img:nth-of-type(2)") ;
+    var whale2 = $("#whale_container > img:nth-of-type(1)") ;
+    var whale_height = whale.width()*0.63 ;
+    if(a==1) {
+
+        var cul = ( 1-(Account_data.today/Account_data.target) )*whale_height ;
+        var cul2 = cul-43 ;
+        if(cul<0) cul=0 ;
+        if(cul2<0) cul2=0 ;
+        $(".whale:last-of-type").animate( {opacity : 1 },2000 ) ;
+        $(".whale:first-of-type").animate( {opacity : 1 } , 1200 ) ;
+        whale.css("clip" , `rect(${cul}px , auto , auto, auto )`) ;
+        whale2.css("clip" , `rect( auto , auto , ${cul2} , auto )`) ;
+
+    }
+    else if(a==0) { //show bone
+        $(".whale:last-of-type").animate( {opacity : 0 } , 1200 ) ;
+        $(".whale:first-of-type").animate( {opacity : 1 } , 2000 ) ;
+    }
+} 
+$(document).ready(function(){
+
+    $("#title > span > span").html(Account_data.target) ;
+    if(Account_data.today == 0 ) {
+        switch_whale(0) ;
+    }
+    else switch_whale(1) ;
+
+});
+
+
+function show_text( show ) {
+    var div_text = $("#show_text") ;
+    show *=1000 ;
+    $( "#show_text > h2" ).html( "you drink " + show.toFixed(0) + "c.c. water" ) ;
+    $( div_text ).animate( {opacity : 1 } , 1200 , function(){
+        $(div_text).animate( { opacity : 0} , 200 ) ;
+    } ) ;
+}
+
+        </script>
