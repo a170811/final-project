@@ -1,0 +1,62 @@
+.bubble {
+    
+	position: absolute; 
+    width: 22vw; 
+    height: 22vw; 
+    top: 33.7775vh; 
+    right: 34.9737vw; 
+    opacity: 1;
+}
+
+.shadow {
+
+	position: absolute; 
+    top: 0.1vw; 
+    right: 0.1vw; 
+    border-radius: 50%;
+    width: 20.3vw; 
+    height: 20.3vw;
+
+}
+
+.picture {
+	position: absolute; 
+    top: 0.2vw; 
+    right: 0.2vw; 
+    border-radius: 50%; 
+    width: 19.5vw; 
+    height: 19.5vw; 
+    background: url('./003.png') center top / cover ; 
+    overflow: hidden; 
+    opacity: 0.5;
+}
+
+.inner-bubble {
+
+	position: absolute; 
+    top: 0vw; 
+    right: 0vw; 
+    border-radius: 50%; 
+    background: url(./bubble3.svg);
+    width: 20vw; 
+    height: 20vw;
+}
+
+.shake {
+    animation: shake 0.2s linear;
+}
+
+@keyframes shake {
+  from {
+    transform: scale(1, 1);
+  }
+  33% {
+    transform: scale(1, 1.2);
+  }
+  66% {
+    transform: scale(1.2, 1);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
