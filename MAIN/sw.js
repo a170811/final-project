@@ -104,8 +104,13 @@ self.addEventListener('fetch', event => {
 
 
 
-
-
+  var requestURL = new URL(event.request.url);
+    console.log(requestURL.pathname);
+  if (/^\/pageHTML.txt\//.test(requestURL.pathname)) {
+    //event.respondWith(/* some other combination of patterns */);
+    console.log("Find");
+    return;
+}
 
   var req = event.request.clone();
 
@@ -125,7 +130,7 @@ self.addEventListener('fetch', event => {
   else if (req.clone().method == "GET") {
     console.log('Get Post');
     event.respondWith(
-      caches.match(event.request).then(response => {
+      caches.match(event.request.url.pathname).then(response => {
         if (response) {
           return response
         }

@@ -80,18 +80,18 @@ function JumpPage(pageNum) {
   var online = navigator.onLine;
   var url = chooseUrl(pageNum, online);
   var method = chooseMethod(online);
-  var data = chooseData(online);
+  var data = chooseData(pageNum, online);
+  console.log(data);
   //if(navigator.online) {
   
   $.ajax({
     method: method,
-    /*
+    //data: data, 
     data: {
-      data
+      call_page: pageNum
       //call_page: $(this).getAttribute("data-page-add").val()
     },
-*/
-    data,
+//    data,
     //url: '/jump_to',
     url: url,
     success: function(data) {
@@ -139,7 +139,8 @@ function JumpPage(pageNum) {
 }
 function chooseData(pageNum, online) {
   if(online)
-    return `data{call_page:${pageNum}}`;
+    return `'call_page': '${pageNum}'`;
+    //return `data:{call_page:${pageNum}}`;
   else
     return '';
 }
