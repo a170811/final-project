@@ -48,6 +48,11 @@ $(document).ready(function(){
     }) ;
 
 }) ;
+function steal(stealwho){
+  steal_water( stealwho , ()=>{
+    showfriend();
+  } )
+}
 function showfriend(){
 	var username;
 	var temp="";
@@ -64,7 +69,7 @@ function showfriend(){
             get_total_water(friendid, (data)=>{
 				var friendwater =  data;
 				for(i=0;i<frinum;i++){
-					temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.friends.data[i].id + '/picture">'+ (response.friends.data[i].name)+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div><button type="button" onclick="steal('+friendid+')">偷水</button></div>';
+					temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.friends.data[i].id + '/picture">'+ (response.friends.data[i].name)+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div><button type="button" onclick="steal('+friendid[i]+')">偷水</button></div>';
 					document.getElementById("friendlist").innerHTML=temp;
 				}
             })

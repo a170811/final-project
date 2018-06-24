@@ -302,10 +302,14 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 };
 
 function logout(){
-    window.top.location ="https://www.facebook.com/v3.0/dialog/oauth?client_id=171183780224399&redirect_uri=https://luffy.ee.ncku.edu.tw:10055/";
+    FB.logout(function(response) {
+         window.top.location = '';
+    });
+    //window.top.location ="https://www.facebook.com/v3.0/dialog/oauth?client_id=171183780224399&redirect_uri=https://luffy.ee.ncku.edu.tw:10055/";
 }
 function guestlogout(){
-  window.top.location ="https://www.facebook.com/v3.0/dialog/oauth?client_id=171183780224399&redirect_uri=https://luffy.ee.ncku.edu.tw:10055/";
+  window.top.location ='';
+  //window.top.location ="https://www.facebook.com/v3.0/dialog/oauth?client_id=171183780224399&redirect_uri=https://luffy.ee.ncku.edu.tw:10055/";
 }
 function guest(){
   JumpPage(0);
