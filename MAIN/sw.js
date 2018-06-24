@@ -1,19 +1,20 @@
 const cacheFile = [
-  './index.html',  './index.js',  './index.css',  './pageHTML.txt',  './sw.js',  './register.js',
+  /*
+   */
+  './index.html',  './index.js',  './index.css',  './manifest.json',  './pageHTML.txt',  './sw.js',  './register.js',
   './Aboutus/001.png',  './Aboutus/002.png',  './Aboutus/003.png',  './Aboutus/004.png',
   './Aboutus/005.png',  './Aboutus/006.png',  './Aboutus/007.png',  './Aboutus/arrow.svg',
-  './Aboutus/bg+whale.png',  './Aboutus/bg+whale.svg',  './Aboutus/bg.svg',  './Aboutus/bubble.css',
+  './Aboutus/bg+whale.png',  './Aboutus/bg+whale.svg',  './Aboutus/bg.svg',  
   './Aboutus/bubble.svg',  './Aboutus/bubble2.svg',  './Aboutus/bubble3.svg',
-  './Aboutus/index.css',  './Aboutus/index.js',  './Aboutus/info_icon.svg',
+  './Aboutus/info_icon.svg',
   './Aboutus/pageHTML.txt',  './Aboutus/whale.gif',  './Aboutus/whale.js',
-  './Home/index.js',  './Home/pageHTML.txt',  './Home/index.css',
+  './Home/pageHTML.txt',
   './Record_page/BG.svg',  './Record_page/a.png',  './Record_page/b.png',
-  './Record_page/calendar.js',  './Record_page/drip.png',  './Record_page/index.css',
-  './Record_page/pageHTML.txt',  './Record_page/next.png',  './Record_page/prev.png', 
-  './Daily_page/index.css',  './Daily_page/myscript.js',  './Daily_page/pageHTML.txt',
-  './Setup_page/bg.svg',  './Setup_page/index.css',  './Setup_page/music.js',
-  './Setup_page/logo.svg',  './Setup_page/pageHTML.txt',
-  './Flooding_page/index.css',  './Flooding_page/pageHTML.txt',
+  './Record_page/drip.png',    './Record_page/pageHTML.txt',  './Record_page/next.png',  
+  './Record_page/prev.png', 
+  './Daily_page/pageHTML.txt',
+  './Setup_page/bg.svg',  './Setup_page/logo.svg',  './Setup_page/pageHTML.txt',
+  './Flooding_page/pageHTML.txt',
   './Picture/a.png',   './Picture/arrow-white.svg',  './Picture/b.png',  './Picture/bg-1.svg',
   './Picture/bg-2.svg',  './Picture/bg.svg',  './Picture/boat.svg',
   './Picture/castle-no-shadow.svg',  './Picture/castle-shadow.svg',  './Picture/dragon.png',
@@ -24,7 +25,7 @@ const cacheFile = [
   './Picture/turtle-shadow.svg',  './Picture/turtle.svg',  './Picture/whale-bone.svg',
   './Picture/whale-no-shadow.svg',  './Picture/whale-phone.png',  './Picture/whale-shadow.svg',
   './Picture/whale.ico',  './Picture/whale.svg',  './Picture/word.svg', 
-  './Setup_page/music.mp3',
+  './Setup_page/music.mp3', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js',
   './'
 ]
 
@@ -112,13 +113,11 @@ self.addEventListener('fetch', event => {
     console.log('Get Post');
     event.respondWith(
       caches.match(event.request).then(response => {
-          return response
-            /*
+          //return response
         if (response) {
           return response
         }
         return fetch(event.request)
-*/
       })
     )
 
@@ -150,7 +149,7 @@ self.addEventListener('fetch', event => {
   */
 })
 
-
+/*
 importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
 
@@ -166,3 +165,4 @@ messaging.setBackgroundMessageHandler(function (payload) {
 });
 
 console.log("Loaded SW..");
+*/

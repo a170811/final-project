@@ -31,7 +31,7 @@ var data = require(data_file);
  *                                                *
  **************************************************/
 
-
+/*
 ///---------- Setup firebase admin inorder to send notification to user ---------///
 var admin = require("firebase-admin");
 
@@ -100,7 +100,7 @@ app.post("/post_user_token", function(req, res) {
   console.log ( req.body.user_token );
   registrationToken = JSON.stringify( req.body.user_token );
   
-  /*
+  
   if ( data.hasOwnProperty(req.body.user) ) { 
     //console.log ( req.body.password);
     if ( data[req.body.user] == req.body.password ) {
@@ -114,7 +114,7 @@ app.post("/post_user_token", function(req, res) {
   else {
     res.send( `${req.body.user} is not registed, please regist first` );
   }
-  */
+  
 
 });
 
@@ -124,7 +124,7 @@ app.post("/post_user_token", function(req, res) {
 
 
 
-
+*/
 
 /****************************
  *                          *

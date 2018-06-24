@@ -14,7 +14,7 @@ $(document).ready(function () {
  *          Firebase          *
  *                            *
  ******************************/
-  
+ /* 
   // Initialize Firebase
   var config = {
       apiKey: "AIzaSyDvne8cRLcCzHcgLqE4jdOIeC8fCSI8VJY",
@@ -60,7 +60,7 @@ $(document).ready(function () {
       });
 
 
-
+*/
 
 /******************************
  *                            *
@@ -95,6 +95,7 @@ $(document).on('touchend click', ".JUMP", function() {
 
 
 //-------Sent the Token to server-------//
+/*
 function RegistUserTokenToSelfServer(user_token, successFunc, errorFunc) {
   var $res = '';
   $.ajax({
@@ -126,7 +127,7 @@ function RegistUserTokenToSelfServer(user_token, successFunc, errorFunc) {
 }
 
 
-
+*/
 
 
 
@@ -188,13 +189,23 @@ function checkHandler(){
 
 function JumpPage(pageNum) {
   var success=0;
+  var online = navigator.onLine;
+  var url = chooseUrl(pageNum, online);
+  var method = chooseMethod(online);
+  var data = chooseData(online);
+  //if(navigator.online) {
+  
   $.ajax({
-    method: "POST",
+    method: method,
+    /*
     data: {
+      data
       //call_page: $(this).getAttribute("data-page-add").val()
-      call_page:pageNum
     },
-    url: '/jump_to',
+*/
+    data,
+    //url: '/jump_to',
+    url: url,
     success: function(data) {
       success = 1;
       $("#UNIQUE").clearQueue();
@@ -229,28 +240,6 @@ function JumpPage(pageNum) {
         
       $("#cover").removeClass("cover");
       $("#PS").text('');
-        
-        
-        /*
-        $("#UNIQUE").animate({
-          opacity: '0'
-        }, 1000);
-        $("#UNIQUE").html(data);
-        $("#UNIQUE").animate({
-          opacity: '1'
-        }, 1000);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        */
-        //$('body').html(data);
     }
   });
   setTimeout(() => {
@@ -259,6 +248,41 @@ function JumpPage(pageNum) {
       $("#PS").text('Loading...');
     }
   }, 500);
+}
+function chooseData(pageNum, online) {
+  if(online)
+    return `data{call_page:${pageNum}}`;
+  else
+    return '';
+}
+function chooseMethod(online) {
+  if(online)
+    return 'POST';
+  else
+    return 'GET';
+}
+function chooseUrl(pageNum, online) {
+      if(online) {
+         return '/jump_to';
+      }
+      else{
+        if(pageNum == 0)
+           return '/Home/pageHTML.txt';
+        else if(pageNum == 1)
+           return '/Daily_page/pageHTML.txt';
+        else if(pageNum == 2)
+           return '/Record_page/pageHTML.txt';
+        else if(pageNum == 3)
+           return '/Flodding_page/pageHTML.txt';
+        else if(pageNum == 4)
+           return '/Setup_page/pageHTML.txt';
+        else if(pageNum == 5)
+           return '/Aboutus/pageHTML.txt';
+        else if(pageNum == 6)
+           return '/pageHTML.txt';
+        else
+           return '//pageHTML.txt';
+      }
 }
 
 
