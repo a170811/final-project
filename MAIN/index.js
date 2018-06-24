@@ -4,9 +4,20 @@ var Account_data ;
 // total_target , steal_cd )
 
 //---- start the function when web start ----//
+
+var messaging = null; // later use in firebase message
+
 $(document).ready(function () {
 
- $("#Login_block").animate({
+
+
+/******************************
+ *                            *
+ *      Login Animation       *
+ *                            *
+ ******************************/
+  
+  $("#Login_block").animate({
         top: '54vh',
         opacity: '1'
       }, 1000);
@@ -22,52 +33,6 @@ $(document).ready(function () {
       $("#loginbutton").animate({
         top: '-3vh'
       },1500);
-      /*
-  //--------- LOGIN Function ---------//
-    //$("#Login_block").hide();
-    //$("#Login_block :input").attr('disabled','disabled');;
-  $("#Login_block :input").prop("disabled",true);
-  $("#prevIcon").addClass("hideGoHome");
-  checkOnLine(); 
-      
-  $('#Login button[type=submit]').click(function() {
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      data: {
-        user: $('#Login input[name=user]').val(),
-        password: $('#Login input[name=password]').val()
-      },
-      url: '/login',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-      }
-    });
-    $("#cover").addClass("cover");
-    $("#PS").text('Loading...');
-  }); 
-*/
-  //-------- JUMP Function --------//
-  /*
-  $(".JUMP").click(function() {//all class in html
-    event.preventDefault();
-    $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $('.JUMP').getAttribute("data-page-add").val()
-        call_page:parseInt(this.dataset.page-add)
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $('body').html(data);
-      }
-    });
-    $("body").append($("<div></div>")).addClass("cover");
-    $("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
-  });
-  */
 });
 
 
@@ -75,37 +40,10 @@ $(document).on('touchend click', ".JUMP", function() {
     event.preventDefault();
     var pageNum = parseInt(this.dataset.pageadd);
     JumpPage(pageNum);
-    /*
-    $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $(this).getAttribute("data-page-add").val()
-        call_page:parseInt(this.dataset.pageadd)
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        //$('body').html(data);
-      }
-    });
-    $("#cover").addClass("cover");
-    $("#PS").text('Loading...');
-    */
-    //$("body").append($("<div></div>")).addClass("cover");
-    //$("body").append($("<h1></h1>")).addClass("PS").text('Loading...');
-    //alert( "hi" );
-
 });
+
+
+
 
 
 function checkOnLine(){   
@@ -128,33 +66,6 @@ function checkHandler(){
       console.log("imin");
 
 
-      /*
-      var pageNum = 0;
-      $.ajax({
-      method: "POST",
-      data: {
-        //call_page: $(this).getAttribute("data-page-add").val()
-        call_page:0
-      },
-      url: '/jump_to',
-      success: function(data) {
-        $("#UNIQUE").html(data);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        //$('body').html(data);
-      }
-      });
-      $("#cover").addClass("cover");
-      $("#PS").text('Loading...');
-*/
       
     }else{   
       //$("#refresh").text("offline");
@@ -166,13 +77,23 @@ function checkHandler(){
 
 function JumpPage(pageNum) {
   var success=0;
+  var online = navigator.onLine;
+  var url = chooseUrl(pageNum, online);
+  var method = chooseMethod(online);
+  var data = chooseData(pageNum, online);
+  console.log(data);
+  //if(navigator.online) {
+  
   $.ajax({
-    method: "POST",
+    method: method,
+    //data: data, 
     data: {
+      call_page: pageNum
       //call_page: $(this).getAttribute("data-page-add").val()
-      call_page:pageNum
     },
-    url: '/jump_to',
+//    data,
+    //url: '/jump_to',
+    url: url,
     success: function(data) {
       success = 1;
       $("#UNIQUE").clearQueue();
@@ -207,28 +128,6 @@ function JumpPage(pageNum) {
         
       $("#cover").removeClass("cover");
       $("#PS").text('');
-        
-        
-        /*
-        $("#UNIQUE").animate({
-          opacity: '0'
-        }, 1000);
-        $("#UNIQUE").html(data);
-        $("#UNIQUE").animate({
-          opacity: '1'
-        }, 1000);
-        $("#cover").removeClass("cover");
-        $("#PS").text('');
-        if( pageNum!=0 && pageNum!=5 ) {
-          $("#prevIcon").removeClass("hideGoHome");
-          $("#prevIcon").addClass("showGoHome");
-        }
-        else {
-          $("#prevIcon").removeClass("showGoHome");
-          $("#prevIcon").addClass("hideGoHome");
-        }
-        */
-        //$('body').html(data);
     }
   });
   setTimeout(() => {
@@ -238,43 +137,42 @@ function JumpPage(pageNum) {
     }
   }, 500);
 }
-
-
-
-
-
-
-
-/*---   with login animation
-function checkHandler(){   
-    var status=navigator.onLine;   
-    if(status){   
-      //$("#refresh").text("online");   
-      ready_flag = 1;
-      //$("#Login_block").hide().fadeIn(400);
-      $("#Login_block").animate({
-        top: '54vh',
-        opacity: '1'
-      }, 1000);
-      $("#Login_block :input").prop("disabled",false);
-      $("#Icon").animate({
-        top: '-5.5vh',
-        opacity: '1'
-      }, 1000);
-      $("#Word").animate({
-        top: '-10.5vh',
-        opacity: '0'
-      }, 1000);
-    }else{   
-      //$("#refresh").text("offline");
-      $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "39vh", "left": "15vw", "width": "70vw","height":"16vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
-      $("#refresh").append($("<p></p>").text("Please connect to Internet").css({"position": "fixed", "top": "40vh", "left": "15vw", "width": "70vw","font-size": "4vh", "font-weight": "bold", "color": "white", "textAlign": "center", "opacity": "0"}).animate({opacity: '1'}, 1000)); 
-    }   
+function chooseData(pageNum, online) {
+  if(online)
+    return `'call_page': '${pageNum}'`;
+    //return `data:{call_page:${pageNum}}`;
+  else
+    return '';
 }
-*/
-
-//
-
+function chooseMethod(online) {
+  if(online)
+    return 'POST';
+  else
+    return 'GET';
+}
+function chooseUrl(pageNum, online) {
+      if(online) {
+         return '/jump_to';
+      }
+      else{
+        if(pageNum == 0)
+           return '/Home/pageHTML.txt';
+        else if(pageNum == 1)
+           return '/Daily_page/pageHTML.txt';
+        else if(pageNum == 2)
+           return '/Record_page/pageHTML.txt';
+        else if(pageNum == 3)
+           return '/Flodding_page/pageHTML.txt';
+        else if(pageNum == 4)
+           return '/Setup_page/pageHTML.txt';
+        else if(pageNum == 5)
+           return '/Aboutus/pageHTML.txt';
+        else if(pageNum == 6)
+           return '/pageHTML.txt';
+        else
+           return '//pageHTML.txt';
+      }
+}
 
 
 
@@ -347,7 +245,15 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 				}
 			)
 */
-            account_data( id , response.name) ;
+
+            account_data( id , response.name ) ;
+            /*
+            account_data( id , response.name , ()=>{
+                steal_water( 1203611163114575 , ()=>{
+                    console.log(`my water now = ${Account_data.total}`) ;
+                } ) ;
+            }) ;
+            */
             /*
             var id_array = [ 12345 , 67890 ] ;
             account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
@@ -521,6 +427,23 @@ function get_total_water( target_id , func ) {
     }) ;
 }
 
+function steal_water( target_id , func ) {
+    Account_data.steal_cd = 1 ;
+    $.post('steal_water' , {
+        _my_id : Account_data.ID , 
+        _target_id : target_id  , 
+        _amount : Account_data.today*0.1 , 
+        _my_total : Account_data.total 
+    } , (data , status)=>{
+        Account_data.total = data.id1[1] ;
+        //console.log( data.id1 ) ;
+        //console.log( data.id2 ) ;
+        if (typeof func =='function') {
+            func( ) ;
+        }
+    }) ;
+}
+
 function date_string( a = 0 , b = 0 ) {
     if (a==0||b==0) { //today's year-month-date-num_of_days
         var d = new Date() ;
@@ -534,5 +457,4 @@ function date_string( a = 0 , b = 0 ) {
         return thisMonth ;
     }
 }
-
 

@@ -1,0 +1,45 @@
+#bigbox{
+  background-color: green;
+  width: 50vw;
+  height: 70vh;
+  z-index: 8;
+  margin: auto;
+}
+
+#oldmap{
+  z-index: 1;
+  position: absolute;
+  width: 50vw;
+  height: 70vh; /*have to change to variable*/
+}
+
+#newmap{
+  z-index: 2;
+  position: absolute;
+  width: 50vw;
+  height: 50vh;
+  margin: 0 auto;
+}
+
+#screen {
+  z-index: 3;
+  position: absolute;   
+  width: 100vw;
+  height: 30vh;                      
+}                    
+
+.overflow {
+  z-index: 3;
+  background-color: transparent;
+  mix-blend-mode: screen;  /*遮色片效果*/ 
+  width: 70vw;
+  height: 30vh;
+}
+
+.overflow img {
+  width: 50vw;
+  height: 30vh;
+  margin-left: -5vw;
+}
+
+

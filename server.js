@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
+//-------- include the stuff we need into server --------//
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
-const app = express();
-const port = 10055;
 
+const app = express();
+const port = 10058;
+
+///------------- Setup https connection ---------///
 const options = 
 {
     ca: fs.readFileSync('/home/uidd2018/ssl/ca_bundle.crt'),
@@ -13,12 +16,18 @@ const options =
     key: fs.readFileSync('/home/uidd2018/ssl/private.key')
 }
 https.createServer(options, app).listen(port, () => console.log(`listen on port:`+ port));
+
+
+///------------ load in User test data, can be removed -------//
 const bodyParser = require('body-parser');
 var data_file = './data.json';
 var data = require(data_file);
 
+///------- Setup code type ------///
 var encode = "utf8";
 
+
+///----------- setup mySQL ----------------/// 
 var mysql = require("mysql") ;
 var database_info = require('./database.js') ;
 var con = mysql.createConnection( database_info ) ;
@@ -27,14 +36,14 @@ con.connect(function(err){
 }) ;
 
 
-//---- Page --> Number ----//
-//    Home      = 0
-//    Daily     = 1
-//    Record    = 2
-//    Flooding  = 3
-//    Setup     = 4
-//    About us  = 5
-//    Login     = 6
+//----  Page --> Number ----//
+//      Home      = 0
+//      Daily     = 1
+//      Record    = 2
+//      Flooding  = 3
+//      Setup     = 4
+//      About us  = 5
+//      Login     = 6
 //
 
 var page_num = 7;
@@ -83,49 +92,15 @@ var js_files = [
 var PageJs = [page_num];
 
 
-
+//---------- load all the pages into server for jumping -------//
 for ( var  i=0; i < page_num; i++ ) {
   PageTxt[i] = fs.readFileSync(txt_files[i], encode);
   PageCss[i] = fs.readFileSync(css_files[i], encode);
-  //if (i!=0 && i!=3 && i!=4 && i!=6){
   if (i!=3 && i!=6){
     PageJs[i] = fs.readFileSync(js_files[i], encode);
   }
-  /*
-  //---- read html ----//
-  fs.readFile( txt_files[i], encode, (err, data) => {
-
-    PageTxt[i] = data;
-    console.log(PageTxt.length);
-    //console.log( PageTxt[i] );
-    //console.log( "--------------------------" );
-    //console.log( data );
-  });
-
-  //---- read css ----//
-  fs.readFile( css_files[i], encode, (err, data) => {
-    PageCss[i] = data;
-    //console.log( PageCss[i] );
-    //console.log( data );
-  });
-
-  //---- read js ----//
-  if ( i != 6 ) {
-    
-    fs.readFile( js_files[i], encode, (err, data) => {
-      PageJs[i] = data;
-      //console.log( PageJs[i] );
-      //console.log( data );
-    });
-  }
-  */
-
 };
-//for (var i=0; i<7; i++)
-//console.log( PageTxt[0] );
 
-//----read data.json file----//
-//console.log('Test: \n' + data['admin'] )
 
 //----setup body-parser for POST method, otherwise POST won't work----//
 app.use( bodyParser.json() );
@@ -162,20 +137,11 @@ app.post("/login", function(req, res) {
 
 //----jump_to function: use to jump between the pages----//
 app.post("/jump_to", function(req, res) {
-  //console.log( `JUMP` );
   res.send( packUp( req.body.call_page ) );
-
-
-
-
-  /*
-  if ( data.hasOwnProperty(req.body.student_id) ) {
-    res.send('Student ID ' + req.body.student_id + ' is owned by ' + data[req.body.student_id]);
-  }
-  else {
-    res.send('Student ID '+req.body.student_id+" is not found.");
-  }
-  */
+  console.log( req.body );
+  console.log( req.body.data );
+  console.log( req.body.call_page );
+  console.log( req.body.call_page );
 });
 
 
@@ -183,8 +149,6 @@ app.post("/jump_to", function(req, res) {
 function packUp( chosen ) {
   var tmp;
   tmp = '<style>\n' + PageCss[chosen] + '</style>\n' + '<script>\n' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
-  //tmp = '<style>\n #Login {opacity: 0;}  #refresh { opacity: 0.5; background-color: black;}\n' + PageCss[chosen] + '</style>\n' + '<script>\n $("#Login_block :input").prop("disabled",true);\n ' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
-  
   return tmp;
 }
 
@@ -212,19 +176,22 @@ app.post( "/save_account_data" ,( req , res )=>{
     con.query( sql , (err , result)=>{
         if (err) throw err ;
         if ( result.length > 0 ) { //registed
+            if( result[0].last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[1]}` ) {
+                con.query(`UPDATE data SET steal_cd=0 , last_login_date='${today_date[0]}-${today_date[1]}-${today_date[2]}' WHERE ID=${_id}`) ;
+                result[0].today = 0 ;
+                result[0].steal_cd = 0 ;
+            }
             
             sql = `SELECT water FROM daily_water WHERE ID=${_id} and year=${today_date[0]} and month=${today_date[1]}` ;
             con.query( sql , (err , result1)=>{ 
                 if (err) throw err ;
-                if ( result1[0]=="" ) { //new month ------> might error
+                if ( result1[0]=="" ) { //new month
 
                     var array = new Array( parseInt(today_date[3]) ).fill(0) ;
                     var input_string = array.join('-') ;
                     sql = `INSERT INTO daily_water ( ID , year , month , water ) VALUES ( ${_id} , ${today_date[0]} , ${today_date[1]} , '${input_string}' )` ;
                     con.query( sql , (err , result2)=>{
                         if (err) throw err ;
-                        result[0].today = 0 ;
-                        result[0].steal = 0 ;
                         res.send(JSON.stringify(result[0])) ;
                     }) ;
                     
@@ -345,3 +312,34 @@ app.post("/get_total_water" , (req , res)=>{
         res.send( ret_array ) ;
     }) ;
 } );
+
+app.post('/steal_water' , (req , res)=>{
+    
+    var my_id = req.body._my_id ;
+    var target_id = req.body._target_id ;
+    var amount = parseInt(req.body._amount) ;
+    var my_total = parseInt(req.body._my_total) ;
+    var res_data = {
+        id1 : [ 0 , 0 ] ,  
+        id2 : [ 0 , 0 ]
+    }
+    res_data.id1[0] = my_total ; 
+    var sql = `SELECT total FROM data WHERE ID=${target_id}` ;
+    con.query( sql , (err , result)=>{
+        if (err) throw err ;
+        res_data.id2[0] = result[0].total ;
+        if ( res_data.id2[0] <= amount ) {
+            res_data.id2[1] = 0 ;
+            res_data.id1[1] = my_total+result[0].total ; 
+        }
+        else {
+            res_data.id2[1] = res_data.id2[0] - amount ; 
+            res_data.id1[1] = my_total+amount ; 
+        }
+        sql = `UPDATE data SET total=${res_data.id1[1]} , steal_cd=1 WHERE ID=${my_id}` ;
+        con.query(sql) ;
+        sql = `UPDATE data SET total=${res_data.id2[1]} WHERE ID=${target_id}` ;
+        con.query(sql) ;
+        res.send( res_data ) ;
+    });
+}) ;
