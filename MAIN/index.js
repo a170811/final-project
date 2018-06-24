@@ -315,9 +315,9 @@ window.fbAsyncInit = function() {
     version: 'v2.8'
   });
   
- // FB.getLoginStatus(function(response) {
- //     statusChangeCallback(response);
- //   });
+  FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
 	
 FB.Event.subscribe('auth.authResponseChange', function(response){
     if (response.status === 'connected'){
@@ -396,18 +396,21 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 };
 
 function logout(){
-  FB.logout(function(response) {
-    window.top.location = '';
-  });
+    window.top.location ="https://www.facebook.com/v3.0/dialog/oauth?client_id=171183780224399&redirect_uri=https://luffy.ee.ncku.edu.tw:10055/";
 }
 function guestlogout(){
-  window.top.location='';
+  window.top.location ="https://www.facebook.com/v3.0/dialog/oauth?client_id=171183780224399&redirect_uri=https://luffy.ee.ncku.edu.tw:10055/";
 }
 function guest(){
   JumpPage(0);
   guestnum=0;
 }
+/*function loginb(){
+	window.top.location ="https://www.facebook.com/v3.0/dialog/oauth?client_id=171183780224399&redirect_uri=https://luffy.ee.ncku.edu.tw:10055/&granted_scopes=user_friends"
+  document.getElementById('music').play();
+  document.getElementById('music').loop = true;
 
+}*/
 function login() {
 	FB.login(function(response) {
         // handle the response
