@@ -244,7 +244,13 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 				}
 			)
 */
-            account_data( id , response.name) ;
+
+            account_data( id , response.name ) ;
+            /*
+            account_data( id , response.name , ()=>{
+                steal_water( 1203611163114575 , 123 ) ;
+            }) ;
+            */
             /*
             var id_array = [ 12345 , 67890 ] ;
             account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
@@ -414,6 +420,20 @@ function get_total_water( target_id , func ) {
         }
     }) ;
 }
+/*
+function steal_water( target_id , func ) {
+    
+    $.post('steal_water' , {
+        _my_id : Account_data.ID , 
+        _target_id : target_id  , 
+        _amount : Account_data.today*0.1
+    } , (data , status)=>{
+        if (typeof func =='function') {
+            func() ;
+        }
+    }) ;
+}
+*/
 
 function date_string( a = 0 , b = 0 ) {
     if (a==0||b==0) { //today's year-month-date-num_of_days

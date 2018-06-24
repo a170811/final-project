@@ -308,3 +308,26 @@ app.post("/get_total_water" , (req , res)=>{
         res.send( ret_array ) ;
     }) ;
 } );
+/*
+app.post('/steal_water' , (req , res)=>{
+    
+    var my_id = req.body._my_id ;
+    var target_id = req.body._target_id ;
+    var amount = req.body._amount ;
+    var res_data = {
+        id1 : [ 0 , 0 ] ,  
+        id2 : [ 0 , 0 ]
+    }
+    var sql = `SELECT total FROM data WHERE ID=${target_id}` ;
+    con.query( sql , (err , result)=>{
+        if (err) throw err ;
+        console.log(`first data: ${result[0].total}`) ;
+        res_data.id2[0] = result[0].total ;
+    });
+    console.log('middle') ;
+    var sql = `SELECT total FROM data WHERE ID=${my_id}` ;
+    con.query( sql , (err , result)=>{
+        console.log(`second data: ${result[0].total}`) ;
+    });
+}) ;
+*/
