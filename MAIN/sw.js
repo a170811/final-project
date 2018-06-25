@@ -103,15 +103,15 @@ self.addEventListener('fetch', event => {
   
 
 
-
+/*
   var requestURL = new URL(event.request.url);
     console.log(requestURL.pathname);
   if (/^\/pageHTML.txt\//.test(requestURL.pathname)) {
-    //event.respondWith(/* some other combination of patterns */);
+    //event.respondWith(/* some other combination of patterns );
     console.log("Find");
     return;
 }
-
+*/
   var req = event.request.clone();
 
   if (req.clone().method == "POST") {
