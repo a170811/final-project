@@ -301,7 +301,7 @@ app.post("/get_total_water" , (req , res)=>{
 
     var id_string = req.body._target ;
     var ret_array = [] ;
-    var sql = `SELECT total FROM data WHERE ID IN ( ${id_string} )` ;
+    var sql = `SELECT total FROM data WHERE ID IN ( ${id_string} ) ORDER BY FIELD ( ID , ${id_string} )` ;
     con.query( sql , (err , result)=>{
         if(err) throw err ;
         result.map( (x)=>{

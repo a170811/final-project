@@ -263,7 +263,10 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
             }) ;
             */
             /*
-            var id_array = [ 12345 , 67890 ] ;
+            var id_array = [ 
+				67890 , 
+				12345 , 
+			 ] ;
             account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
                 get_total_water( id_array , (data)=>{ //這個是get_total_water的callback 回傳值在data裡
                     console.log("testing here:") ;
