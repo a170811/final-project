@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const app = express();
-const port = 10058;
+const port = 10055;
 
 ///------------- Setup https connection ---------///
 const options = 
@@ -172,7 +172,9 @@ app.post( "/save_account_data" ,( req , res )=>{
     con.query( sql , (err , result)=>{
         if (err) throw err ;
         if ( result.length > 0 ) { //registed
-            if( result[0].last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[1]}` ) {
+            if( result[0].last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[2]}` ) {
+                console.log(result[0].last_login_date) ;
+                console.log(`${today_date[0]}-${today_date[1]}-${today_date[2]}` ) ;
                 con.query(`UPDATE data SET steal_cd=0 , last_login_date='${today_date[0]}-${today_date[1]}-${today_date[2]}' WHERE ID=${_id}`) ;
                 result[0].today = 0 ;
                 result[0].steal_cd = 0 ;
