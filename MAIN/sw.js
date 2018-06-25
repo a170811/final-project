@@ -103,7 +103,6 @@ self.addEventListener('fetch', event => {
   
 
 
-/*
   var requestURL = new URL(event.request.url);
     console.log(requestURL.pathname);
   if (/^\/pageHTML.txt\//.test(requestURL.pathname)) {
@@ -111,7 +110,6 @@ self.addEventListener('fetch', event => {
     console.log("Find");
     return;
 }
-*/
   var req = event.request.clone();
 
   if (req.clone().method == "POST") {
@@ -129,15 +127,49 @@ self.addEventListener('fetch', event => {
   }
   else if (req.clone().method == "GET") {
     console.log('Get Post');
+    var tmp = requestURL.pathname;
+    /*
     event.respondWith(
-      caches.match(event.request.url.pathname).then(response => {
-        if (response) {
-          return response
-        }
-        return fetch(event.request)
-      })
-    )
+          caches.match(event.request||`${tmp}`).then(response => {
+            if (response) {
+              return response
+            }
+            return fetch(`${tmp}`||event.request)
+          })
+      )
+*/
+    if(tmp=="/") {
+      event.respondWith(
+          caches.match(event.request).then(response => {
+            if (response) {
+              return response
+            }
+            return fetch(event.request)
+          })
+      )
 
+    }
+    else if(tmp == '/Home/pageHTML.txt' || tmp == '/Daily_page/pageHTML.txt' || tmp == '/Record_page/pageHTML.txt' || tmp == '/Flodding_page/pageHTML.txt' || tmp == '/Setup_page/pageHTML.txt' || tmp == '/Aboutus/pageHTML.txt' || tmp == '/pageHTML.txt'){
+       event.respondWith(
+          caches.match(tmp).then(response => {
+            if (response) {
+              return response
+            }
+            return fetch(tmp)
+          })
+      )
+
+    }
+    else {
+      event.respondWith(
+          caches.match(event.request).then(response => {
+            if (response) {
+              return response
+            }
+            return fetch(event.request)
+          })
+      )
+    }
   }
 
 
