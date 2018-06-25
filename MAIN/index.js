@@ -251,14 +251,15 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
 			)
 */
 
-            account_data( id , response.name ) ;
-            /*
+            //account_data( id , response.name ) ;
             account_data( id , response.name , ()=>{
-                steal_water( 1203611163114575 , ()=>{
+                alert('good') ;
+                steal_water( 1128278410645340 , (data)=>{
+                    console.log('testtting') ;
                     console.log(`my water now = ${Account_data.total}`) ;
+                    console.log(`data : ${data}`) ;
                 } ) ;
             }) ;
-            */
             /*
             var id_array = [ 12345 , 67890 ] ;
             account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
@@ -445,8 +446,8 @@ function steal_water( target_id , func ) {
         _my_total : Account_data.total 
     } , (data , status)=>{
         Account_data.total = data.id1[1] ;
-        //console.log( data.id1 ) ;
-        //console.log( data.id2 ) ;
+        console.log( data.id1 ) ;
+        console.log( data.id2 ) ;
         if (typeof func =='function') {
             func( ) ;
         }
