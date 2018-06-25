@@ -22,8 +22,64 @@
 
     </script>
 </div>
+//bubble.css
 <style>
+.contain {
+    position : absolute ;
+    top : 0px ;
+    width : 100vw ;
+    height : 100vh ; 
+    z-index : 4 ;
 
+}
+
+.coVer {
+    position : fixed ;
+    top : 0px ;
+    left: -5vw;
+    width : 110vw ;
+    height : 110vh ; 
+    z-index : 3 ;
+    background : rgba(0,0,0,0.6) ;
+  
+}
+
+.board {
+    position : relative ;
+    box-sizing : border-box ;
+    padding : 3vw ;
+    padding-bottom : 5vw ;
+    border : 2px  ;
+    border-radius : 3vw ;
+    top : 50% ;
+    transform : translateY(-50%) ;
+    width : 80vw ;
+    
+    max-height : 80vh ;
+    margin : 0 auto ;
+    background : rgba(0,0,0,0.8) ;
+    text-align : center ;
+    font-size : 2rem ;
+    font-family: arial;
+    color : rgb(255,255,255) ;
+    overflow : auto ;
+    z-index : 4 ;
+}
+
+.board p {
+    text-indent : 2em ;
+}
+
+.shadow {
+    background : #333333 ;
+    opacity : 0.5 ;
+}
+
+
+</style>
+
+//index.css
+<style>
 body {
   height: 100vh;
   width: 100vw;
@@ -146,10 +202,42 @@ html {
     width: 10vh;
   }
 }
+
+
 </style>
 
-<script>
 
+//whale.js
+<script>
+var t1=0;
+var t2=-0.5;
+var x=0;
+var y=0;
+var angle=0;
+setInterval(function(){
+  t1+=0.01;
+  x=35*Math.cos(t1);
+  y=35*Math.sin(t1);
+  angle=-(t1-(Math.PI/2))
+  $("#whale1").css("right",((x-70)*(($(window).width())/100)));
+  $("#whale1").css("top",((y-10)*(($(window).width())/100)));
+  $("#whale1").css("transform","rotate("+angle+"rad)");
+ },35);
+setInterval(function(){
+  t2-=0.01;
+  x=30*Math.cos(t2);
+  y=30*Math.sin(t2);
+  angle=-(t2+(Math.PI/2))
+  $("#whale2").css("right",((x+50)*(($(window).width())/100)));
+  $("#whale2").css("top",((y+10)*(($(window).width())/100)));
+  $("#whale2").css("transform","rotate("+angle+"rad)");
+ },30);
+
+</script>
+
+
+//index.js
+<script>
 var intro = {
     b0:"<h3>蘇品潔</h3>在地台南人,競技啦啦隊員,成大歷史三年級,愛練習的狂熱份子,呼吸都會<b>胖</b>的偽三層!" , 
     b1:"<h3>鄭翔升</h3>工設系研究所,喜歡打排球唱歌畫畫,一個生在台南但不了解台南的人..." ,  
@@ -390,25 +478,5 @@ $(document).ready(function(){
 
 }) ;
 
-/*
-$(document).ready(function(){
-    var arrow = document.getElementById("arrow");
-    $(arrow).click(function(){ 
-      var board = document.createElement("p") ;
-      var contain = document.createElement("div") ;
-      document.body.appendChild(contain) ;
-      contain.appendChild(board) ;
-      board.classList.add("board") ;
-      contain.classList.add("contain") ;
-      board.innerHTML = "Hello<br>there's a suprise for you<br>click me one time<br>and you'll find out<br><br><br><br><br><br><br>I'm just kidding~~~^^" ;
-
-    }) ;
-
-    $(document).ready(function(){
-      $(".contain").click(function(){
-          this.remove() ;
-      }) ;
-    });
-}) ;
-*/
 </script>
+

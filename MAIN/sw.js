@@ -24,7 +24,7 @@ const cacheFile = [
   './Picture/start-bg+logo.svg',  './Picture/start-bg.svg',  './Picture/turtle-no-shadow.svg',
   './Picture/turtle-shadow.svg',  './Picture/turtle.svg',  './Picture/whale-bone.svg',
   './Picture/whale-no-shadow.svg',  './Picture/whale-phone.png',  './Picture/whale-shadow.svg',
-  './Picture/whale.ico',  './Picture/whale.svg',  './Picture/word.svg', 
+  './Picture/whale.ico',  './Picture/whale.svg',  './Picture/word.svg', './Picture/whale-black.svg',
   './Setup_page/music.mp3', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js',
   './'
 ]
