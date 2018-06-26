@@ -1,3 +1,124 @@
+/*---- Setup the imformation on top----*/
+#Show_data {
+  position: fixed;
+  top: 3vh;
+  right: 34.7vw;
+  z-index: -9;
+  background-color: white;
+  width: 30vw;
+  height: 8vh;
+  border-radius: 3vh;
+  border-style: groove;
+  border-color: #707070;
+}
+
+.show{
+  position: relative;
+  color: #707070;
+  font-size: 3vh;
+  //font-family: "Chalkduster", fantasy  ;
+  font-family: "Arial", fantasy;
+}
+
+#Title {
+  top:-2.2vh;
+  /left: 4vw;
+  left: 9vw;
+}
+
+#show_total {
+  top: -5.2vh;
+  right: 5vw;
+  text-align:right;
+  font-size: 2.5vh;
+}
+
+/*
+#word_bg {
+  z-index: -9;
+  position: relative;
+  top: 0vh;
+  background-color: white;
+  width: 50vw;
+  height: 5vh;
+  border-radius: 2.5vh;
+}
+*/
+
+/*----setup info icon---*/
+#information_icon img  {
+  position: fixed;
+  top: 4.5vh;
+  right: 10vw;
+  width: 5vh;
+  height: 5vh;
+}
+
+
+/*---- Setup the change pic div ----*/
+#Flood_pic{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+}
+
+#present{
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/*---- For history imformation---*/
+.contain {
+    position : absolute ;
+    top : 0px ;
+    width : 100vw ;
+    height : 100vh ; 
+    z-index : 4 ;
+
+}
+
+.cover1 {
+    position : fixed ;
+    top : 0px ;
+    left: -5vw;
+    width : 110vw ;
+    height : 110vh ; 
+    z-index : 3 ;
+    background : rgba(0,0,0,0.6) ;
+  
+}
+
+.board {
+    position : relative ;
+    box-sizing : border-box ;
+    padding : 3vw ;
+    padding-bottom : 5vw ;
+    border : 2px  ;
+    border-radius : 3vw ;
+    top : 50% ;
+    transform : translateY(-50%) ;
+    width : 80vw ;
+    
+    max-height : 80vh ;
+    margin : 0 auto ;
+    background : rgba(0,0,0,0.8) ;
+    text-align : center ;
+    font-size : 3vh ;
+    font-family: arial;
+    color : rgb(255,255,255) ;
+    overflow : auto ;
+    z-index : 4 ;
+}
+
+/*
 #bigbox{
   position: absolute;
   top:0;
@@ -19,7 +140,7 @@
   z-index: 1;
   position: relative;
   width: 100%;
-  height: 100%; /*have to change to variable*/
+  height: 100%; /*have to change to variable
 }
 
 
@@ -40,3 +161,4 @@
   height: 100%;
   margin: 0 auto;
 }
+*/
