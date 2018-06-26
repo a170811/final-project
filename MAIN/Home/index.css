@@ -254,7 +254,7 @@ html {
   overflow:hidden;
   float:left;
   position:relative;
-  top:5vw;
+  top:4vw;
   border-radius: 2vw;
 }
 .propc{
@@ -269,6 +269,8 @@ html {
   float:left;
   position:relative;
   margin-top:4vw;
+  width:45%;
+  height:5vw;
 }
 .close{
  background-image: url( "../Picture/cancel.png");

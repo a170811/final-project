@@ -46,9 +46,9 @@
 
     </div>
 <style>
-
 html {
   font-size : 16px ;
+  font-family:Microsoft JhengHei;
 }
 
 
@@ -252,11 +252,10 @@ html {
   font-weight : 800 ;
 }
 .friendboard {
+  overflow: auto;
   position : absolute ;
   left: 12vw ;
-  top : 15vw ; 
-  display: flex ;
-  flex-direction : column ;                   
+  top : 15vw ;                    
   width : 76vw ;
   height : 135vw ;
   background-color : #3797EC ;
@@ -265,17 +264,80 @@ html {
   border-width: 0.5vw;
   border-color: #336e9b;
   border-radius: 6vw;
+  color: white;
+  text-align: center;
+  font-size:5vw;
+  padding-top:4vw;
+}
+.friendblock{
+  background-color: #325F87;
+  width :86%;
+  height:21vw;
+  margin-left: 7%;
+  margin-top:4%;
+  border-radius: 3.5vw;
+}
+.stealbtn{
+  background-image:url("../Picture/steal.svg");
+  background-size:;
+  background-repeat:no-repeat;
+  float:right;
+  position:relative;
+  height:6vw;
+  width:10.5vw;
+  text-align:center;
+  right:7%;
+  bottom:42%;
+  font-size:3.2vw;
 }
 .friwater{
   background-color:#00e3e3;
-  width:40vw;
+  height:4vw; 
+  float:left;
+}
+.graybar{
+  background-color:white;
+  width: 60%;
   height:4vw;
-  
+  overflow:hidden;
+  float:left;
+  position:relative;
+  top:5vw;
+  border-radius: 2vw;
 }
-.friendlist{
-display:inline;
+.propc{
+  margin:3vw;
+  height:15vw;
+  float:left;
+  border-radius: 2vw;
 }
-
+.name{
+  color:white;
+  font-size:3.5vw;
+  float:left;
+  position:relative;
+  margin-top:4vw;
+  width:45%;
+  height:4vw;
+}
+.close{
+ background-image: url( "../Picture/cancel.png");
+ width:7vw;
+ height:7vw;
+ float:right;
+ position:absolute;
+ top:2%;
+ right:7%;
+ background-repeat: no-repeat;
+ background-size:contain;
+}
+.line{
+  margin-top:2%;
+  margin-left:6%;
+  background-color:white;
+  height:0.6vw;
+  width:88%;
+}
 </style>
 
 <script>
@@ -339,24 +401,24 @@ function steal(stealwho){
   }
 }
 function showfriend(){
-  var username;
-  var temp="";
+	var username;
+	var temp="";
   document.getElementById("friendboard").style.visibility = 'visible' ;
-    if (guestnum == 1){
+		if (guestnum == 1){
         FB.api('/me?fields=friends,name,email,picture', function(response){
         username=(response.name);
         var frinum = (response.friends.data.length);
         var friendid = new Array(frinum);
-    //temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.id + '/picture">'+ username+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div></div>';
+		//temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.id + '/picture">'+ username+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div></div>';
         for(j=0;j<frinum;j++){
               friendid[j] = response.friends.data[j].id;
             }
             get_total_water(friendid, (data)=>{
-        var friendwater =  data;
-        for(i=0;i<frinum;i++){
-          temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.friends.data[i].id + '/picture">'+ (response.friends.data[i].name)+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div><button type="button" onclick="steal('+friendid[i]+')">偷水</button></div>';
-          document.getElementById("friendlist").innerHTML=temp;
-        }
+				var friendwater =  data;
+				for(i=0;i<frinum;i++){
+					temp+="<div class = 'friendblock'>"+'<img class="propc" src="https://graph.facebook.com/' + response.friends.data[i].id + '/picture?type=large"> <div class="name">'+ (response.friends.data[i].name)+' '+friendwater[i]+'</div> <div class="graybar"><img id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/(Math.max(...friendwater))*100+'%;"></div><div class="stealbtn" type="button" onclick="steal('+friendid[i]+')">偷水</div></img></div>';
+					document.getElementById("friendlist").innerHTML=temp;
+				}
             })
           });
         }
@@ -365,7 +427,6 @@ function showfriend(){
         }
 }
 function closefriend(){
-  document.getElementById('friendboard').style.visibility = 'hidden' ;  
+  document.getElementById('friendboard').style.visibility = 'hidden' ;	
 }
-
-</script> 
+</script>
