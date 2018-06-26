@@ -96,7 +96,7 @@ var PageJs = [page_num];
 for ( var  i=0; i < page_num; i++ ) {
   PageTxt[i] = fs.readFileSync(txt_files[i], encode);
   PageCss[i] = fs.readFileSync(css_files[i], encode);
-  if (i!=3 && i!=6){
+  if (i!=6){
     PageJs[i] = fs.readFileSync(js_files[i], encode);
   }
 };
@@ -148,7 +148,8 @@ app.post("/jump_to", function(req, res) {
 //---- package the content ----//
 function packUp( chosen ) {
   var tmp;
-  tmp = '<style>\n' + PageCss[chosen] + '</style>\n' + '<script>\n' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
+  tmp=PageTxt[chosen];
+  //tmp = '<style>\n' + PageCss[chosen] + '</style>\n' + '<script>\n' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
   return tmp;
 }
 
