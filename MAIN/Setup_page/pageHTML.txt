@@ -4,9 +4,11 @@
 	Volume:
 	<input ontouchmove="moveFunction()" type="range" min="0" max="100" value="100" class="slider" id="volrange">
 </div>
+
+<!--
 <form id="reminder">
   <input type="time" name="rem_time"> 
-  <!--
+  
   <select name="">
   　<option value="">台北</option>
   　<option value="">桃園</option>
@@ -14,13 +16,13 @@
   　<option value=""></option>
   </select>
   Username:<input name="username" type="text">
-  -->
+  
   <button type="submit">提交</button>
   <h1 id="success"></h1>
 
 </form>
 <div id= "friendlist"></div>
-<!--	<div id="gender">User Gender:
+	<div id="gender">User Gender:
 	</div>
 	<label class="button">
   <input type="checkbox">
@@ -28,7 +30,7 @@
   <span></span>
   <span></span>
 </label> -->
-
+<!--
 <style>
 
 .slidecontainer {
@@ -137,4 +139,4 @@ $(document).ready(function(){
   })
 })
 
-</script>
+</script>-->
