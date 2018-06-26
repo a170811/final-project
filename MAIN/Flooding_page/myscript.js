@@ -90,10 +90,10 @@ function show(  ) {
 
 //--- set for the page
 $(document).ready( () => {
-    //var total = Account_data.total;
-    //var target = Account_data.total_target;
-    var total = 12620000;
-    var target = 200000000;
+    var total = Account_data.total;
+    var target = Account_data.total_target;
+    //var total = 12620000;
+    //var target = 200000000;
     power = 0;
     findPower(total);
 

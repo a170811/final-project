@@ -101,6 +101,7 @@ function JumpPage(pageNum) {
     url: url,
     success: function(data) {
       success = 1;
+      //changePic.length = 0;
       $("#UNIQUE").clearQueue();
       //$("#prevIcon").clearQueue();
       $("#UNIQUE").animate({
@@ -120,6 +121,8 @@ function JumpPage(pageNum) {
         }
         else if( pageNum!=0 && pageNum!=1 && pageNum!=5 ) {
           $("#prevIcon").addClass("showGoHome");
+          if(pageNum == 3) {
+            $("#prevIcon").css({"top": "4vh", "left": "13vw", "width": "3vh","height":"7vh"});              }
         }
         else {
           $("#prevIcon").addClass("hideGoHome");

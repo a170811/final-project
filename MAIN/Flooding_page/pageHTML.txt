@@ -1,15 +1,20 @@
 
 <div id="Show_data">
-    <p id="Title" class="show">Total: </p>
-    <p id="show_total" class="show">15 L</p>
-</div>
+      <p id="Title" class="show">Total</p>
+      <p id="show_total" class="show">15 L</p>
+    </div>
 
-<div id="Flood_pic">
-  <img id="present" src="./Picture/Flood/pic_1.svg">
-  
-</div>
+    <div id="tmp"></div>
 
-<script src="myscript.js"></script>
+    <div id="information_icon">
+      <img src="./Picture/info_icon.svg">
+    </div>
+
+    <div id="Flood_pic">
+      <img id="present" src="./Picture/Flood/pic_1.svg">
+    </div>
+
+
 
 <style>
   /*---- Setup the imformation on top----*/
@@ -136,7 +141,7 @@
 
 
 <script>
-  const changePic = [
+var changePic = [
     /*
      */
     '../Picture/Flood/pic_1.svg',  '../Picture/Flood/pic_2.svg',
@@ -170,8 +175,8 @@
   // Account_data.total;
   // Account_data.total_target;
   //document.getElementById("imageid").src="../template/save.png";
-  const history_ch = "你好我是歷史資訊。<br> 體回們的快車上要直。告種如一生很不色所詩！人前頭童不花形量人書張民很我做頭？的多女統氣於紅信問得證工爸：收上語、是德西中明單？戰灣人說好北的終一見據了力不趣火有圖任告數；連資生住或，獨車樣成區動裡他際異境相。際市的醫的費河可底國場業直，方以見爸，清還臺場教美算方看看據怕許此，經之卻起他春文評前有心也合空人由……獲眾品神有觀金得覺取起很一作經古格利溫調國幾成黑處水為水度但強車我公利覺神數來業全著、指年保家從行應再現人可市經教下讀時專地人家職，見府作。往三熱結使頭心司下氣真屋星部人。這回不了傷多出！頭國實大開上處作可趣口油國現而這中金，別叫案，組最所名新型資小他大反叫度快的出、麼用實，盡的八往、到情全於到張女的樂告史書來書看程異，夜一家會這然公你青見教要國世買大廠出經形臺高！河你病式調筆查現怎開許，該於國裡都定定？家類熱收面展紙國難八文早位果品現量少病料來情管區！美智如！";
-  const history_en = " Hello, I'm the History. <br> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,";
+  var history_ch = "你好我是歷史資訊。<br> 體回們的快車上要直。告種如一生很不色所詩！人前頭童不花形量人書張民很我做頭？的多女統氣於紅信問得證工爸：收上語、是德西中明單？戰灣人說好北的終一見據了力不趣火有圖任告數；連資生住或，獨車樣成區動裡他際異境相。際市的醫的費河可底國場業直，方以見爸，清還臺場教美算方看看據怕許此，經之卻起他春文評前有心也合空人由……獲眾品神有觀金得覺取起很一作經古格利溫調國幾成黑處水為水度但強車我公利覺神數來業全著、指年保家從行應再現人可市經教下讀時專地人家職，見府作。往三熱結使頭心司下氣真屋星部人。這回不了傷多出！頭國實大開上處作可趣口油國現而這中金，別叫案，組最所名新型資小他大反叫度快的出、麼用實，盡的八往、到情全於到張女的樂告史書來書看程異，夜一家會這然公你青見教要國世買大廠出經形臺高！河你病式調筆查現怎開許，該於國裡都定定？家類熱收面展紙國難八文早位果品現量少病料來情管區！美智如！";
+  var history_en = " Hello, I'm the History. <br> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,";
   var power = 0;
 
 
@@ -228,12 +233,14 @@
 
   //--- set for the page
   $(document).ready( () => {
-      //var total = Account_data.total;
-      //var target = Account_data.total_target;
-      var total = 12620000;
-      var target = 200000000;
+      var total = Account_data.total;
+      var target = Account_data.total_target;
+      //var total = 12620000;
+      //var target = 200000000;
       power = 0;
       findPower(total);
+      console.log(total);
+      console.log(target);
 
       var percentage = Math.floor( (total/target) * 51  );
       document.getElementById("present").src=changePic[ percentage ];

@@ -83,7 +83,7 @@ var js_files = [
   './MAIN/Home/index.js',
   './MAIN/Daily_page/myscript.js',
   './MAIN/Record_page/calendar.js',
-  './MAIN/Flooding_page/index.js',
+  './MAIN/Flooding_page/myscript.js',
   './MAIN/Setup_page/music.js',
   './MAIN/Aboutus/index.js',
   './MAIN/index.js'
