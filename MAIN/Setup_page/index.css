@@ -1,6 +1,6 @@
 .slidecontainer {
-	height:5vh;
-	margin: 15vh 0 0 10vw;
+	height: 15vw;
+	margin: 25vw 0 0 10vw;
 	font-size:5vw;
 	font-weight:800;
 }
@@ -13,11 +13,19 @@
   z-index: -4;
 }
 #hellouser{
-  height:5vh;
-	margin: 15vh 0 0 12vw;
+  height: 15vw;
+	margin: 25vw 0 0 12vw;
 	font-size:5vw;
 	font-weight:800;
   letter-spacing:1vw;
+}
+.prop{
+  margin-right:5vw;
+  height:15vw;
+  position:relative;
+  top:5vw;
+  display:inline;
+  border-radius: 1vw;
 }
 #logout{
   margin-left:10vw;
@@ -47,7 +55,8 @@
     appearance: none;
     width: 8vw; /* Set a specific slider handle width */
     height: 8vw; /* Slider handle height */
-    background-image: url(../Setup_page/logo.svg); /* Green background */
+    background-color:white;/* Green background */
+    border-radius:4vw;
     cursor: pointer; /* Cursor on hover 	*/
 }
 

@@ -1,5 +1,6 @@
 html {
   font-size : 16px ;
+  font-family:Microsoft JhengHei;
 }
 
 
@@ -203,11 +204,10 @@ html {
   font-weight : 800 ;
 }
 .friendboard {
+  overflow: auto;
   position : absolute ;
   left: 12vw ;
-  top : 15vw ; 
-  display: flex ;
-  flex-direction : column ;                   
+  top : 15vw ;                    
   width : 76vw ;
   height : 135vw ;
   background-color : #3797EC ;
@@ -216,14 +216,75 @@ html {
   border-width: 0.5vw;
   border-color: #336e9b;
   border-radius: 6vw;
+  color: white;
+  text-align: center;
+  font-size:5vw;
+  padding-top:4vw;
+}
+.friendblock{
+  background-color: #325F87;
+  width :86%;
+  height:21vw;
+  margin-left: 7%;
+  margin-top:4%;
+  border-radius: 3.5vw;
+}
+.stealbtn{
+  background-image:url("../Picture/steal.svg");
+  background-size:;
+  background-repeat:no-repeat;
+  float:right;
+  position:relative;
+  height:6vw;
+  width:10.5vw;
+  text-align:center;
+  right:7%;
+  bottom:42%;
+  font-size:3.2vw;
 }
 .friwater{
   background-color:#00e3e3;
-  width:40vw;
+  height:4vw; 
+  float:left;
+}
+.graybar{
+  background-color:white;
+  width: 60%;
   height:4vw;
-  
+  overflow:hidden;
+  float:left;
+  position:relative;
+  top:5vw;
+  border-radius: 2vw;
 }
-.friendlist{
-display:inline;
+.propc{
+  margin:3vw;
+  height:15vw;
+  float:left;
+  border-radius: 2vw;
 }
-
+.name{
+  color:white;
+  font-size:3.5vw;
+  float:left;
+  position:relative;
+  margin-top:4vw;
+}
+.close{
+ background-image: url( "../Picture/cancel.png");
+ width:7vw;
+ height:7vw;
+ float:right;
+ position:absolute;
+ top:2%;
+ right:7%;
+ background-repeat: no-repeat;
+ background-size:contain;
+}
+.line{
+  margin-top:2%;
+  margin-left:6%;
+  background-color:white;
+  height:0.6vw;
+  width:88%;
+}

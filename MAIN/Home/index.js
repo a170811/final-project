@@ -73,7 +73,7 @@ function showfriend(){
             get_total_water(friendid, (data)=>{
 				var friendwater =  data;
 				for(i=0;i<frinum;i++){
-					temp+="<br><div>"+'<img src="https://graph.facebook.com/' + response.friends.data[i].id + '/picture">'+ (response.friends.data[i].name)+friendwater[i]+'<div id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/2000*60+'vw;"></div><button type="button" onclick="steal('+friendid[i]+')">偷水</button></div>';
+					temp+="<div class = 'friendblock'>"+'<img class="propc" src="https://graph.facebook.com/' + response.friends.data[i].id + '/picture?type=large"> <div class="name">'+ (response.friends.data[i].name)+' '+friendwater[i]+'</div> <div class="graybar"><img id="friwater'+i+'" class="friwater" style="width:'+friendwater[i]/(Math.max(...friendwater))*100+'%;"></div><div class="stealbtn" type="button" onclick="steal('+friendid[i]+')">偷水</div></img></div>';
 					document.getElementById("friendlist").innerHTML=temp;
 				}
             })
