@@ -17,9 +17,9 @@
         <img id="Record_bg" class="front" src="../Picture/turtle-no-shadow.svg">
       </div>
       
-      <div id="AboutUS" class="JUMP icoN" data-pageadd="5">
+      <!--div id="AboutUS" class="JUMP icoN" data-pageadd="5">
         <img id="AboutUS_bg" src="../Picture/boat.svg">
-      </div>
+      </div-->
       
       <div id="Setup" class="JUMP icoN" data-pageadd="4">
         <img id="Setup_bg" src="../Picture/setting.svg">

@@ -44,8 +44,26 @@ body div {
 #arrow {
     position : absolute ;
     width : 3vh ;
-    top : 3vh ;
-    left : 4vh ;
+    top : 4vh ;
+    left : 13vw ;
+}
+
+#page_title {
+    position : absolute ;
+    left: 50% ;
+    transform : translateX(-50%) ;
+    top : 4vh ;
+    border : 0px solid #999 ;
+    border-radius : 5vh ;
+    background-color : rgba(255,255,255,0.85) ;
+    
+    display : inline-block ;
+    text-align: center;
+    width : 20vh ;  
+    height : 5vh ;
+    line-height : 5vh ;
+    font-size: 1.3rem ;
+    color : #707070 ;
 }
 
 #show_text {
@@ -64,30 +82,30 @@ body div {
     width : 100% ;
 }
 
+#title {
+    position : absolute ;
+    top : 2vh ;
+    width:100% ;
+}
 
 
 #title > span{
-    position : relative ;
     border : 0px solid #999 ;
     border-radius : 5vh ;
     background-color : rgba(255,255,255,0.85) ;
     
-    display : inline-block ;
-    text-align: center;
-    margin-top : 5vh ;
-    width : 20vh ;  
     font-size: 1.6rem ;
 }
 
 #whale_container {
     display: inline-block ;
     width: 45vh;
-    height :45vh ;
+    height :49vh ;
     top : 20vh ;
 }
 
 #whale_container > button {
-    bottom : 5vh ;
+    bottom : 4vh ;
 	left: 50% ;
 	transform : translateX(-50%) ;
 }
@@ -99,7 +117,7 @@ body div {
 .whale {
      display: inline-block;
      position : absolute  ;
-     bottom : 40% ;
+     bottom : 32% ;
      transform : translateX(-50%) ;
      width : 80% ;
 }

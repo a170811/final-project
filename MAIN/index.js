@@ -116,7 +116,7 @@ function JumpPage(pageNum) {
         $("#prevIcon").removeClass("hideGoHome");
         $("#prevIcon").removeClass("showGoHome");
         $("#prevIcon").removeClass("showGoHome2");
-        if ( pageNum==2 ) {
+        if ( pageNum==2||pageNum==4 ) {
           $("#prevIcon").addClass("showGoHome2");
         }
         else if( pageNum!=0 && pageNum!=1 && pageNum!=5 ) {

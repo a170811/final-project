@@ -33,9 +33,9 @@ body {
 .showGoHome2 {
   opacity: 1;
   position: fixed;
-  bottom: 8vw;
-  left: 8vw;
-  width: 10vh;
+  top : 3vh;
+  left: 13vw;
+  width: 4vh;
   height: 10vh;
 }
 

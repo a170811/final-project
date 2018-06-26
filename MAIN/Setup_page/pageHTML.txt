@@ -1,8 +1,14 @@
     <img id="BG_Setup" src="../Setup_page/bg.svg">
+    <div id='page_title'><span>設定<span></div>
     <div id="hellouser"></div>
 <div class="slidecontainer">
-	Volume:
+    <div>當日水量</div>
+    <div><span></span>c.c.</div>
+	<div>音效
 	<input ontouchmove="moveFunction()" type="range" min="0" max="100" value="100" class="slider" id="volrange">
+    </div>
+    <div id='AboutUS' class="JUMP icoN" data-pageadd='5'>關於我們</div>
+    <div>登出</div>
 </div>
 
 <!--
@@ -30,14 +36,58 @@
   <span></span>
   <span></span>
 </label> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.slidecontainer > div:nth-of-type(2) > span').html(Account_data.today) ;
+    }) ;
+    </script>
+
+
 <!--
 <style>
 
+html {
+    font-size : 16px ;
+}
 .slidecontainer {
-	height:5vh;
-	margin: 15vh 0 0 10vw;
+	margin: 15vh 0 0 28vw;
 	font-size:5vw;
 	font-weight:800;
+}
+.slidecontainer > div {
+    margin-top : 5vh ; 
+    margin-bottom : 5vh ; 
+}
+.slidecontainer > div:nth-of-type(2) {
+    position : relative ;
+    border : 2px dotted black ;
+    border-style : none none dotted none ;
+    width : 45vw ;
+    text-align:right ;
+}
+
+.slidecontainer > div:nth-of-type(2) > span {
+    position : absolute ;
+    left:15vw ;
+}
+
+#page_title {
+    position : absolute ;
+    left: 50% ;
+    transform : translateX(-50%) ;
+    top : 5.5vh ;
+    border : 0px solid #999 ;
+    border-radius : 5vh ;
+    background-color : rgba(255,255,255,0.85) ;
+    
+    display : inline-block ;
+    text-align: center;
+    width : 20vh ;  
+    height : 5vh ;
+    line-height : 5vh ;
+    font-size: 1.3rem ;
+    color : #707070 ;
 }
 #BG_Setup{
   position: absolute;
