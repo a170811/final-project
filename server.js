@@ -138,10 +138,6 @@ app.post("/login", function(req, res) {
 //----jump_to function: use to jump between the pages----//
 app.post("/jump_to", function(req, res) {
   res.send( packUp( req.body.call_page ) );
-  console.log( req.body );
-  console.log( req.body.data );
-  console.log( req.body.call_page );
-  console.log( req.body.call_page );
 });
 
 
@@ -177,7 +173,9 @@ app.post( "/save_account_data" ,( req , res )=>{
     con.query( sql , (err , result)=>{
         if (err) throw err ;
         if ( result.length > 0 ) { //registed
-            if( result[0].last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[1]}` ) {
+            if( result[0].last_login_date!=`${today_date[0]}-${today_date[1]}-${today_date[2]}` ) {
+                console.log(result[0].last_login_date) ;
+                console.log(`${today_date[0]}-${today_date[1]}-${today_date[2]}` ) ;
                 con.query(`UPDATE data SET steal_cd=0 , last_login_date='${today_date[0]}-${today_date[1]}-${today_date[2]}' WHERE ID=${_id}`) ;
                 result[0].today = 0 ;
                 result[0].steal_cd = 0 ;
@@ -304,7 +302,7 @@ app.post("/get_total_water" , (req , res)=>{
 
     var id_string = req.body._target ;
     var ret_array = [] ;
-    var sql = `SELECT total FROM data WHERE ID IN ( ${id_string} )` ;
+    var sql = `SELECT total FROM data WHERE ID IN ( ${id_string} ) ORDER BY FIELD ( ID , ${id_string} )` ;
     con.query( sql , (err , result)=>{
         if(err) throw err ;
         result.map( (x)=>{

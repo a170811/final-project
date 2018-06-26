@@ -58,6 +58,10 @@ function checkOnLine(){
 
 
 function checkHandler(){   
+
+      ready_flag = 1;
+      JumpPage(0);
+  /*
     var status=navigator.onLine;   
     if(status){   
       //$("#refresh").text("online");   
@@ -72,6 +76,7 @@ function checkHandler(){
       $("#refresh").append($("<div></div>").css({"position": "fixed", "top": "39vh", "left": "15vw", "width": "70vw","height":"16vh", "textAlign": "center", "background-color": "black", "opacity": "0.6", "border-radius": "5vw" }).hide().fadeIn(600));
       $("#refresh").append($("<p></p>").text("Please connect to Internet").css({"position": "fixed", "top": "40vh", "left": "15vw", "width": "70vw","font-size": "4vh", "font-weight": "bold", "color": "white", "textAlign": "center", "opacity": "0"}).animate({opacity: '1'}, 1000)); 
     }   
+    */
 }
 
 
@@ -249,13 +254,19 @@ FB.Event.subscribe('auth.authResponseChange', function(response){
             account_data( id , response.name ) ;
             /*
             account_data( id , response.name , ()=>{
-                steal_water( 1203611163114575 , ()=>{
+                alert('good') ;
+                steal_water( 1128278410645340 , (data)=>{
+                    console.log('testtting') ;
                     console.log(`my water now = ${Account_data.total}`) ;
+                    console.log(`data : ${data}`) ;
                 } ) ;
             }) ;
             */
             /*
-            var id_array = [ 12345 , 67890 ] ;
+            var id_array = [ 
+				67890 , 
+				12345 , 
+			 ] ;
             account_data( id , response.name , ()=>{  //這個是account_data的callback,可給可不給
                 get_total_water( id_array , (data)=>{ //這個是get_total_water的callback 回傳值在data裡
                     console.log("testing here:") ;
@@ -443,7 +454,7 @@ function steal_water( target_id , func ) {
         //console.log( data.id1 ) ;
         //console.log( data.id2 ) ;
         if (typeof func =='function') {
-            func( ) ;
+            func( data ) ;
         }
     }) ;
 }
