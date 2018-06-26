@@ -45,7 +45,6 @@
       </div>
 
     </div>
-<!--    
 <style>
 
 html {
@@ -369,4 +368,4 @@ function closefriend(){
   document.getElementById('friendboard').style.visibility = 'hidden' ;  
 }
 
-</script> -->
+</script> 

@@ -170,7 +170,7 @@ function chooseUrl(pageNum, online) {
         else if(pageNum == 2)
            return '/Record_page/pageHTML.txt';
         else if(pageNum == 3)
-           return '/Flodding_page/pageHTML.txt';
+           return '/Flooding_page/pageHTML.txt';
         else if(pageNum == 4)
            return '/Setup_page/pageHTML.txt';
         else if(pageNum == 5)

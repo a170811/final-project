@@ -163,7 +163,7 @@ self.addEventListener('fetch', event => {
       )
 
     }
-    else if(tmp == '/Home/pageHTML.txt' || tmp == '/Daily_page/pageHTML.txt' || tmp == '/Record_page/pageHTML.txt' || tmp == '/Flodding_page/pageHTML.txt' || tmp == '/Setup_page/pageHTML.txt' || tmp == '/Aboutus/pageHTML.txt' || tmp == '/pageHTML.txt'){
+    else if(tmp == '/Home/pageHTML.txt' || tmp == '/Daily_page/pageHTML.txt' || tmp == '/Record_page/pageHTML.txt' || tmp == '/Flooding_page/pageHTML.txt' || tmp == '/Setup_page/pageHTML.txt' || tmp == '/Aboutus/pageHTML.txt' || tmp == '/pageHTML.txt'){
        event.respondWith(
           caches.match(tmp).then(response => {
             if (response) {

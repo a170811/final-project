@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const app = express();
-const port = 10058;
+const port = 10053;
 
 ///------------- Setup https connection ---------///
 const options = 
@@ -144,8 +144,8 @@ app.post("/jump_to", function(req, res) {
 //---- package the content ----//
 function packUp( chosen ) {
   var tmp;
-  tmp=PageTxt[chosen];
-  //tmp = '<style>\n' + PageCss[chosen] + '</style>\n' + '<script>\n' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
+  //tmp=PageTxt[chosen];
+  tmp = '<style>\n' + PageCss[chosen] + '</style>\n' + '<script>\n' + PageJs[chosen] + '</script>\n' + PageTxt[chosen];
   return tmp;
 }
 
