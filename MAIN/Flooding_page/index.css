@@ -1,14 +1,37 @@
+/*-- Title---*/
+#page_title {
+    position : absolute ;
+    left: 50% ;
+    transform : translateX(-50%) ;
+    top : 5vh ;
+    border : 0px solid #999 ;
+    border-radius : 5vh ;
+    background-color : rgba(255,255,255,0.85) ;
+    
+    display : inline-block ;
+    text-align: center;
+    font-weight : light;
+    width : 20vh ;  
+    height : 5vh ;
+    line-height : 5vh ;
+    font-size: 1rem ;
+    color : #707070 ;
+}
+
+
+
+
 /*---- Setup the imformation on top----*/
 #Show_data {
   position: fixed;
-  top: 3vh;
-  right: 34.7vw;
+  bottom: 5vh;
+  right: 7vw;
   z-index: -9;
   background-color: white;
   width: 30vw;
   height: 8vh;
   border-radius: 3vh;
-  border-style: groove;
+  border:2px solid;
   border-color: #707070;
 }
 
@@ -48,7 +71,7 @@
 /*----setup info icon---*/
 #information_icon img  {
   position: fixed;
-  top: 4.5vh;
+  top: 4.8vh;
   right: 10vw;
   width: 5vh;
   height: 5vh;

@@ -23,6 +23,7 @@
     </script>
 </div>
 //bubble.css
+<!--
 <style>
 .contain {
     position : absolute ;
@@ -479,4 +480,4 @@ $(document).ready(function(){
 }) ;
 
 </script>
-
+-->

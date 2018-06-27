@@ -22,7 +22,7 @@ function click_comfirm() {
         drinking_water( count*1000 ) ;
         show_text(count) ;
         count = 0 ;
-        document.getElementById("count").innerHTML = count ;
+        document.getElementById("count").innerHTML = count.toFixed(0) ;
         var board = document.getElementsByClassName('board') ;
         board[0].style.visibility = 'hidden' ;
         board[0].disabled = false ;

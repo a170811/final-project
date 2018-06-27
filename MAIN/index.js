@@ -83,10 +83,13 @@ function checkHandler(){
 function JumpPage(pageNum) {
   var success=0;
   var online = navigator.onLine;
+  if(pageNum == 5&&online == false) {
+    pageNum=0;
+  }
   var url = chooseUrl(pageNum, online);
   var method = chooseMethod(online);
-  var data = chooseData(pageNum, online);
-  console.log(data);
+  //var data = chooseData(pageNum, online);
+  //console.log(data);
   //if(navigator.online) {
   
   $.ajax({
@@ -122,7 +125,7 @@ function JumpPage(pageNum) {
         else if( pageNum!=0 && pageNum!=1 && pageNum!=5 ) {
           $("#prevIcon").addClass("showGoHome");
           if(pageNum == 3) {
-            $("#prevIcon").css({"top": "4vh", "left": "13vw", "width": "3vh","height":"7vh"});              }
+            $("#prevIcon").css({"top": "4vh", "left": "13vw", "width": "3vh","height":"7vh", "z-index":"0"});              }
         }
         else {
           $("#prevIcon").addClass("hideGoHome");
@@ -145,6 +148,7 @@ function JumpPage(pageNum) {
     }
   }, 500);
 }
+/*
 function chooseData(pageNum, online) {
   if(online)
     return `'call_page': '${pageNum}'`;
@@ -152,6 +156,7 @@ function chooseData(pageNum, online) {
   else
     return '';
 }
+*/
 function chooseMethod(online) {
   if(online)
     return 'POST';
