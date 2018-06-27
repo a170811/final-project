@@ -98,6 +98,9 @@ $(document).ready( () => {
     findPower(total);
 
     var percentage = Math.floor( (total/target) * 51  );
+    if(percentage >51) {
+      percentage = 51;
+    }
     document.getElementById("present").src=changePic[ percentage ];
     document.getElementById("show_total").innerHTML = `${ (total/( Math.pow(10, power) ) ).toFixed(1) }&times10<sup>${power}</sup> L`;
 

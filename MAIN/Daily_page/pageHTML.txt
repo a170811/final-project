@@ -26,8 +26,11 @@
     
 
     </div>
+
+
+
+
     <style>
-    
 /*tmplate*/
 
 .board_default {
@@ -78,7 +81,6 @@ body div {
     left : 13vw ;
 }
 
-
 #page_title {
     position : absolute ;
     left: 50% ;
@@ -97,12 +99,11 @@ body div {
     color : #707070 ;
 }
 
-
 #show_text {
     position : absolute ;
     left : 50% ;
     transform : translateX(-50%) ;
-    top : 20vh ;
+    top : 9vh ;
     height : 20vh ;
     width :100% ;
     text-align : center ;
@@ -114,12 +115,12 @@ body div {
     width : 100% ;
 }
 
-
 #title {
     position : absolute ;
     top : 2vh ;
     width:100% ;
 }
+
 
 #title > span{
     border : 0px solid #999 ;
@@ -264,7 +265,7 @@ body div {
 
     
         <script>
-        
+
 //var amount = 0 ;
 var count = 0 ;
 function click_record() {
@@ -288,7 +289,7 @@ function click_comfirm() {
         drinking_water( count*1000 ) ;
         show_text(count) ;
         count = 0 ;
-        document.getElementById("count").innerHTML = count ;
+        document.getElementById("count").innerHTML = count.toFixed(0) ;
         var board = document.getElementsByClassName('board') ;
         board[0].style.visibility = 'hidden' ;
         board[0].disabled = false ;
@@ -349,6 +350,4 @@ function show_text( show ) {
         $(div_text).animate( { opacity : 0} , 200 ) ;
     } ) ;
 }
-
-
         </script>

@@ -45,7 +45,13 @@
       </div>
 
     </div>
+
+
+
+
 <style>
+
+
 html {
   font-size : 16px ;
   font-family:Microsoft JhengHei;
@@ -146,7 +152,6 @@ html {
 }
 
 #AboutUS {
-  1background: orange;
   bottom: 20vh;
   left: 40vw;
 }
@@ -291,7 +296,7 @@ html {
   font-size:3.2vw;
 }
 .friwater{
-  background-color:#00e3e3;
+  background-color:#56BF23;
   height:4vw; 
   float:left;
 }
@@ -302,7 +307,7 @@ html {
   overflow:hidden;
   float:left;
   position:relative;
-  top:5vw;
+  top:4vw;
   border-radius: 2vw;
 }
 .propc{
@@ -318,7 +323,7 @@ html {
   position:relative;
   margin-top:4vw;
   width:45%;
-  height:4vw;
+  height:5vw;
 }
 .close{
  background-image: url( "../Picture/cancel.png");
@@ -338,6 +343,8 @@ html {
   height:0.6vw;
   width:88%;
 }
+
+
 </style>
 
 <script>
