@@ -9,7 +9,7 @@ html {
 
 .slidecontainer > div {
     margin-top : 5vh ; 
-    margin-bottom : 5vh ; 
+    margin-bottom : 5vh ;
 }
 
 .slidecontainer > div:nth-of-type(2) {
@@ -51,10 +51,12 @@ html {
 }
 #hellouser{
   height: 15vw;
-	margin: 25vw 0 0 12vw;
+	margin: 10vw 20vw 15vw 0vw;
 	font-size:5vw;
 	font-weight:800;
   letter-spacing:1vw;
+  float:right;
+
 }
 .prop{
   margin-right:5vw;

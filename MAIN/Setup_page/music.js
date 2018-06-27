@@ -17,12 +17,14 @@ var username;
           FB.api('/me?fields=friends,name,email,picture', function(response){
             username=(response.name);
             console.log(response.name);//name
-            document.getElementById("hellouser").innerHTML='<img class="prop" src="https://graph.facebook.com/' + response.id + '/picture?type=large">'+username+'您好<button id="logout" type="button" onclick="logout()">登出</button>';
+            document.getElementById("hellouser").innerHTML='<img class="prop" src="https://graph.facebook.com/' + response.id + '/picture?type=large">'+username+'您好';
+            document.getElementById("logoutword").onclick=function(){logout();};
           });
         }
         else{
           username="guest";
-          document.getElementById("hellouser").innerHTML="親愛的"+username+'您好<button id="logout" type="button" onclick="guestlogout()">登出</button>';
+          document.getElementById("hellouser").innerHTML="親愛的"+username+'您好'; 
+          document.getElementById("logoutword").onclick=function(){guestlogout();};
         }
 $(document).ready(function(){
   $("#reminder button").click(function(e){

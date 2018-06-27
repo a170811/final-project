@@ -31,8 +31,8 @@ $(document).ready(function () {
         opacity: '0'
       }, 1000);
       $("#loginbutton").animate({
-        top: '-3vh'
-      },1500);
+        top: '0vh'
+      },1000);
 });
 
 
