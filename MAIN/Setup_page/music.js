@@ -17,7 +17,8 @@ var username;
           FB.api('/me?fields=friends,name,email,picture', function(response){
             username=(response.name);
             console.log(response.name);//name
-            document.getElementById("hellouser").innerHTML='<img class="prop" src="https://graph.facebook.com/' + response.id + '/picture?type=large">'+username+'您好';
+            document.getElementById("hellouser").innerHTML='';
+            document.getElementById("hellouser").innerHTML=`<img class="prop" src="https://graph.facebook.com/${response.id}/picture?type=large"><span>${username} 您好</span>`;
             document.getElementById("logoutword").onclick=function(){logout();};
           });
         }

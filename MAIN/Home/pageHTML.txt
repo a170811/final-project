@@ -31,10 +31,10 @@
 
       <div id='setting_board'>
          <form class='center'>
-            <label for='target'>target</label>
-            <br><input type='text' name='target' placeholder='daily target(ml)'><br>
-            <label for='lasting_time'>lasting_time</label>
-            <br><input type='text' name='lasting_time' placeholder='lasting days'><br>
+            <label for='target'>每日目標</label>
+            <br><input type='text' name='target' placeholder='2000(ml)'><br>
+            <label for='lasting_time'>持續天數</label>
+            <br><input type='text' name='lasting_time' placeholder='90(天)'><br>
             <button id='send_target' type='submit' class='center'><span>Submit</span></button>
          </form>
       </div>

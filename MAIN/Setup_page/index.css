@@ -2,9 +2,9 @@ html {
     font-size : 16px ;
 }
 .slidecontainer {
-	margin: 25vw 0 0 28vw;
+	margin: 25vw 0 0 23vw;
 	font-size:5vw;
-	font-weight:800;
+	font-weight:200;
 }
 
 .slidecontainer > div {
@@ -12,16 +12,17 @@ html {
     margin-bottom : 5vh ;
 }
 
-.slidecontainer > div:nth-of-type(2) {
+.slidecontainer > div:nth-of-type(3) {
     position : relative ;
     border : 2px dotted black ;
     border-style : none none dotted none ;
     width : 45vw ;
-    text-align:right ;
 }
 .slidecontainer > div:nth-of-type(2) > span {
-    position : absolute ;
-    left:15vw ;
+}
+
+#volrange {
+    width : 40vw ;
 }
 
 #page_title {
@@ -46,17 +47,26 @@ html {
   bottom: 0vh;
   left: 0;
   width: 100vw;
-  lheight: 100vh;
+  height: 100vh;
   z-index: -4;
 }
 #hellouser{
+  position:relative ;
   height: 15vw;
-	margin: 10vw 20vw 15vw 0vw;
-	font-size:5vw;
-	font-weight:800;
+  font-size:5vw;
+  font-weight:200;
   letter-spacing:1vw;
-  float:right;
-
+  margin-bottom:10vh ;
+}
+#hellouser > img {
+    position : absolute ;
+    left : 0 ;
+    top : 5vh ;
+}
+#hellouser > span {
+    position : absolute ;
+    left: 20vw ;
+    top : 5vh ;
 }
 .prop{
   margin-right:5vw;
